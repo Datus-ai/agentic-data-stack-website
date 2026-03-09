@@ -25,7 +25,7 @@ export default function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <a href="#" className="flex items-center gap-2 text-lg font-bold">
-              <img src="/images/logo.png" alt="Agentic Data Stack" className="h-8 w-8 rounded-lg object-cover" />
+              <img src="/images/logo.svg" alt="Agentic Data Stack" className="h-8 w-8" />
               Agentic Data Stack
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">

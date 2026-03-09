@@ -29,7 +29,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#" className="flex items-center gap-2 text-lg font-bold tracking-tight">
-          <img src="/images/logo.png" alt="Agentic Data Stack" className="h-8 w-8 rounded-lg object-cover" />
+          <img src="/images/logo.svg" alt="Agentic Data Stack" className="h-8 w-8" />
           <span className="hidden sm:inline">Agentic Data Stack</span>
         </a>
 
@@ -44,9 +44,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://www.linkedin.com/company/agentic-data-stack/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/coming-soon"
             className="rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             Join Community
@@ -90,9 +88,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="https://www.linkedin.com/company/agentic-data-stack/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/coming-soon"
               onClick={() => setMobileOpen(false)}
               className="rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 py-2 text-center text-sm font-medium text-white"
             >
