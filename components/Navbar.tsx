@@ -29,7 +29,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#" className="flex items-center gap-2 text-lg font-bold tracking-tight">
-          <img src="/images/logo.svg" alt="Agentic Data Stack" className="h-8 w-8" />
+          <img src="/images/logo.png" alt="Agentic Data Stack" className="h-8 w-8 rounded-md" />
           <span className="hidden sm:inline">Agentic Data Stack</span>
         </a>
 
