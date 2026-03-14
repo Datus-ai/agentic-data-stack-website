@@ -6,7 +6,7 @@ export default function StructuredData() {
     url: "https://agenticdatastack.org",
     logo: "https://agenticdatastack.org/images/logo.png",
     description:
-      "A community exploring how modern data stacks evolve to serve agents, and how agents reshape data analytics and data engineering.",
+      "A community exploring how modern data stacks evolve to serve agents, and how agents reshape data analytics and data engineering. Focused on autonomous data engineering, AI-powered data transformation, agentic semantic layers, intelligent data systems, and data quality for AI agents.",
     sameAs: [
       "https://www.linkedin.com/company/agentic-data-stack/",
       "https://lu.ma/AgenticDataStack",
@@ -24,7 +24,7 @@ export default function StructuredData() {
     name: "Agentic Data Stack",
     url: "https://agenticdatastack.org",
     description:
-      "A community exploring how modern data stacks evolve to serve agents.",
+      "A community exploring how modern data stacks evolve to serve agents. Resources on autonomous data engineering, AI-powered data transformation, and building agentic data stacks.",
     publisher: {
       "@type": "Organization",
       name: "Agentic Data Stack",
