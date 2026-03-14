@@ -24,8 +24,13 @@ export default function Hero() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-          A community exploring how modern data stacks evolve to serve agents,
-          and how agents reshape data analytics and data engineering.
+          A community exploring how modern data stacks evolve into{" "}
+          <span className="font-semibold text-violet-300">agentic data stacks</span> —
+          enabling{" "}
+          <span className="font-semibold text-blue-300">AI-powered data transformation</span>,{" "}
+          <span className="font-semibold text-violet-300">autonomous data engineering</span>{" "}
+          with data agents, and intelligent data systems powered by{" "}
+          <span className="font-semibold text-blue-300">data engineering agents</span>.
         </p>
 
         <p className="mx-auto mt-4 max-w-xl text-sm font-medium tracking-wide text-violet-300/80">

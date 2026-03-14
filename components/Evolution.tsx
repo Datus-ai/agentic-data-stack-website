@@ -14,8 +14,11 @@ export default function Evolution() {
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
-            A reference architecture for data systems designed for agents,
-            context, reasoning, execution, and governance.
+            A reference architecture for{" "}
+            <span className="font-semibold text-violet-300">intelligent data systems</span>{" "}
+            designed for agents — enabling{" "}
+            <span className="font-semibold text-blue-300">autonomous data pipelines</span>,
+            context-aware operations, AI-powered reasoning, and governed execution.
           </p>
         </div>
 

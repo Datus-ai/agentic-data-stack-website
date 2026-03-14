@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Agentic Data Stack — How Data Systems Evolve for Agents",
   description:
-    "A community exploring how modern data stacks evolve to serve agents, and how agents reshape data analytics and data engineering. Learn about autonomous data engineering, AI-powered data transformation, and intelligent data systems. Vendor-neutral. Practice-driven. Architecture-first.",
+    "A community exploring how modern data stacks evolve to serve data agents and data engineering agents. Learn about autonomous data engineering, AI-powered data transformation, intelligent data systems, and agentic data stacks. Vendor-neutral. Practice-driven. Architecture-first.",
   keywords: [
     // Category C: Strategic Brand Keywords (P0)
     "agentic data stack",
@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     "intelligent data systems",
     "data quality for AI agents",
     "AI agent data architecture",
+    "data agents",
+    "data engineering agent",
+    "data engineering agents",
     
     // Category A: Growing (P1)
     "agentic data catalog",
@@ -43,7 +46,6 @@ export const metadata: Metadata = {
     "agentic ETL pipelines",
     
     // Category B: High Interest (P1)
-    "data agents",
     "agentic data systems",
     
     // Additional high-value keywords
@@ -65,7 +67,7 @@ export const metadata: Metadata = {
     url: "https://agenticdatastack.org",
     title: "Agentic Data Stack — How Data Systems Evolve for Agents",
     description:
-      "A community exploring how modern data stacks evolve to serve agents, and how agents reshape data analytics and data engineering. Learn about autonomous data engineering, AI-powered data transformation, agentic semantic layers, and intelligent data systems.",
+      "A community exploring how modern data stacks evolve to serve data agents and data engineering agents. Learn about autonomous data engineering, AI-powered data transformation, agentic semantic layers, and intelligent data systems powered by data agents.",
     siteName: "Agentic Data Stack",
     images: [
       {
