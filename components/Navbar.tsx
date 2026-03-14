@@ -4,18 +4,16 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const sectionLinks = [
-  { label: "Evolution", anchor: "#evolution" },
-  { label: "Focus", anchor: "#focus" },
-  { label: "Participate", anchor: "#participate" },
-  { label: "CFP Tracks", anchor: "#tracks" },
+const navLinks = [
+  { label: "Resources", href: "/resources" },
+  { label: "Newsletter", href: "/newsletter" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -23,8 +21,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  function sectionHref(anchor: string) {
-    return isHome ? anchor : `/${anchor}`;
+  function isActive(href: string) {
+    return pathname.startsWith(href);
   }
 
   return (
@@ -42,31 +40,25 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          {sectionLinks.map((link) => (
-            <a
-              key={link.anchor}
-              href={sectionHref(link.anchor)}
-              className="text-sm text-muted transition-colors hover:text-foreground"
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-sm transition-colors hover:text-foreground ${
+                isActive(link.href)
+                  ? "text-foreground font-medium"
+                  : "text-muted"
+              }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <Link
-            href="/resources"
-            className={`text-sm transition-colors hover:text-foreground ${
-              pathname.startsWith("/resources")
-                ? "text-foreground font-medium"
-                : "text-muted"
-            }`}
-          >
-            Resources
-          </Link>
-          <a
-            href="/coming-soon"
+            href="/newsletter"
             className="rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
-            Join Community
-          </a>
+            Subscribe
+          </Link>
         </div>
 
         <button
@@ -95,34 +87,27 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="border-t border-card-border bg-background/95 backdrop-blur-lg md:hidden">
           <div className="flex flex-col gap-4 px-6 py-6">
-            {sectionLinks.map((link) => (
-              <a
-                key={link.anchor}
-                href={sectionHref(link.anchor)}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-sm text-muted transition-colors hover:text-foreground"
+                className={`text-sm transition-colors hover:text-foreground ${
+                  isActive(link.href)
+                    ? "text-foreground font-medium"
+                    : "text-muted"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <Link
-              href="/resources"
-              onClick={() => setMobileOpen(false)}
-              className={`text-sm transition-colors hover:text-foreground ${
-                pathname.startsWith("/resources")
-                  ? "text-foreground font-medium"
-                  : "text-muted"
-              }`}
-            >
-              Resources
-            </Link>
-            <a
-              href="/coming-soon"
+              href="/newsletter"
               onClick={() => setMobileOpen(false)}
               className="rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 py-2 text-center text-sm font-medium text-white"
             >
-              Join Community
-            </a>
+              Subscribe
+            </Link>
           </div>
         </div>
       )}

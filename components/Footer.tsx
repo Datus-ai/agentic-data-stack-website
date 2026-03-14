@@ -1,11 +1,16 @@
 import Link from "next/link";
+import SubscribeForm from "@/components/newsletter/SubscribeForm";
 
 const footerLinks = {
-  Community: [
-    { label: "LinkedIn Page", href: "https://www.linkedin.com/company/agentic-data-stack/", external: true },
-    { label: "Luma Calendar", href: "https://lu.ma/AgenticDataStack", external: true },
+  Content: [
+    { label: "Blog", href: "/blog" },
+    { label: "Newsletter", href: "/newsletter" },
+    { label: "Resources", href: "/resources" },
     { label: "Call for Proposals", href: "/#tracks" },
-    { label: "Past Sessions", href: "/coming-soon" },
+  ],
+  Community: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/agentic-data-stack/", external: true },
+    { label: "Luma Calendar", href: "https://lu.ma/AgenticDataStack", external: true },
   ],
   Resources: [
     { label: "Catalog Service", href: "/resources/catalog-service" },
@@ -16,18 +21,25 @@ const footerLinks = {
     { label: "BI Tools", href: "/resources/bi-tools" },
     { label: "Data Agents", href: "/resources/data-agents" },
   ],
-  Explore: [
-    { label: "Focus Areas", href: "/#focus" },
-    { label: "Participate", href: "/#participate" },
-    { label: "CFP Tracks", href: "/#tracks" },
-    { label: "All Resources", href: "/resources" },
-  ],
 };
 
 export default function Footer() {
   return (
     <footer className="border-t border-card-border bg-card-bg/30 px-6 py-16">
       <div className="mx-auto max-w-6xl">
+        {/* Newsletter CTA strip */}
+        <div className="mb-16 rounded-2xl border border-card-border bg-background/50 p-8 sm:flex sm:items-center sm:gap-8">
+          <div className="mb-4 sm:mb-0 sm:flex-1">
+            <h3 className="text-lg font-semibold">Stay in the loop</h3>
+            <p className="mt-1 text-sm text-muted">
+              Weekly digest on agentic data infrastructure. No spam.
+            </p>
+          </div>
+          <div className="sm:w-96">
+            <SubscribeForm compact />
+          </div>
+        </div>
+
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link href="/" className="flex items-center gap-2 text-lg font-bold">

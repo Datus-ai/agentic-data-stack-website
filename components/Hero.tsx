@@ -34,16 +34,16 @@ export default function Hero() {
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <a
-            href="/coming-soon"
+            href="/newsletter"
             className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-8 text-sm font-medium text-white shadow-lg shadow-violet-500/25 transition-all hover:shadow-xl hover:shadow-violet-500/30 hover:brightness-110"
           >
-            Join the Community
+            Subscribe to Newsletter
           </a>
           <a
-            href="#focus"
+            href="/resources"
             className="inline-flex h-12 items-center justify-center rounded-full border border-card-border px-8 text-sm font-medium text-foreground transition-colors hover:bg-card-bg"
           >
-            Learn More
+            Explore Resources
           </a>
         </div>
       </div>
