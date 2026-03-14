@@ -1,0 +1,16 @@
+---
+title: "SQL Engine"
+description: "Distributed and embedded SQL engines that power analytics queries across lakehouse storage."
+type: "overview"
+category: "sql-engine"
+tags: ["SQL", "query engine", "analytics", "distributed computing", "lakehouse"]
+author:
+  name: "Agentic Data Stack"
+date: "2026-03-14"
+---
+
+SQL engines are the execution backbone of agent-driven analytics. When an agent formulates a query to answer a business question, it is the SQL engine that parses, optimizes, and executes that query against lakehouse storage. The performance characteristics, cost profile, and feature set of the chosen engine directly determine what kinds of questions agents can answer and how quickly they can deliver results.
+
+The modern landscape of SQL engines spans a wide spectrum, from heavyweight distributed engines designed for petabyte-scale warehousing to lightweight embedded engines optimized for local, low-latency analytics. This diversity is an asset for the agentic data stack, as agents can route queries to the most appropriate engine based on data volume, latency requirements, and cost constraints. An intelligent agent might use an embedded engine for quick exploratory queries and escalate to a distributed engine for large-scale aggregations.
+
+As SQL engines continue to improve in speed and efficiency, they unlock new patterns for agentic workflows. Sub-second query response times enable conversational analytics, where agents iteratively refine their understanding of data through rapid query cycles. Federation capabilities allow agents to query across multiple data sources without requiring data movement, reducing complexity and cost in agentic pipelines.

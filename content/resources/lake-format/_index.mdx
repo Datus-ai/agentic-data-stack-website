@@ -1,0 +1,16 @@
+---
+title: "Lake Format"
+description: "Open table formats that bring ACID transactions, schema evolution, and time travel to data lakes."
+type: "overview"
+category: "lake-format"
+tags: ["table format", "ACID", "schema evolution", "time travel", "data lake"]
+author:
+  name: "Agentic Data Stack"
+date: "2026-03-14"
+---
+
+Open table formats are the storage foundation of the agentic data stack. By bringing ACID transactions, schema evolution, and time travel capabilities to data lakes, they provide the reliability guarantees that autonomous agents require to operate confidently. An agent modifying a dataset can do so transactionally, knowing that concurrent readers will see consistent snapshots and that any operation can be safely rolled back if something goes wrong.
+
+Time travel is particularly valuable in agentic workflows. When agents detect anomalies or unexpected results, they can inspect previous versions of the data to understand what changed and when. This capability transforms debugging from a manual investigation into an automated diagnostic process. Schema evolution support means agents can adapt to changing data structures without breaking downstream pipelines.
+
+The convergence of open table formats around shared specifications further strengthens the agentic data stack by preventing vendor lock-in and enabling agents to work seamlessly across different engines and tools. Whether an agent is orchestrating a batch transformation or serving a real-time query, open table formats ensure the underlying data layer is versioned, reliable, and interoperable.

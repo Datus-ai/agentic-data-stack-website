@@ -1,23 +1,31 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-const navLinks = [
-  { label: "Evolution", href: "#evolution" },
-  { label: "Focus", href: "#focus" },
-  { label: "Participate", href: "#participate" },
-  { label: "CFP Tracks", href: "#tracks" },
+const sectionLinks = [
+  { label: "Evolution", anchor: "#evolution" },
+  { label: "Focus", anchor: "#focus" },
+  { label: "Participate", anchor: "#participate" },
+  { label: "CFP Tracks", anchor: "#tracks" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  function sectionHref(anchor: string) {
+    return isHome ? anchor : `/${anchor}`;
+  }
 
   return (
     <nav
@@ -28,21 +36,31 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-2 text-lg font-bold tracking-tight">
+        <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight">
           <img src="/images/logo.png" alt="Agentic Data Stack" className="h-8 w-8 rounded-md" />
           <span className="hidden sm:inline">Agentic Data Stack</span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
+          {sectionLinks.map((link) => (
             <a
-              key={link.href}
-              href={link.href}
+              key={link.anchor}
+              href={sectionHref(link.anchor)}
               className="text-sm text-muted transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
           ))}
+          <Link
+            href="/resources"
+            className={`text-sm transition-colors hover:text-foreground ${
+              pathname.startsWith("/resources")
+                ? "text-foreground font-medium"
+                : "text-muted"
+            }`}
+          >
+            Resources
+          </Link>
           <a
             href="/coming-soon"
             className="rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
@@ -77,16 +95,27 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="border-t border-card-border bg-background/95 backdrop-blur-lg md:hidden">
           <div className="flex flex-col gap-4 px-6 py-6">
-            {navLinks.map((link) => (
+            {sectionLinks.map((link) => (
               <a
-                key={link.href}
-                href={link.href}
+                key={link.anchor}
+                href={sectionHref(link.anchor)}
                 onClick={() => setMobileOpen(false)}
                 className="text-sm text-muted transition-colors hover:text-foreground"
               >
                 {link.label}
               </a>
             ))}
+            <Link
+              href="/resources"
+              onClick={() => setMobileOpen(false)}
+              className={`text-sm transition-colors hover:text-foreground ${
+                pathname.startsWith("/resources")
+                  ? "text-foreground font-medium"
+                  : "text-muted"
+              }`}
+            >
+              Resources
+            </Link>
             <a
               href="/coming-soon"
               onClick={() => setMobileOpen(false)}

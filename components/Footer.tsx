@@ -1,20 +1,26 @@
+import Link from "next/link";
+
 const footerLinks = {
   Community: [
-    { label: "LinkedIn Page", href: "https://www.linkedin.com/company/agentic-data-stack/" },
-    { label: "Luma Calendar", href: "https://lu.ma/AgenticDataStack" },
-    { label: "Call for Proposals", href: "#" },
-    { label: "Past Sessions", href: "#" },
+    { label: "LinkedIn Page", href: "https://www.linkedin.com/company/agentic-data-stack/", external: true },
+    { label: "Luma Calendar", href: "https://lu.ma/AgenticDataStack", external: true },
+    { label: "Call for Proposals", href: "/#tracks" },
+    { label: "Past Sessions", href: "/coming-soon" },
+  ],
+  Resources: [
+    { label: "Catalog Service", href: "/resources/catalog-service" },
+    { label: "Lake Format", href: "/resources/lake-format" },
+    { label: "SQL Engine", href: "/resources/sql-engine" },
+    { label: "Semantic Layer", href: "/resources/semantic-layer" },
+    { label: "ETL & ELT Tools", href: "/resources/etl-elt-tools" },
+    { label: "BI Tools", href: "/resources/bi-tools" },
+    { label: "Data Agents", href: "/resources/data-agents" },
   ],
   Explore: [
-    { label: "Focus Areas", href: "#focus" },
-    { label: "Participate", href: "#participate" },
-    { label: "CFP Tracks", href: "#tracks" },
-  ],
-  Topics: [
-    { label: "Agentic Architectures", href: "#tracks" },
-    { label: "Catalog & Metadata", href: "#tracks" },
-    { label: "Semantic Layer", href: "#tracks" },
-    { label: "Production Practices", href: "#tracks" },
+    { label: "Focus Areas", href: "/#focus" },
+    { label: "Participate", href: "/#participate" },
+    { label: "CFP Tracks", href: "/#tracks" },
+    { label: "All Resources", href: "/resources" },
   ],
 };
 
@@ -24,10 +30,10 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <a href="#" className="flex items-center gap-2 text-lg font-bold">
+            <Link href="/" className="flex items-center gap-2 text-lg font-bold">
               <img src="/images/logo.png" alt="Agentic Data Stack" className="h-8 w-8 rounded-md" />
               Agentic Data Stack
-            </a>
+            </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
               A community exploring how modern data stacks evolve to serve
               agents. Vendor-neutral. Practice-driven. Architecture-first.
@@ -54,12 +60,23 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-muted transition-colors hover:text-foreground"
-                    >
-                      {link.label}
-                    </a>
+                    {"external" in link && link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-muted transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
