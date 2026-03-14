@@ -15,44 +15,35 @@ export default function SubscribeForm({ compact }: { compact?: boolean }) {
 
     setStatus("loading");
 
-    const apiUrl = process.env.NEXT_PUBLIC_SUBSCRIBE_API_URL;
+    const apiKey = process.env.NEXT_PUBLIC_BUTTONDOWN_API_KEY;
 
-    if (!apiUrl) {
-      // Fallback when backend not configured yet
-      try {
-        const stored = JSON.parse(
-          localStorage.getItem("newsletter_subscribers") || "[]"
-        );
-        stored.push({ email, date: new Date().toISOString() });
-        localStorage.setItem(
-          "newsletter_subscribers",
-          JSON.stringify(stored)
-        );
-      } catch {
-        // ignore storage errors
-      }
-      setStatus("success");
-      setMessage("Thanks! We'll notify you when we launch the newsletter.");
-      setEmail("");
+    if (!apiKey) {
+      setStatus("error");
+      setMessage("Subscription is not configured yet. Please try again later.");
       return;
     }
 
     try {
-      const res = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await res.json();
+      const res = await fetch(
+        "https://api.buttondown.com/v1/subscribers",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${apiKey}`,
+          },
+          body: JSON.stringify({ email_address: email }),
+        }
+      );
 
       if (res.ok) {
         setStatus("success");
-        setMessage(data.message || "You're in! Check your inbox for confirmation.");
+        setMessage("You're in! Check your inbox for confirmation.");
         setEmail("");
       } else {
+        const data = await res.json();
         setStatus("error");
-        setMessage(data.error || "Something went wrong. Please try again.");
+        setMessage(data.detail || "Something went wrong. Please try again.");
       }
     } catch {
       setStatus("error");
