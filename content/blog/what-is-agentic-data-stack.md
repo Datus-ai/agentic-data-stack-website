@@ -6,6 +6,7 @@ author: "Agentic Data Stack Community"
 keywords: ["agentic data stack", "building agentic data stack", "traditional vs agentic data stack", "autonomous data engineering", "AI-powered data transformation"]
 tags: ["architecture", "fundamentals", "agentic-data-stack"]
 image: "/images/blog/agentic-architecture-layers.png"
+draft: true
 ---
 
 # What is Agentic Data Stack? A Complete Guide

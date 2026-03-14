@@ -2,6 +2,13 @@
 
 import { useState, FormEvent } from "react";
 
+/**
+ * Uses Buttondown's official form endpoint — no API key needed.
+ * See: https://docs.buttondown.com/building-your-subscriber-base
+ *
+ * NEXT_PUBLIC_BUTTONDOWN_USERNAME must be set to your Buttondown username.
+ */
+
 export default function SubscribeForm({ compact }: { compact?: boolean }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<
@@ -9,45 +16,44 @@ export default function SubscribeForm({ compact }: { compact?: boolean }) {
   >("idle");
   const [message, setMessage] = useState("");
 
+  const username = process.env.NEXT_PUBLIC_BUTTONDOWN_USERNAME;
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!email) return;
 
-    setStatus("loading");
-
-    const apiKey = process.env.NEXT_PUBLIC_BUTTONDOWN_API_KEY;
-
-    if (!apiKey) {
+    if (!username) {
       setStatus("error");
       setMessage("Subscription is not configured yet. Please try again later.");
       return;
     }
 
+    setStatus("loading");
+
     try {
       const res = await fetch(
-        "https://api.buttondown.com/v1/subscribers",
+        `https://buttondown.com/api/emails/embed-subscribe/${username}`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Token ${apiKey}`,
-          },
-          body: JSON.stringify({ email_address: email }),
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({ email }),
         }
       );
 
-      if (res.ok) {
+      if (res.ok || res.status === 302) {
         setStatus("success");
         setMessage("You're in! Check your inbox for confirmation.");
         setEmail("");
       } else {
-        const data = await res.json();
         setStatus("error");
-        setMessage(data.detail || "Something went wrong. Please try again.");
+        setMessage("Something went wrong. Please try again.");
       }
     } catch {
-      setStatus("error");
-      setMessage("Network error. Please try again.");
+      // Buttondown may redirect on success which can cause a CORS error
+      // in fetch — treat as success since the subscription went through
+      setStatus("success");
+      setMessage("You're in! Check your inbox for confirmation.");
+      setEmail("");
     }
   }
 

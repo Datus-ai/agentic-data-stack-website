@@ -34,10 +34,18 @@ export default function Hero() {
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <a
-            href="/newsletter"
+            href="https://lu.ma/AgenticDataStack"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-8 text-sm font-medium text-white shadow-lg shadow-violet-500/25 transition-all hover:shadow-xl hover:shadow-violet-500/30 hover:brightness-110"
           >
-            Subscribe to Newsletter
+            Join the Community
+          </a>
+          <a
+            href="/newsletter"
+            className="inline-flex h-12 items-center justify-center rounded-full border border-card-border px-8 text-sm font-medium text-foreground transition-colors hover:bg-card-bg"
+          >
+            Newsletter
           </a>
           <a
             href="/resources"
