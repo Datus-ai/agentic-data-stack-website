@@ -99,7 +99,15 @@ export default function Footer() {
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-card-border pt-8 sm:flex-row">
           <p className="text-sm text-muted">
             &copy; {new Date().getFullYear()} Agentic Data Stack. All rights
-            reserved.
+            reserved. Built by{" "}
+            <a
+              href="https://datus.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-violet-400 transition-colors hover:text-violet-300"
+            >
+              DatusAI
+            </a>
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-sm text-muted transition-colors hover:text-foreground">

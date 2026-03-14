@@ -11,12 +11,18 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 
+export const dynamicParams = false;
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return getBlogPostSlugs().map((slug) => ({ slug }));
+  const slugs = getBlogPostSlugs();
+  if (slugs.length === 0) {
+    return [{ slug: "__placeholder" }];
+  }
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
