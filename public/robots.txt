@@ -1,0 +1,11 @@
+# robots.txt for agenticdatastack.org
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://agenticdatastack.org/sitemap.xml
+
+# Block common bot traps (optional)
+Disallow: /admin/
+Disallow: /private/

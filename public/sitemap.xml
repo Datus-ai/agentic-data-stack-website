@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://agenticdatastack.org/</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- AgenticDataTown Project (to be updated on launch) -->
+  <url>
+    <loc>https://agenticdatastack.org/agenticdatatown</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- About/Docs (adjust based on actual pages) -->
+  <url>
+    <loc>https://agenticdatastack.org/about</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
