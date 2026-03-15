@@ -1176,65 +1176,6 @@ export const categories: Category[] = [
           },
         ],
       },
-      {
-        name: "Dagster",
-        slug: "dagster",
-        description:
-          "Cloud-native data orchestrator with software-defined assets and built-in observability.",
-        website: "https://dagster.io",
-        github: "https://github.com/dagster-io/dagster",
-        license: "Apache-2.0",
-        docsUrl: "https://docs.dagster.io",
-        mcpSupport: true,
-        mcpServerUrl: "https://github.com/dagster-io/dagster",
-        cliSupport: true,
-        cliName: "dagster / dg",
-        cliDocsUrl: "https://docs.dagster.io/api/clis/cli",
-        cliInstall: "pip install dagster dagster-webserver",
-        agentSkills: [],
-        mainFeatures: [
-          "Asset-centric orchestration — define pipelines as a graph of data assets rather than tasks",
-          "Integrated data catalog with auto-generated documentation and lineage tracking",
-          "Built-in scheduling, sensors, and event-driven triggering for pipeline automation",
-          "First-class dbt, Spark, and Databricks integrations for transformation orchestration",
-          "Type-checked, testable pipelines with local development and unit testing support",
-          "Monitoring and alerting with Slack integration and AI-powered debugging",
-          "Partitioned assets and backfill support for incremental and historical data processing",
-          "Dagster+ (Cloud) with SSO, RBAC, SOC 2 Type II compliance, and serverless deployment",
-        ],
-        externalLinks: [
-          {
-            title: "Dagster MCP Server Blog Post",
-            url: "https://dagster.io/blog/dagsters-mcp-server",
-            description:
-              "Official announcement and deep-dive on Dagster MCP server capabilities and setup",
-          },
-          {
-            title: "API Reference",
-            url: "https://docs.dagster.io/api",
-            description:
-              "Complete API reference covering CLIs, core SDK, REST APIs, and GraphQL API",
-          },
-          {
-            title: "GraphQL API",
-            url: "https://docs.dagster.io/api/graphql",
-            description:
-              "GraphQL API for programmatic interaction: trigger runs, query assets, manage schedules",
-          },
-          {
-            title: "dg CLI Reference",
-            url: "https://docs.dagster.io/api/clis/dg-cli/dg-cli-reference",
-            description:
-              "Official CLI reference for the dg command including MCP server configuration",
-          },
-          {
-            title: "AI & ML Solutions",
-            url: "https://dagster.io/solutions/ai",
-            description:
-              "Dagster's AI/ML pipeline orchestration covering agent-friendly patterns and automation",
-          },
-        ],
-      },
     ],
   },
   {
@@ -1814,6 +1755,65 @@ export const categories: Category[] = [
             url: "https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html",
             description:
               "Stable REST API for programmatic DAG triggering, monitoring, and management",
+          },
+        ],
+      },
+      {
+        name: "Dagster",
+        slug: "dagster",
+        description:
+          "Cloud-native data orchestrator with software-defined assets and built-in observability.",
+        website: "https://dagster.io",
+        github: "https://github.com/dagster-io/dagster",
+        license: "Apache-2.0",
+        docsUrl: "https://docs.dagster.io",
+        mcpSupport: true,
+        mcpServerUrl: "https://github.com/dagster-io/dagster",
+        cliSupport: true,
+        cliName: "dagster / dg",
+        cliDocsUrl: "https://docs.dagster.io/api/clis/cli",
+        cliInstall: "pip install dagster dagster-webserver",
+        agentSkills: [],
+        mainFeatures: [
+          "Asset-centric orchestration — define pipelines as a graph of data assets rather than tasks",
+          "Integrated data catalog with auto-generated documentation and lineage tracking",
+          "Built-in scheduling, sensors, and event-driven triggering for pipeline automation",
+          "First-class dbt, Spark, and Databricks integrations for transformation orchestration",
+          "Type-checked, testable pipelines with local development and unit testing support",
+          "Monitoring and alerting with Slack integration and AI-powered debugging",
+          "Partitioned assets and backfill support for incremental and historical data processing",
+          "Dagster+ (Cloud) with SSO, RBAC, SOC 2 Type II compliance, and serverless deployment",
+        ],
+        externalLinks: [
+          {
+            title: "Dagster MCP Server Blog Post",
+            url: "https://dagster.io/blog/dagsters-mcp-server",
+            description:
+              "Official announcement and deep-dive on Dagster MCP server capabilities and setup",
+          },
+          {
+            title: "API Reference",
+            url: "https://docs.dagster.io/api",
+            description:
+              "Complete API reference covering CLIs, core SDK, REST APIs, and GraphQL API",
+          },
+          {
+            title: "GraphQL API",
+            url: "https://docs.dagster.io/api/graphql",
+            description:
+              "GraphQL API for programmatic interaction: trigger runs, query assets, manage schedules",
+          },
+          {
+            title: "dg CLI Reference",
+            url: "https://docs.dagster.io/api/clis/dg-cli/dg-cli-reference",
+            description:
+              "Official CLI reference for the dg command including MCP server configuration",
+          },
+          {
+            title: "AI & ML Solutions",
+            url: "https://dagster.io/solutions/ai",
+            description:
+              "Dagster's AI/ML pipeline orchestration covering agent-friendly patterns and automation",
           },
         ],
       },
