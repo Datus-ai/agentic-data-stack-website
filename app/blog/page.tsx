@@ -32,7 +32,7 @@ export default function BlogPage() {
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
               Deep dives into agentic data architecture, autonomous pipelines,
-              and the tools reshaping how data teams operate.
+              and the components reshaping how data teams operate.
             </p>
           </div>
         </section>

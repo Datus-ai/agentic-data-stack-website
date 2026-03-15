@@ -5,7 +5,7 @@ interface CategoryCardProps {
   slug: string;
   description: string;
   icon: string;
-  toolCount: number;
+  componentCount: number;
 }
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -51,7 +51,7 @@ const iconMap: Record<string, React.ReactNode> = {
   ),
 };
 
-export default function CategoryCard({ title, slug, description, icon, toolCount }: CategoryCardProps) {
+export default function CategoryCard({ title, slug, description, icon, componentCount }: CategoryCardProps) {
   const iconNode = iconMap[icon] ?? iconMap.agent;
 
   return (
@@ -71,7 +71,7 @@ export default function CategoryCard({ title, slug, description, icon, toolCount
 
       <div className="flex items-center justify-between">
         <span className="inline-flex items-center rounded-full bg-violet-500/10 px-2.5 py-0.5 text-xs font-medium text-violet-400 ring-1 ring-violet-500/20">
-          {toolCount} {toolCount === 1 ? "tool" : "tools"}
+          {componentCount} {componentCount === 1 ? "component" : "components"}
         </span>
         <span className="text-sm text-muted transition-colors group-hover:text-accent-light">
           Explore &rarr;

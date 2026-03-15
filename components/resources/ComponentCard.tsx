@@ -1,7 +1,7 @@
 import Link from "next/link";
 import AgentBadges from "./AgentBadges";
 
-interface ToolCardProps {
+interface ComponentCardProps {
   name: string;
   slug: string;
   description: string;
@@ -14,7 +14,7 @@ interface ToolCardProps {
   categorySlug: string;
 }
 
-export default function ToolCard({
+export default function ComponentCard({
   name,
   slug,
   description,
@@ -25,7 +25,7 @@ export default function ToolCard({
   cliSupport,
   agentSkills,
   categorySlug,
-}: ToolCardProps) {
+}: ComponentCardProps) {
   return (
     <div className="group relative flex flex-col rounded-2xl border border-card-border bg-card-bg p-6 transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/5">
       <div className="mb-3 flex items-start justify-between gap-3">

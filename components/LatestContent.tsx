@@ -6,7 +6,7 @@ import { categories } from "@/lib/categories";
 export default function LatestContent() {
   const recentPosts = getRecentBlogPosts(1);
   const latestNewsletter = getLatestNewsletter();
-  const totalTools = categories.reduce((acc, cat) => acc + cat.tools.length, 0);
+  const totalComponents = categories.reduce((acc, cat) => acc + cat.components.length, 0);
 
   const latestPost = recentPosts[0];
 
@@ -130,8 +130,8 @@ export default function LatestContent() {
             </div>
 
             <div className="flex items-baseline gap-2">
-              <span className="text-4xl font-bold text-foreground">{totalTools}</span>
-              <span className="text-sm text-muted">tools tracked</span>
+              <span className="text-4xl font-bold text-foreground">{totalComponents}</span>
+              <span className="text-sm text-muted">components tracked</span>
             </div>
             <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
               Across {categories.length} categories — from catalog services to data agents.

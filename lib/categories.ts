@@ -9,7 +9,7 @@ export interface AgentSkill {
   url: string;
 }
 
-export interface ToolInfo {
+export interface ComponentInfo {
   name: string;
   slug: string;
   description: string;
@@ -33,7 +33,7 @@ export interface Category {
   slug: string;
   description: string;
   icon: string;
-  tools: ToolInfo[];
+  components: ComponentInfo[];
 }
 
 export const categories: Category[] = [
@@ -43,7 +43,7 @@ export const categories: Category[] = [
     description:
       "Metadata catalogs that provide unified governance, discovery, and interoperability across data lakehouse engines and formats.",
     icon: "catalog",
-    tools: [
+    components: [
       {
         name: "Apache Polaris",
         slug: "apache-polaris",
@@ -292,7 +292,7 @@ export const categories: Category[] = [
     description:
       "Open table formats that bring ACID transactions, schema evolution, and time travel to data lakes.",
     icon: "lake",
-    tools: [
+    components: [
       {
         name: "Apache Iceberg",
         slug: "apache-iceberg",
@@ -538,7 +538,7 @@ export const categories: Category[] = [
     description:
       "Distributed and embedded SQL engines that power analytics queries across lakehouse storage.",
     icon: "engine",
-    tools: [
+    components: [
       {
         name: "Trino",
         slug: "trino",
@@ -854,7 +854,7 @@ export const categories: Category[] = [
     description:
       "Metric and semantic layers that provide consistent business definitions for agents and humans alike.",
     icon: "semantic",
-    tools: [
+    components: [
       {
         name: "Cube",
         slug: "cube",
@@ -985,7 +985,7 @@ export const categories: Category[] = [
     description:
       "Data integration and transformation tools that move and shape data across the modern stack.",
     icon: "etl",
-    tools: [
+    components: [
       {
         name: "Airbyte",
         slug: "airbyte",
@@ -1184,7 +1184,7 @@ export const categories: Category[] = [
     description:
       "Open-source business intelligence platforms for data visualization, dashboards, and exploration.",
     icon: "bi",
-    tools: [
+    components: [
       {
         name: "Apache Superset",
         slug: "apache-superset",
@@ -1436,7 +1436,7 @@ export const categories: Category[] = [
     description:
       "Agent frameworks and implementations that bring autonomous capabilities to data engineering and analytics workflows.",
     icon: "agent",
-    tools: [
+    components: [
       {
         name: "DatusAI",
         slug: "datusai",
@@ -1685,7 +1685,7 @@ export const categories: Category[] = [
     description:
       "Workflow orchestration and scheduling platforms that coordinate data pipelines and task execution at scale.",
     icon: "scheduler",
-    tools: [
+    components: [
       {
         name: "Apache Airflow",
         slug: "apache-airflow",

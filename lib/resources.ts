@@ -8,12 +8,12 @@ export interface ResourceFrontmatter {
   title: string;
   slug: string;
   description: string;
-  type: "overview" | "tool" | "case-study" | "article";
+  type: "overview" | "component" | "case-study" | "article";
   category: string;
   tags: string[];
   author: { name: string; url?: string };
   date: string;
-  tool?: {
+  component?: {
     website?: string;
     github?: string;
     license?: string;

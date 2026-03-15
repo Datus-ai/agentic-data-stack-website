@@ -33,7 +33,7 @@ const tracks = [
     number: "4",
     title: "Lakehouse/Warehouse Engines & Execution",
     topics: [
-      "Query engines as tools for agents",
+      "Query engines as components for agents",
       "Plan-aware and cost-aware execution for agent workloads",
       "Feedback loops between agents and query engines",
       "Optimizing execution for iterative and exploratory agents",

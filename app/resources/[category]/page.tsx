@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResourceBreadcrumb from "@/components/resources/ResourceBreadcrumb";
-import ToolCard from "@/components/resources/ToolCard";
+import ComponentCard from "@/components/resources/ComponentCard";
 import { categories, getCategoryBySlug, getAllCategorySlugs } from "@/lib/categories";
 import { getResourcesByCategory, getCategoryOverview } from "@/lib/resources";
 
@@ -86,24 +86,24 @@ export default async function CategoryPage({ params }: Props) {
           {/* Tools Section */}
           <section>
             <h2 className="mb-6 text-xl font-semibold">
-              Tools & Frameworks
+              Components & Frameworks
               <span className="ml-2 text-sm font-normal text-muted">
-                ({category.tools.length})
+                ({category.components.length})
               </span>
             </h2>
             <div className="grid gap-6 sm:grid-cols-2">
-              {category.tools.map((tool) => (
-                <ToolCard
-                  key={tool.slug}
-                  name={tool.name}
-                  slug={tool.slug}
-                  description={tool.description}
-                  website={tool.website}
-                  github={tool.github}
-                  license={tool.license}
-                  mcpSupport={tool.mcpSupport}
-                  cliSupport={tool.cliSupport}
-                  agentSkills={tool.agentSkills}
+              {category.components.map((comp) => (
+                <ComponentCard
+                  key={comp.slug}
+                  name={comp.name}
+                  slug={comp.slug}
+                  description={comp.description}
+                  website={comp.website}
+                  github={comp.github}
+                  license={comp.license}
+                  mcpSupport={comp.mcpSupport}
+                  cliSupport={comp.cliSupport}
+                  agentSkills={comp.agentSkills}
                   categorySlug={slug}
                 />
               ))}

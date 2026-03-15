@@ -3,7 +3,7 @@ interface AgentSkill {
   url: string;
 }
 
-interface ToolInfoPanelProps {
+interface ComponentInfoPanelProps {
   website?: string;
   github?: string;
   license?: string;
@@ -17,7 +17,7 @@ interface ToolInfoPanelProps {
   agentSkills?: AgentSkill[];
 }
 
-export default function ToolInfoPanel({
+export default function ComponentInfoPanel({
   website,
   github,
   license,
@@ -29,7 +29,7 @@ export default function ToolInfoPanel({
   cliDocsUrl,
   cliInstall,
   agentSkills,
-}: ToolInfoPanelProps) {
+}: ComponentInfoPanelProps) {
   return (
     <div className="space-y-5">
       {/* Links & License */}
@@ -228,7 +228,7 @@ export default function ToolInfoPanel({
           </h3>
         </div>
         <p className="mt-2 text-xs text-amber-300/70">
-          Agent playground coming soon. Try agent + tool integration in your browser.
+          Agent playground coming soon. Try agent + component integration in your browser.
         </p>
         <button
           disabled

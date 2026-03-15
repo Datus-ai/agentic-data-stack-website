@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResourceBreadcrumb from "@/components/resources/ResourceBreadcrumb";
-import ToolInfoPanel from "@/components/resources/ToolInfoPanel";
+import ComponentInfoPanel from "@/components/resources/ComponentInfoPanel";
 import AgentBadges from "@/components/resources/AgentBadges";
 import {
   categories,
@@ -19,8 +19,8 @@ interface Props {
 export async function generateStaticParams() {
   const params: { category: string; slug: string }[] = [];
   for (const cat of categories) {
-    for (const tool of cat.tools) {
-      params.push({ category: cat.slug, slug: tool.slug });
+    for (const comp of cat.components) {
+      params.push({ category: cat.slug, slug: comp.slug });
     }
   }
   return params;
@@ -31,14 +31,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = getCategoryBySlug(catSlug);
   if (!category) return {};
 
-  const tool = category.tools.find((t) => t.slug === slug);
+  const component = category.components.find((t) => t.slug === slug);
   const resource = getResourceBySlug(catSlug, slug);
 
-  const title = resource?.frontmatter.title || tool?.name || slug;
+  const title = resource?.frontmatter.title || component?.name || slug;
   const description =
     resource?.frontmatter.description ||
-    tool?.description ||
-    `${title} — ${category.title} tool in the agentic data stack ecosystem.`;
+    component?.description ||
+    `${title} — ${category.title} component in the agentic data stack ecosystem.`;
 
   return {
     title: `${title} — ${category.title} — Agentic Data Stack`,
@@ -56,24 +56,24 @@ export default async function ResourcePage({ params }: Props) {
   const category = getCategoryBySlug(catSlug);
   if (!category) notFound();
 
-  const tool = category.tools.find((t) => t.slug === slug);
+  const comp =category.components.find((t) => t.slug === slug);
   const resource = getResourceBySlug(catSlug, slug);
 
-  if (!tool && !resource) notFound();
+  if (!comp && !resource) notFound();
 
-  const title = resource?.frontmatter.title || tool?.name || slug;
+  const title = resource?.frontmatter.title || comp?.name || slug;
   const description =
-    resource?.frontmatter.description || tool?.description || "";
+    resource?.frontmatter.description || comp?.description || "";
 
-  const jsonLd = tool
+  const jsonLd = comp
     ? {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        name: tool.name,
-        description: tool.description,
-        url: tool.website,
+        name: comp.name,
+        description: comp.description,
+        url: comp.website,
         applicationCategory: "DeveloperApplication",
-        license: tool.license,
+        license: comp.license,
         offers: { "@type": "Offer", price: "0" },
       }
     : {
@@ -143,12 +143,12 @@ export default async function ResourcePage({ params }: Props) {
               </h1>
               <p className="mt-4 text-lg text-muted">{description}</p>
 
-              {tool && (
+              {comp && (
                 <div className="mt-4">
                   <AgentBadges
-                    mcpSupport={tool.mcpSupport}
-                    cliSupport={tool.cliSupport}
-                    agentSkills={tool.agentSkills}
+                    mcpSupport={comp.mcpSupport}
+                    cliSupport={comp.cliSupport}
+                    agentSkills={comp.agentSkills}
                   />
                 </div>
               )}
@@ -164,28 +164,28 @@ export default async function ResourcePage({ params }: Props) {
                 </div>
               )}
 
-              {/* Default content for tool pages without MDX */}
-              {!resource && tool && (
+              {/* Default content for component pages without MDX */}
+              {!resource && comp && (
                 <div className="mt-8 space-y-6">
                   <div className="rounded-xl border border-card-border bg-card-bg/50 p-6">
                     <h2 className="text-lg font-semibold mb-3">
-                      About {tool.name}
+                      About {comp.name}
                     </h2>
                     <p className="text-muted leading-relaxed">
-                      {tool.description} Explore how {tool.name} integrates with
+                      {comp.description} Explore how {comp.name} integrates with
                       the agentic data stack ecosystem and supports autonomous
                       data operations.
                     </p>
                   </div>
 
                   {/* Key Features */}
-                  {tool.mainFeatures && tool.mainFeatures.length > 0 && (
+                  {comp.mainFeatures && comp.mainFeatures.length > 0 && (
                     <div className="rounded-xl border border-card-border bg-card-bg/50 p-6">
                       <h2 className="text-lg font-semibold mb-3">
                         Key Features
                       </h2>
                       <ul className="space-y-2">
-                        {tool.mainFeatures.map((feature) => (
+                        {comp.mainFeatures.map((feature) => (
                           <li key={feature} className="flex items-start gap-3 text-muted">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 h-4 w-4 shrink-0 text-violet-400">
                               <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" />
@@ -198,14 +198,14 @@ export default async function ResourcePage({ params }: Props) {
                   )}
 
                   {/* Agent Integration — visible on mobile (sidebar is hidden lg:block) */}
-                  {(tool.mcpSupport || tool.cliSupport || (tool.agentSkills && tool.agentSkills.length > 0)) && (
+                  {(comp.mcpSupport || comp.cliSupport || (comp.agentSkills && comp.agentSkills.length > 0)) && (
                     <div className="rounded-xl border border-card-border bg-card-bg/50 p-6">
                       <h2 className="text-lg font-semibold mb-4">
                         Agent Integration
                       </h2>
                       <div className="space-y-4">
                         {/* MCP */}
-                        {tool.mcpSupport && (
+                        {comp.mcpSupport && (
                           <div className="flex items-start gap-3">
                             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 text-emerald-400">
@@ -214,14 +214,14 @@ export default async function ResourcePage({ params }: Props) {
                             </div>
                             <div>
                               <p className="text-sm font-medium text-emerald-400">MCP Server</p>
-                              {tool.mcpServerUrl ? (
+                              {comp.mcpServerUrl ? (
                                 <a
-                                  href={tool.mcpServerUrl}
+                                  href={comp.mcpServerUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="mt-1 inline-flex items-center gap-1.5 text-sm text-emerald-300 hover:text-emerald-200 transition-colors"
                                 >
-                                  {tool.mcpServerUrl.replace(/^https?:\/\/(www\.)?github\.com\//, "")}
+                                  {comp.mcpServerUrl.replace(/^https?:\/\/(www\.)?github\.com\//, "")}
                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                                   </svg>
@@ -234,7 +234,7 @@ export default async function ResourcePage({ params }: Props) {
                         )}
 
                         {/* CLI */}
-                        {tool.cliSupport && (tool.cliName || tool.cliDocsUrl) && (
+                        {comp.cliSupport && (comp.cliName || comp.cliDocsUrl) && (
                           <div className="flex items-start gap-3">
                             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-500/10">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 text-blue-400">
@@ -243,16 +243,16 @@ export default async function ResourcePage({ params }: Props) {
                             </div>
                             <div>
                               <p className="text-sm font-medium text-blue-400">
-                                CLI{tool.cliName && <> &mdash; <code className="font-mono text-blue-300">{tool.cliName}</code></>}
+                                CLI{comp.cliName && <> &mdash; <code className="font-mono text-blue-300">{comp.cliName}</code></>}
                               </p>
-                              {tool.cliInstall && (
+                              {comp.cliInstall && (
                                 <div className="mt-1 rounded-md bg-black/30 px-2.5 py-1.5">
-                                  <code className="text-xs text-muted font-mono">$ {tool.cliInstall}</code>
+                                  <code className="text-xs text-muted font-mono">$ {comp.cliInstall}</code>
                                 </div>
                               )}
-                              {tool.cliDocsUrl && (
+                              {comp.cliDocsUrl && (
                                 <a
-                                  href={tool.cliDocsUrl}
+                                  href={comp.cliDocsUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="mt-1.5 inline-flex items-center gap-1.5 text-sm text-blue-300 hover:text-blue-200 transition-colors"
@@ -268,7 +268,7 @@ export default async function ResourcePage({ params }: Props) {
                         )}
 
                         {/* Agent Skills */}
-                        {tool.agentSkills && tool.agentSkills.length > 0 && (
+                        {comp.agentSkills && comp.agentSkills.length > 0 && (
                           <div className="flex items-start gap-3">
                             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-violet-500/10">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 text-violet-400">
@@ -278,7 +278,7 @@ export default async function ResourcePage({ params }: Props) {
                             <div>
                               <p className="text-sm font-medium text-violet-400 mb-2">Agent Skills</p>
                               <div className="flex flex-wrap gap-1.5">
-                                {tool.agentSkills.map((skill) => (
+                                {comp.agentSkills.map((skill) => (
                                   <a
                                     key={skill.name}
                                     href={skill.url}
@@ -301,13 +301,13 @@ export default async function ResourcePage({ params }: Props) {
                   )}
 
                   {/* External Links */}
-                  {tool.externalLinks && tool.externalLinks.length > 0 && (
+                  {comp.externalLinks && comp.externalLinks.length > 0 && (
                     <div className="rounded-xl border border-card-border bg-card-bg/50 p-6">
                       <h2 className="text-lg font-semibold mb-3">
                         External Links
                       </h2>
                       <div className="grid gap-3 sm:grid-cols-2">
-                        {tool.externalLinks.map((link) => (
+                        {comp.externalLinks.map((link) => (
                           <a
                             key={link.url}
                             href={link.url}
@@ -346,20 +346,20 @@ export default async function ResourcePage({ params }: Props) {
             </div>
 
             {/* Sidebar */}
-            {tool && (
+            {comp && (
               <aside className="hidden lg:block">
-                <ToolInfoPanel
-                  website={tool.website}
-                  github={tool.github}
-                  license={tool.license}
-                  docsUrl={tool.docsUrl}
-                  mcpSupport={tool.mcpSupport}
-                  mcpServerUrl={tool.mcpServerUrl}
-                  cliSupport={tool.cliSupport}
-                  cliName={tool.cliName}
-                  cliDocsUrl={tool.cliDocsUrl}
-                  cliInstall={tool.cliInstall}
-                  agentSkills={tool.agentSkills}
+                <ComponentInfoPanel
+                  website={comp.website}
+                  github={comp.github}
+                  license={comp.license}
+                  docsUrl={comp.docsUrl}
+                  mcpSupport={comp.mcpSupport}
+                  mcpServerUrl={comp.mcpServerUrl}
+                  cliSupport={comp.cliSupport}
+                  cliName={comp.cliName}
+                  cliDocsUrl={comp.cliDocsUrl}
+                  cliInstall={comp.cliInstall}
+                  agentSkills={comp.agentSkills}
                 />
               </aside>
             )}

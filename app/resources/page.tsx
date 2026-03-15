@@ -6,13 +6,13 @@ import CategoryCard from "@/components/resources/CategoryCard";
 import { categories } from "@/lib/categories";
 
 export const metadata: Metadata = {
-  title: "27+ Tools for Building Agentic Data Stacks — Resources",
+  title: "27+ Components for Building Agentic Data Stacks — Resources",
   description:
-    "Explore 27+ open-source tools for agentic data stacks: MCP-enabled catalogs, lake formats, SQL engines, semantic layers, ETL tools, BI tools, and data agents. Vendor-neutral directory.",
+    "Explore 27+ open-source components for agentic data stacks: MCP-enabled catalogs, lake formats, SQL engines, semantic layers, ETL, BI, and data agents. Vendor-neutral directory.",
   openGraph: {
-    title: "27+ Tools for Building Agentic Data Stacks — Resources",
+    title: "27+ Components for Building Agentic Data Stacks — Resources",
     description:
-      "Explore 27+ open-source tools for agentic data stacks: MCP-enabled catalogs, lake formats, SQL engines, semantic layers, ETL tools, BI tools, and data agents.",
+      "Explore 27+ open-source components for agentic data stacks: MCP-enabled catalogs, lake formats, SQL engines, semantic layers, ETL, BI, and data agents.",
     type: "website",
   },
 };
@@ -32,7 +32,7 @@ export default function ResourcesPage() {
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
               Explore the open-source ecosystem powering the agentic data stack.
-              Discover tools, their agent integrations, and real-world patterns.
+              Discover components, their agent integrations, and real-world patterns.
             </p>
           </div>
         </section>
@@ -47,20 +47,20 @@ export default function ResourcesPage() {
                 slug={cat.slug}
                 description={cat.description}
                 icon={cat.icon}
-                toolCount={cat.tools.length}
+                componentCount={cat.components.length}
               />
             ))}
           </div>
         </section>
 
-        {/* Featured tools overview */}
+        {/* Featured components overview */}
         <section className="mx-auto max-w-6xl px-6 pt-20">
           <h2 className="mb-8 text-center text-2xl font-bold">
             Agent Integration Landscape
           </h2>
           <p className="mx-auto mb-12 max-w-2xl text-center text-muted">
             The modern data stack is evolving to support autonomous agents.
-            Tools across every layer are adding MCP servers, CLI interfaces, and
+            Components across every layer are adding MCP servers, CLI interfaces, and
             agent-specific skills.
           </p>
           <div className="grid gap-4 sm:grid-cols-3">
@@ -68,27 +68,27 @@ export default function ResourcesPage() {
               <div className="mb-2 text-3xl font-bold text-green-400">
                 {categories.reduce(
                   (acc, cat) =>
-                    acc + cat.tools.filter((t) => t.mcpSupport).length,
+                    acc + cat.components.filter((t) => t.mcpSupport).length,
                   0
                 )}
               </div>
-              <div className="text-sm text-muted">MCP-Enabled Tools</div>
+              <div className="text-sm text-muted">MCP-Enabled Components</div>
             </div>
             <div className="rounded-xl border border-card-border bg-card-bg/50 p-6 text-center">
               <div className="mb-2 text-3xl font-bold text-blue-400">
                 {categories.reduce(
                   (acc, cat) =>
-                    acc + cat.tools.filter((t) => t.cliSupport).length,
+                    acc + cat.components.filter((t) => t.cliSupport).length,
                   0
                 )}
               </div>
-              <div className="text-sm text-muted">CLI-Enabled Tools</div>
+              <div className="text-sm text-muted">CLI-Enabled Components</div>
             </div>
             <div className="rounded-xl border border-card-border bg-card-bg/50 p-6 text-center">
               <div className="mb-2 text-3xl font-bold text-violet-400">
-                {categories.reduce((acc, cat) => acc + cat.tools.length, 0)}
+                {categories.reduce((acc, cat) => acc + cat.components.length, 0)}
               </div>
-              <div className="text-sm text-muted">Total Tools Tracked</div>
+              <div className="text-sm text-muted">Total Components Tracked</div>
             </div>
           </div>
         </section>
