@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Agentic Data Stack — How Data Systems Evolve for Agents",
   description:
-    "A community exploring how modern data stacks evolve to serve data agents and data engineering agents. Learn about autonomous data engineering, AI-powered data transformation, intelligent data systems, and agentic data stacks. Vendor-neutral. Practice-driven. Architecture-first.",
+    "A community exploring how data stacks evolve for AI agents. Learn about agentic data architecture, autonomous engineering, and intelligent systems. Vendor-neutral.",
   keywords: [
     // Category C: Strategic Brand Keywords (P0)
     "agentic data stack",
