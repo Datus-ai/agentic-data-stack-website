@@ -6,13 +6,13 @@ import CategoryCard from "@/components/resources/CategoryCard";
 import { categories } from "@/lib/categories";
 
 export const metadata: Metadata = {
-  title: "Resources — Agentic Data Stack",
+  title: "27+ Tools for Building Agentic Data Stacks — Resources",
   description:
-    "Explore the open-source tools and frameworks powering the agentic data stack. Browse by category: catalog services, lake formats, SQL engines, semantic layers, ETL tools, BI tools, and data agents.",
+    "Explore 27+ open-source tools for agentic data stacks: MCP-enabled catalogs, lake formats, SQL engines, semantic layers, ETL tools, BI tools, and data agents. Vendor-neutral directory.",
   openGraph: {
-    title: "Resources — Agentic Data Stack",
+    title: "27+ Tools for Building Agentic Data Stacks — Resources",
     description:
-      "Explore the open-source tools and frameworks powering the agentic data stack.",
+      "Explore 27+ open-source tools for agentic data stacks: MCP-enabled catalogs, lake formats, SQL engines, semantic layers, ETL tools, BI tools, and data agents.",
     type: "website",
   },
 };

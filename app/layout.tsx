@@ -19,40 +19,12 @@ export const metadata: Metadata = {
   description:
     "A community exploring how data stacks evolve for AI agents. Learn about agentic data architecture, autonomous engineering, and intelligent systems. Vendor-neutral.",
   keywords: [
-    // Category C: Strategic Brand Keywords (P0)
     "agentic data stack",
-    "building agentic data stack",
-    "traditional vs agentic data stack",
-    
-    // Category A: High Value + Growing (P0)
-    "AI-powered data transformation",
-    "agentic semantic layer",
-    "data stack automation with AI",
     "autonomous data engineering",
-    
-    // Category B: High Interest (P0/P1)
-    "intelligent data systems",
-    "data quality for AI agents",
-    "AI agent data architecture",
     "data agents",
-    "data engineering agent",
-    "data engineering agents",
-    
-    // Category A: Growing (P1)
-    "agentic data catalog",
-    "operating agentic data systems",
-    "autonomous data pipelines",
-    "catalog services for AI agents",
-    "agentic ETL pipelines",
-    
-    // Category B: High Interest (P1)
-    "agentic data systems",
-    
-    // Additional high-value keywords
-    "agent-driven data pipelines",
-    "data engineering automation",
-    "AI-powered analytics",
-    "metadata management for agents",
+    "AI-powered data transformation",
+    "semantic layer",
+    "intelligent data systems",
   ],
   authors: [{ name: "Agentic Data Stack Community" }],
   creator: "Agentic Data Stack",
