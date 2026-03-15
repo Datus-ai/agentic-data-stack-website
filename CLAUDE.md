@@ -70,6 +70,29 @@ api/
 - Tool documentation in `content/resources/[category]/[tool].mdx`
 - Category overviews in `content/resources/[category]/_index.mdx`
 
+## Agent Skills vs MCP — Important Distinction
+
+**Agent Skills** and **MCP servers** are independent concepts. Do NOT conflate them.
+
+- **MCP** (`mcpSupport`, `mcpServerUrl`): Model Context Protocol servers that let AI agents call tool APIs. Stored as boolean + URL on `ToolInfo`.
+- **Agent Skills** (`agentSkills`): Packages of instructions/knowledge following the [agentskills.io](https://agentskills.io) open standard (SKILL.md files). They extend AI coding agents with domain expertise. A skill may use MCP, CLI, or pure text internally.
+
+`agentSkills` is typed as `AgentSkill[]` (not `string[]`):
+```ts
+interface AgentSkill {
+  name: string;   // Skill name, e.g. "using-dbt-for-analytics-engineering"
+  url: string;    // Real URL to the skill (GitHub repo/directory, skills.rest, etc.)
+}
+```
+
+**Every skill must have a real, verifiable external link.** Do not invent fake skill names. If a tool has no real agentskills.io-spec skills, set `agentSkills: []`. As of March 2026, only 4 tools have verified skills:
+- **dbt**: 8 skills from `github.com/dbt-labs/dbt-agent-skills`
+- **dbt Semantic Layer**: 2 skills (subset of dbt's)
+- **Apache Spark**: 1 skill (`spark-optimization`)
+- **Apache Polaris**: 1 skill from `skills.rest/skill/polaris-catalog`
+
+Sources for finding real skills: `github.com/dbt-labs/dbt-agent-skills`, `github.com/astronomer/agents/skills/`, `github.com/ClickHouse/agent-skills`, `skills.rest`, `github.com/kodustech/awesome-agent-skills`.
+
 ## Key Patterns
 
 - **Content loading**: `lib/*.ts` files read from `content/` using `fs` + `gray-matter`. Follow `lib/resources.ts` pattern for new content types.

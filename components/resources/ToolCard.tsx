@@ -10,7 +10,7 @@ interface ToolCardProps {
   license?: string;
   mcpSupport?: boolean;
   cliSupport?: boolean;
-  agentSkills?: string[];
+  agentSkills?: { name: string; url: string }[];
   categorySlug: string;
 }
 

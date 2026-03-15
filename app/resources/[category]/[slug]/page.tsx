@@ -178,19 +178,155 @@ export default async function ResourcePage({ params }: Props) {
                     </p>
                   </div>
 
-                  {tool.agentSkills && tool.agentSkills.length > 0 && (
+                  {/* Key Features */}
+                  {tool.mainFeatures && tool.mainFeatures.length > 0 && (
                     <div className="rounded-xl border border-card-border bg-card-bg/50 p-6">
                       <h2 className="text-lg font-semibold mb-3">
-                        Agent Capabilities
+                        Key Features
                       </h2>
-                      <div className="flex flex-wrap gap-2">
-                        {tool.agentSkills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="rounded-full bg-violet-500/10 border border-violet-500/20 px-3 py-1 text-sm text-violet-300"
+                      <ul className="space-y-2">
+                        {tool.mainFeatures.map((feature) => (
+                          <li key={feature} className="flex items-start gap-3 text-muted">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 h-4 w-4 shrink-0 text-violet-400">
+                              <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" />
+                            </svg>
+                            <span className="leading-relaxed">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Agent Integration — visible on mobile (sidebar is hidden lg:block) */}
+                  {(tool.mcpSupport || tool.cliSupport || (tool.agentSkills && tool.agentSkills.length > 0)) && (
+                    <div className="rounded-xl border border-card-border bg-card-bg/50 p-6">
+                      <h2 className="text-lg font-semibold mb-4">
+                        Agent Integration
+                      </h2>
+                      <div className="space-y-4">
+                        {/* MCP */}
+                        {tool.mcpSupport && (
+                          <div className="flex items-start gap-3">
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 text-emerald-400">
+                                <path d="M8 1a3.5 3.5 0 0 0-3.5 3.5V7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7V4.5A3.5 3.5 0 0 0 8 1Zm2 6V4.5a2 2 0 1 0-4 0V7h4Z" clipRule="evenodd" />
+                              </svg>
+                            </div>
+                            <div>
+                              <p className="text-sm font-medium text-emerald-400">MCP Server</p>
+                              {tool.mcpServerUrl ? (
+                                <a
+                                  href={tool.mcpServerUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="mt-1 inline-flex items-center gap-1.5 text-sm text-emerald-300 hover:text-emerald-200 transition-colors"
+                                >
+                                  {tool.mcpServerUrl.replace(/^https?:\/\/(www\.)?github\.com\//, "")}
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                  </svg>
+                                </a>
+                              ) : (
+                                <p className="mt-1 text-sm text-muted">MCP integration available</p>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* CLI */}
+                        {tool.cliSupport && (tool.cliName || tool.cliDocsUrl) && (
+                          <div className="flex items-start gap-3">
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-500/10">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 text-blue-400">
+                                <path fillRule="evenodd" d="M2 4.25A2.25 2.25 0 0 1 4.25 2h7.5A2.25 2.25 0 0 1 14 4.25v7.5A2.25 2.25 0 0 1 11.75 14h-7.5A2.25 2.25 0 0 1 2 11.75v-7.5ZM4.75 5a.75.75 0 0 0-.53 1.28L5.94 8l-1.72 1.72a.75.75 0 1 0 1.06 1.06l2.25-2.25a.75.75 0 0 0 0-1.06L5.28 5.22A.75.75 0 0 0 4.75 5ZM8.5 10.25a.75.75 0 0 0 0 1.5h2.75a.75.75 0 0 0 0-1.5H8.5Z" clipRule="evenodd" />
+                              </svg>
+                            </div>
+                            <div>
+                              <p className="text-sm font-medium text-blue-400">
+                                CLI{tool.cliName && <> &mdash; <code className="font-mono text-blue-300">{tool.cliName}</code></>}
+                              </p>
+                              {tool.cliInstall && (
+                                <div className="mt-1 rounded-md bg-black/30 px-2.5 py-1.5">
+                                  <code className="text-xs text-muted font-mono">$ {tool.cliInstall}</code>
+                                </div>
+                              )}
+                              {tool.cliDocsUrl && (
+                                <a
+                                  href={tool.cliDocsUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="mt-1.5 inline-flex items-center gap-1.5 text-sm text-blue-300 hover:text-blue-200 transition-colors"
+                                >
+                                  CLI Documentation
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                  </svg>
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Agent Skills */}
+                        {tool.agentSkills && tool.agentSkills.length > 0 && (
+                          <div className="flex items-start gap-3">
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-violet-500/10">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 text-violet-400">
+                                <path d="M8 .5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 .5Zm0 10a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 10.5Zm5.5-3a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 .75-.75ZM3.25 6.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5Z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <p className="text-sm font-medium text-violet-400 mb-2">Agent Skills</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {tool.agentSkills.map((skill) => (
+                                  <a
+                                    key={skill.name}
+                                    href={skill.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 rounded-md bg-violet-500/10 px-2 py-1 text-xs font-medium text-violet-300 ring-1 ring-violet-500/20 transition-all hover:bg-violet-500/20 hover:text-violet-200 hover:ring-violet-500/40"
+                                  >
+                                    {skill.name}
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-2.5 w-2.5 shrink-0">
+                                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* External Links */}
+                  {tool.externalLinks && tool.externalLinks.length > 0 && (
+                    <div className="rounded-xl border border-card-border bg-card-bg/50 p-6">
+                      <h2 className="text-lg font-semibold mb-3">
+                        External Links
+                      </h2>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {tool.externalLinks.map((link) => (
+                          <a
+                            key={link.url}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group rounded-lg border border-card-border bg-card-bg p-4 transition-all hover:border-violet-500/30 hover:bg-violet-500/5"
                           >
-                            {skill}
-                          </span>
+                            <div className="flex items-center justify-between">
+                              <span className="text-sm font-medium text-foreground group-hover:text-violet-300 transition-colors">
+                                {link.title}
+                              </span>
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3.5 w-3.5 shrink-0 text-muted group-hover:text-violet-400 transition-colors">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                              </svg>
+                            </div>
+                            <p className="mt-1 text-xs text-muted line-clamp-2">
+                              {link.description}
+                            </p>
+                          </a>
                         ))}
                       </div>
                     </div>
@@ -216,8 +352,13 @@ export default async function ResourcePage({ params }: Props) {
                   website={tool.website}
                   github={tool.github}
                   license={tool.license}
+                  docsUrl={tool.docsUrl}
                   mcpSupport={tool.mcpSupport}
+                  mcpServerUrl={tool.mcpServerUrl}
                   cliSupport={tool.cliSupport}
+                  cliName={tool.cliName}
+                  cliDocsUrl={tool.cliDocsUrl}
+                  cliInstall={tool.cliInstall}
                   agentSkills={tool.agentSkills}
                 />
               </aside>

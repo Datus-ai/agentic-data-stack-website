@@ -1,7 +1,12 @@
+interface AgentSkill {
+  name: string;
+  url: string;
+}
+
 interface AgentBadgesProps {
   mcpSupport?: boolean;
   cliSupport?: boolean;
-  agentSkills?: string[];
+  agentSkills?: AgentSkill[];
 }
 
 export default function AgentBadges({ mcpSupport, cliSupport, agentSkills }: AgentBadgesProps) {

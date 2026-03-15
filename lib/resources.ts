@@ -19,7 +19,7 @@ export interface ResourceFrontmatter {
     license?: string;
     mcpSupport?: boolean;
     cliSupport?: boolean;
-    agentSkills?: string[];
+    agentSkills?: { name: string; url: string }[];
   };
   externalUrl?: string;
   image?: string;
