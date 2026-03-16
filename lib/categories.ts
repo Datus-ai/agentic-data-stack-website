@@ -17,6 +17,7 @@ export interface ComponentInfo {
   github?: string;
   license?: string;
   docsUrl?: string;
+  apiDocsUrl?: string;
   mcpSupport?: boolean;
   mcpServerUrl?: string;
   cliSupport?: boolean;
@@ -53,6 +54,7 @@ export const categories: Category[] = [
         github: "https://github.com/apache/polaris",
         license: "Apache-2.0",
         docsUrl: "https://polaris.apache.org/",
+        apiDocsUrl: "https://polaris.apache.org/in-dev/unreleased/polaris-api-specs/",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/apache/polaris-tools",
         cliSupport: true,
@@ -115,6 +117,7 @@ export const categories: Category[] = [
         github: "https://github.com/unitycatalog/unitycatalog",
         license: "Apache-2.0",
         docsUrl: "https://docs.unitycatalog.io/",
+        apiDocsUrl: "https://docs.unitycatalog.io/api/",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/databrickslabs/mcp",
         cliSupport: true,
@@ -174,6 +177,7 @@ export const categories: Category[] = [
         github: "https://github.com/apache/gravitino",
         license: "Apache-2.0",
         docsUrl: "https://gravitino.apache.org/",
+        apiDocsUrl: "https://gravitino.apache.org/docs/0.6.1-incubating/api/rest/gravitino-rest-api/",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/datastrato/mcp-server-gravitino",
         cliSupport: true,
@@ -233,6 +237,7 @@ export const categories: Category[] = [
         github: "https://github.com/apache/hive",
         license: "Apache-2.0",
         docsUrl: "https://hive.apache.org/",
+        apiDocsUrl: "https://github.com/apache/hive/blob/master/standalone-metastore/metastore-common/src/main/thrift/hive_metastore.thrift",
         mcpSupport: false,
         cliSupport: true,
         cliName: "schematool / beeline",
@@ -302,6 +307,7 @@ export const categories: Category[] = [
         github: "https://github.com/apache/iceberg",
         license: "Apache-2.0",
         docsUrl: "https://iceberg.apache.org/docs/latest/",
+        apiDocsUrl: "https://iceberg.apache.org/rest-catalog-spec/",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/cloudera/iceberg-mcp-server",
         cliSupport: true,
@@ -361,6 +367,7 @@ export const categories: Category[] = [
         github: "https://github.com/delta-io/delta",
         license: "Apache-2.0",
         docsUrl: "https://docs.delta.io/latest/",
+        apiDocsUrl: "https://docs.delta.io/delta-apidoc/",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/databrickslabs/mcp",
         cliSupport: true,
@@ -420,6 +427,7 @@ export const categories: Category[] = [
         github: "https://github.com/apache/hudi",
         license: "Apache-2.0",
         docsUrl: "https://hudi.apache.org/docs/overview/",
+        apiDocsUrl: "https://javadoc.io/doc/org.apache.hudi/hudi-client/latest/index.html",
         mcpSupport: false,
         cliSupport: true,
         cliName: "hudi-cli",
@@ -479,6 +487,7 @@ export const categories: Category[] = [
         github: "https://github.com/apache/paimon",
         license: "Apache-2.0",
         docsUrl: "https://paimon.apache.org/docs/master/",
+        apiDocsUrl: "https://paimon.apache.org/docs/master/program-api/java-api/",
         mcpSupport: false,
         cliSupport: true,
         cliName: "Flink Action JARs / Spark CALL",
@@ -548,6 +557,7 @@ export const categories: Category[] = [
         github: "https://github.com/trinodb/trino",
         license: "Apache-2.0",
         docsUrl: "https://trino.io/docs/current/index.html",
+        apiDocsUrl: "https://trino.io/docs/current/develop/client-protocol.html",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/tuannvm/mcp-trino",
         cliSupport: true,
@@ -607,6 +617,7 @@ export const categories: Category[] = [
         github: "https://github.com/duckdb/duckdb",
         license: "MIT",
         docsUrl: "https://duckdb.org/docs/stable/",
+        apiDocsUrl: "https://duckdb.org/docs/stable/clients/overview",
         mcpSupport: true,
         mcpServerUrl:
           "https://github.com/motherduckdb/mcp-server-motherduck",
@@ -668,6 +679,7 @@ export const categories: Category[] = [
         github: "https://github.com/apache/spark",
         license: "Apache-2.0",
         docsUrl: "https://spark.apache.org/docs/latest/",
+        apiDocsUrl: "https://spark.apache.org/docs/latest/api/python/reference/index.html",
         mcpSupport: true,
         mcpServerUrl:
           "https://github.com/kubeflow/mcp-apache-spark-history-server",
@@ -732,6 +744,7 @@ export const categories: Category[] = [
         license: "Apache-2.0",
         docsUrl:
           "https://docs.starrocks.io/docs/introduction/StarRocks_intro/",
+        apiDocsUrl: "https://docs.starrocks.io/docs/sql-reference/http_sql_api/",
         mcpSupport: true,
         mcpServerUrl:
           "https://github.com/StarRocks/mcp-server-starrocks",
@@ -793,6 +806,7 @@ export const categories: Category[] = [
         github: "https://github.com/ClickHouse/ClickHouse",
         license: "Apache-2.0",
         docsUrl: "https://clickhouse.com/docs",
+        apiDocsUrl: "https://clickhouse.com/docs/interfaces/http",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/ClickHouse/mcp-clickhouse",
         cliSupport: true,
@@ -864,6 +878,7 @@ export const categories: Category[] = [
         github: "https://github.com/cube-js/cube",
         license: "Apache-2.0",
         docsUrl: "https://cube.dev/docs/product/introduction",
+        apiDocsUrl: "https://cube.dev/docs/product/apis-integrations/rest-api/reference",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/cubedevinc/cube-mcp-server",
         cliSupport: true,
@@ -923,6 +938,7 @@ export const categories: Category[] = [
         github: "https://github.com/dbt-labs/dbt-mcp",
         license: "Apache-2.0",
         docsUrl: "https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl",
+        apiDocsUrl: "https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/dbt-labs/dbt-mcp",
         cliSupport: true,
@@ -995,6 +1011,7 @@ export const categories: Category[] = [
         github: "https://github.com/airbytehq/airbyte",
         license: "MIT",
         docsUrl: "https://docs.airbyte.com",
+        apiDocsUrl: "https://reference.airbyte.com/",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/airbytehq/PyAirbyte",
         cliSupport: true,
@@ -1056,6 +1073,7 @@ export const categories: Category[] = [
         github: "https://github.com/dbt-labs/dbt-core",
         license: "Apache-2.0",
         docsUrl: "https://docs.getdbt.com",
+        apiDocsUrl: "https://docs.getdbt.com/docs/dbt-cloud-apis/overview",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/dbt-labs/dbt-mcp",
         cliSupport: true,
@@ -1124,6 +1142,7 @@ export const categories: Category[] = [
         github: "https://github.com/apache/flink",
         license: "Apache-2.0",
         docsUrl: "https://nightlies.apache.org/flink/flink-docs-lts/",
+        apiDocsUrl: "https://nightlies.apache.org/flink/flink-docs-master/docs/ops/rest_api/",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/Cledar/flink-mcp",
         cliSupport: true,
@@ -1194,6 +1213,7 @@ export const categories: Category[] = [
         github: "https://github.com/apache/superset",
         license: "Apache-2.0",
         docsUrl: "https://superset.apache.org/docs/",
+        apiDocsUrl: "https://superset.apache.org/docs/api/",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/aptro/superset-mcp",
         cliSupport: true,
@@ -1253,6 +1273,7 @@ export const categories: Category[] = [
         github: "https://github.com/metabase/metabase",
         license: "AGPL-3.0",
         docsUrl: "https://www.metabase.com/docs/latest/",
+        apiDocsUrl: "https://www.metabase.com/docs/latest/api",
         mcpSupport: true,
         mcpServerUrl:
           "https://github.com/CognitionAI/metabase-mcp-server",
@@ -1315,6 +1336,7 @@ export const categories: Category[] = [
         github: "https://github.com/getredash/redash",
         license: "BSD-2-Clause",
         docsUrl: "https://redash.io/help/",
+        apiDocsUrl: "https://redash.io/help/user-guide/integrations-and-api/api/",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/suthio/redash-mcp",
         cliSupport: true,
@@ -1376,6 +1398,7 @@ export const categories: Category[] = [
         github: "https://github.com/lightdash/lightdash",
         license: "MIT",
         docsUrl: "https://docs.lightdash.com/",
+        apiDocsUrl: "https://docs.lightdash.com/api-reference/v1/introduction",
         mcpSupport: true,
         mcpServerUrl:
           "https://github.com/syucream/lightdash-mcp-server",
@@ -1446,6 +1469,7 @@ export const categories: Category[] = [
         github: "https://github.com/Datus-ai/Datus-agent",
         license: "Open Source",
         docsUrl: "https://docs.datus.ai/",
+        apiDocsUrl: "https://docs.datus.ai/",
         mcpSupport: true,
         cliSupport: true,
         cliName: "datus-agent",
@@ -1505,6 +1529,7 @@ export const categories: Category[] = [
         license: "AGPL-3.0",
         docsUrl:
           "https://docs.getwren.ai/oss/engine/get_started/quickstart",
+        apiDocsUrl: "https://wrenai.readme.io/reference/welcome",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/Canner/wren-engine",
         cliSupport: true,
@@ -1565,6 +1590,7 @@ export const categories: Category[] = [
         github: "https://github.com/langchain-ai/langchain",
         license: "MIT",
         docsUrl: "https://docs.langchain.com/",
+        apiDocsUrl: "https://python.langchain.com/api_reference",
         mcpSupport: true,
         mcpServerUrl:
           "https://github.com/langchain-ai/langchain-mcp-adapters",
@@ -1626,6 +1652,7 @@ export const categories: Category[] = [
         github: "https://github.com/crewAIInc/crewAI",
         license: "MIT",
         docsUrl: "https://docs.crewai.com/",
+        apiDocsUrl: "https://docs.crewai.com/api-reference/",
         mcpSupport: true,
         mcpServerUrl:
           "https://github.com/crewAIInc/enterprise-mcp-server",
@@ -1695,6 +1722,7 @@ export const categories: Category[] = [
         github: "https://github.com/apache/airflow",
         license: "Apache-2.0",
         docsUrl: "https://airflow.apache.org/docs/",
+        apiDocsUrl: "https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html",
         mcpSupport: true,
         mcpServerUrl:
           "https://github.com/astronomer/astro-airflow-mcp",
@@ -1767,6 +1795,7 @@ export const categories: Category[] = [
         github: "https://github.com/dagster-io/dagster",
         license: "Apache-2.0",
         docsUrl: "https://docs.dagster.io",
+        apiDocsUrl: "https://docs.dagster.io/api/graphql",
         mcpSupport: true,
         mcpServerUrl: "https://github.com/dagster-io/dagster",
         cliSupport: true,

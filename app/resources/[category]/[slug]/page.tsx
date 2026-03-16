@@ -353,6 +353,7 @@ export default async function ResourcePage({ params }: Props) {
                   github={comp.github}
                   license={comp.license}
                   docsUrl={comp.docsUrl}
+                  apiDocsUrl={comp.apiDocsUrl}
                   mcpSupport={comp.mcpSupport}
                   mcpServerUrl={comp.mcpServerUrl}
                   cliSupport={comp.cliSupport}

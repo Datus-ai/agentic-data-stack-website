@@ -8,6 +8,7 @@ interface ComponentInfoPanelProps {
   github?: string;
   license?: string;
   docsUrl?: string;
+  apiDocsUrl?: string;
   mcpSupport?: boolean;
   mcpServerUrl?: string;
   cliSupport?: boolean;
@@ -22,6 +23,7 @@ export default function ComponentInfoPanel({
   github,
   license,
   docsUrl,
+  apiDocsUrl,
   mcpSupport,
   mcpServerUrl,
   cliSupport,
@@ -82,6 +84,22 @@ export default function ComponentInfoPanel({
               </svg>
               <span className="truncate text-sm text-accent-light group-hover:text-foreground transition-colors">
                 Documentation
+              </span>
+            </a>
+          )}
+
+          {apiDocsUrl && (
+            <a
+              href={apiDocsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4 shrink-0 text-muted group-hover:text-foreground transition-colors">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+              </svg>
+              <span className="truncate text-sm text-accent-light group-hover:text-foreground transition-colors">
+                API Reference
               </span>
             </a>
           )}
