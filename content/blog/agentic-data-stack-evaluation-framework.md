@@ -4,6 +4,7 @@ description: "Discover the 6 critical principles for evaluating agent-ready data
 date: "2026-03-18"
 author: "Agentic Data Stack Community"
 tags: ["architecture", "evaluation", "agentic-data-stack"]
+keywords: ["agentic data stack", "agent-ready data platform", "MCP data tools", "data stack evaluation framework", "AI agent infrastructure", "data versioning rollback", "serverless data platform", "CLI MCP interface design"]
 image: "/images/agentic-data-stack-evaluation-framework.png"
 draft: false
 ---

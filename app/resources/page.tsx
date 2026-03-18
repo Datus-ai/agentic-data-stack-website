@@ -33,6 +33,10 @@ export default function ResourcesPage() {
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
               Explore the open-source ecosystem powering the agentic data stack.
               Discover components, their agent integrations, and real-world patterns.
+              Learn what makes a data component truly agent-ready in our{" "}
+              <Link href="/blog/agentic-data-stack-evaluation-framework" className="text-violet-400 hover:text-violet-300 underline underline-offset-2">
+                6-Principle Evaluation Framework
+              </Link>.
             </p>
           </div>
         </section>
