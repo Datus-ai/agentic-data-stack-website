@@ -9,6 +9,7 @@ const footerLinks = {
     { label: "Call for Proposals", href: "/#tracks" },
   ],
   Community: [
+    { label: "About", href: "/about" },
     { label: "LinkedIn", href: "https://www.linkedin.com/company/agentic-data-stack/", external: true },
     { label: "Luma Calendar", href: "https://lu.ma/AgenticDataStack", external: true },
   ],

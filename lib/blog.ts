@@ -22,6 +22,7 @@ export interface BlogPost {
   slug: string;
   readingTime: number;
   format: "md" | "mdx";
+  isDraft: boolean;
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | null {
@@ -38,7 +39,10 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
 
-  if (data.draft) return null;
+  const isDraft = !!data.draft;
+
+  // In production, skip drafts; in dev, show them for preview
+  if (isDraft && process.env.NODE_ENV !== "development") return null;
 
   return {
     frontmatter: data as BlogFrontmatter,
@@ -46,6 +50,7 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
     slug,
     readingTime: calculateReadingTime(content),
     format: filePath.endsWith(".mdx") ? "mdx" : "md",
+    isDraft,
   };
 }
 

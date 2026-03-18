@@ -84,6 +84,13 @@ export default async function BlogPostPage({ params }: Props) {
     <>
       <Navbar />
       <main className="min-h-screen pt-24 pb-16">
+        {post.isDraft && (
+          <div className="mx-auto mb-6 max-w-6xl px-6">
+            <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-center text-sm font-medium text-amber-400">
+              Draft — This post is only visible in development mode
+            </div>
+          </div>
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

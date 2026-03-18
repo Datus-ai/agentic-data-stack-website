@@ -55,6 +55,7 @@ export default function BlogPage() {
                   readingTime={post.readingTime}
                   tags={post.frontmatter.tags}
                   featured={i === 0}
+                  isDraft={post.isDraft}
                 />
               ))}
             </div>

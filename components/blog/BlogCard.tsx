@@ -10,6 +10,7 @@ interface BlogCardProps {
   readingTime: number;
   tags?: string[];
   featured?: boolean;
+  isDraft?: boolean;
 }
 
 export default function BlogCard({
@@ -21,6 +22,7 @@ export default function BlogCard({
   readingTime,
   tags,
   featured,
+  isDraft,
 }: BlogCardProps) {
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -43,6 +45,11 @@ export default function BlogCard({
 
       <div className="flex flex-1 flex-col">
         <div className="mb-3 flex items-center gap-3 text-xs text-muted">
+          {isDraft && (
+            <span className="rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-400">
+              Draft
+            </span>
+          )}
           <time dateTime={date}>{formattedDate}</time>
           <span className="h-1 w-1 rounded-full bg-card-border" />
           <span>{readingTime} min read</span>
