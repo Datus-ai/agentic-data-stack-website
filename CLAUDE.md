@@ -103,7 +103,13 @@ Sources for finding real skills: `github.com/dbt-labs/dbt-agent-skills`, `github
 
 ## Adding Content
 
-**New blog post**: Create `content/blog/my-post.md` with frontmatter, rebuild.
+**New blog post**: Create `content/blog/my-post.md` with frontmatter, set `draft: true`, rebuild. When ready to publish, set `draft: false`.
+
+**Blog draft/publish workflow**:
+- Posts with `draft: true` are filtered out of listing pages and RSS but can be previewed via direct URL during `npm run dev`
+- Frontmatter `image` field (e.g. `image: "/images/my-post.png"`) is used for OG/Twitter social cards; place images in `public/images/`
+- To publish: set `draft: false` in frontmatter, rebuild and deploy
+- A long article can be split into multiple drafts (e.g. main article + FAQ companion) linked via relative blog URLs
 
 **New newsletter issue**: Create `content/newsletter/YYYY-MM-DD.md` with frontmatter (`issue: N`, `draft: false`), rebuild.
 
