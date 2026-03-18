@@ -1,0 +1,142 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://agenticdatastack.org/blog/agentic-data-stack-evaluation-framework#article",
+      "headline": "10 Principles to Evaluate Agent-Ready Data Stacks (Agentic Framework)",
+      "alternativeHeadline": "The Complete Guide to Evaluating AI Agent Data Platforms",
+      "description": "Evaluate AI agent data platforms with 10 proven principles: control surfaces, versioning, debuggability, and compounding economics. Learn what separates agent-ready infrastructure from chatbot wrappers.",
+      "image": "https://agenticdatastack.org/images/framework-og.png",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://agenticdatastack.org/#organization",
+        "name": "AgenticDataStack.org",
+        "url": "https://agenticdatastack.org",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://agenticdatastack.org/logo.png"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://agenticdatastack.org/#organization"
+      },
+      "datePublished": "2026-03-18T05:30:00Z",
+      "dateModified": "2026-03-18T05:38:00Z",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://agenticdatastack.org/blog/agentic-data-stack-evaluation-framework"
+      },
+      "articleSection": "Framework",
+      "keywords": [
+        "agentic data stack",
+        "AI agents",
+        "agent-ready systems",
+        "data platform evaluation",
+        "autonomous data platform",
+        "AI-ready data stack",
+        "data stack for AI agents",
+        "agent automation",
+        "AI agent data infrastructure",
+        "generative AI data engineering"
+      ],
+      "wordCount": 9500,
+      "articleBody": "Building a data stack for AI agents isn't about adding a chatbot interface to existing tools..."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://agenticdatastack.org/blog/agentic-data-stack-evaluation-framework#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between agentic data stack and traditional data stack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Traditional data stacks optimize for human operators through visual interfaces, documentation aimed at people, and manual troubleshooting workflows. Agentic data stacks, by contrast, optimize for autonomous AI execution with machine-readable contracts, structured error codes, versioned state, and self-service recovery paths. The key difference isn't the underlying technology—it's how systems expose control, handle failures, and enable learning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes a data platform agent-ready vs. human-ready?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agent-ready platforms differ in five critical ways: (1) Control surfaces are consistent and scriptable, not scattered across UIs; (2) Documentation includes machine-readable API specs with explicit input/output contracts; (3) Error handling returns structured codes + recovery paths; (4) State management supports versioning and rollback; (5) Observability provides complete execution lineage in machine-parseable formats."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can existing data tools work with AI agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but with important caveats. Most existing data tools have the foundational capabilities agents need—they just expose them poorly. To make existing tools agent-friendly: Add structured error responses, implement dry-run modes, version critical state, document recovery paths for common failures, and provide machine-readable observability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the biggest challenges for AI agents in data engineering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The five biggest challenges are: (1) Ambiguous errors - systems return vague messages instead of structured codes; (2) Hidden state - no visibility into changes; (3) Manual recovery - failures require human intervention; (4) Lack of versioning - no safe iteration; (5) Economic inefficiency - every mission costs the same instead of getting cheaper."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does it cost to build an agent-ready data platform?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Building agent-readiness doesn't require expensive new infrastructure. Small teams can start with Git-based versioning (free), structured logging ($0-500/month), CLI-first interfaces, and lightweight documentation. The real cost is engineering time to add structured errors, versioning, and documentation—typically 2-4 weeks for a focused team."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is having a CLI/API enough to be agent-ready?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A CLI is an 'adoption primitive,' not proof of agent-readiness. The real test is whether agents can control, learn, debug, recover, version, and improve using that CLI. Many systems have APIs but return unstructured errors, lack idempotency, or don't support dry-run modes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I measure agent-readiness quantitatively?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Track these metrics over 20 missions: Mission completion rate (target >85%), Human interventions per mission (target <2), Auto-recovery rate for failures (target >70%), Cost-per-mission trend (target -50% from mission 1 to 20), Time to first success for new agents (target <1 day), Skill reuse rate (target >60%)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should we build agent-specific tools or make existing tools agent-friendly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Make existing tools agent-friendly first. Focus on: Adding structured error responses, implementing dry-run modes, versioning critical state, documenting recovery paths, and creating machine-readable observability. Only build agent-specific tools when existing ones have fundamental architectural gaps."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://agenticdatastack.org/blog/agentic-data-stack-evaluation-framework#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://agenticdatastack.org"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://agenticdatastack.org/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Agentic Data Stack Evaluation Framework",
+          "item": "https://agenticdatastack.org/blog/agentic-data-stack-evaluation-framework"
+        }
+      ]
+    }
+  ]
+}
