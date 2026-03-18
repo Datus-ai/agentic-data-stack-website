@@ -1,9 +1,15 @@
-# **10 Principles to Evaluate Agent-Ready Data Stacks (Agentic Framework)**
-
-## Meta Description
-Evaluate AI agent data platforms with 10 proven principles: control surfaces, versioning, debuggability, and compounding economics. Learn what separates agent-ready infrastructure from chatbot wrappers. (158 chars)
-
 ---
+title: "10 Principles to Evaluate Agent-Ready Data Stacks (Agentic Framework)"
+description: "Evaluate AI agent data platforms with 10 proven principles: control surfaces, versioning, debuggability, and compounding economics. Learn what separates agent-ready infrastructure from chatbot wrappers."
+date: "2026-03-18"
+author: "Agentic Data Stack Community"
+tags: ["architecture", "evaluation", "agentic-data-stack", "framework"]
+keywords: ["agentic data stack", "agent-ready systems", "AI agents", "data platform evaluation", "autonomous data platform", "AI-ready data stack", "data stack for AI agents", "agent automation", "AI agent data infrastructure", "data versioning", "agent control surfaces", "debuggability", "compounding economics"]
+image: "/images/agentic-data-stack-evaluation-framework.png"
+draft: false
+---
+
+# **10 Principles to Evaluate Agent-Ready Data Stacks (Agentic Framework)**
 
 ## Introduction
 
