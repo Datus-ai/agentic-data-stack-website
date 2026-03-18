@@ -1,6 +1,6 @@
 ---
 title: "Agentic Data Stack Evaluation Framework: 6 Principles That Define Agent-Ready Systems"
-description: "Discover the 6 critical principles for evaluating agent-ready data stacks. Learn how well-designed interfaces, progressive skills, versioning, scalability, cost efficiency, and stability separate true agentic systems from chatbot wrappers."
+description: "Evaluate agent-ready data platforms with 6 principles: CLI/MCP interfaces, progressive skills, versioning & rollback, serverless scalability, dual-mode execution, and stability-first design."
 date: "2026-03-18"
 author: "Agentic Data Stack Community"
 tags: ["architecture", "evaluation", "agentic-data-stack"]
@@ -159,3 +159,5 @@ Interface stability anchors the lifecycle. If every minor version changes CLI fl
 Agent-readiness isn't about features or UI polish. It's whether agents can **control, learn, recover, scale, optimize, and trust** the system — turning intent into production artifacts, autonomously.
 
 **Read more**: [Agentic Data Stack Evaluation FAQ](/blog/agentic-data-stack-evaluation-faq) — practical Q&A for platform teams evaluating agent-readiness.
+
+**Explore the stack**: Browse 27+ open-source components in our [Resource Hub](/resources) — with MCP support, CLI interfaces, and agent skills tracked for each.
