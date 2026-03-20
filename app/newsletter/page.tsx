@@ -6,13 +6,13 @@ import SubscribeForm from "@/components/newsletter/SubscribeForm";
 import { getAllNewsletterIssues } from "@/lib/newsletter";
 
 export const metadata: Metadata = {
-  title: "Newsletter — Agentic Data Stack Weekly",
+  title: "Free Newsletter: Agentic Data Stack Weekly Updates",
   description:
-    "A curated weekly digest of the most important developments in agentic data infrastructure, AI agent tooling, and the evolving data stack. Built for data engineers and data team leaders.",
+    "Get curated weekly insights on agentic data infrastructure, AI tooling, and modern data stacks. Built for data engineers and team leaders. Subscribe free—no spam.",
   openGraph: {
-    title: "Agentic Data Stack Weekly Newsletter",
+    title: "Free Newsletter: Agentic Data Stack Weekly Updates",
     description:
-      "Curated weekly news on data infrastructure, agent tooling, and the evolving data stack.",
+      "Get curated weekly insights on agentic data infrastructure, AI tooling, and modern data stacks. Built for data engineers. Subscribe free.",
     type: "website",
   },
 };

@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Agentic Data Stack — How Data Systems Evolve for Agents",
+  title: "Agentic Data Stack: Free Tools & Architecture Guides",
   description:
-    "A community exploring how data stacks evolve for AI agents. Learn about agentic data architecture, autonomous engineering, and intelligent systems. Vendor-neutral.",
+    "Build AI-ready data systems with 27+ free, open-source tools. Learn agentic architecture patterns, compare components, and deploy intelligent data stacks today.",
   keywords: [
     "agentic data stack",
     "autonomous data engineering",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://agenticdatastack.org",
-    title: "Agentic Data Stack — How Data Systems Evolve for Agents",
+    title: "Agentic Data Stack: Free Tools & Architecture Guides",
     description:
-      "A community exploring how modern data stacks evolve to serve data agents and data engineering agents. Learn about autonomous data engineering, AI-powered data transformation, agentic semantic layers, and intelligent data systems powered by data agents.",
+      "Build AI-ready data systems with 27+ free, open-source tools. Learn agentic architecture patterns, compare components like MCP catalogs, lake formats, and SQL engines. Vendor-neutral and practice-driven.",
     siteName: "Agentic Data Stack",
     images: [
       {
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agentic Data Stack — How Data Systems Evolve for Agents",
+    title: "Agentic Data Stack: Free Tools & Architecture Guides",
     description:
-      "A community exploring how modern data stacks evolve to serve agents. Vendor-neutral. Practice-driven. Architecture-first.",
+      "Build AI-ready data systems with 27+ free tools. Learn agentic architecture, compare components, and deploy intelligent stacks. Vendor-neutral & practice-driven.",
     images: ["/images/twitter-card.png"],
     creator: "@AgenticDataStack",
   },

@@ -5,13 +5,13 @@ import BlogCard from "@/components/blog/BlogCard";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog — Agentic Data Stack",
+  title: "Agentic Data Stack Blog: Architecture & Best Practices",
   description:
-    "Deep-dive articles on agentic data architecture, autonomous data engineering, and the evolution of modern data stacks for AI agents.",
+    "Learn how to build data systems for AI agents. Deep-dive articles on agentic architecture, evaluation frameworks, implementation patterns, and real-world case studies.",
   openGraph: {
-    title: "Blog — Agentic Data Stack",
+    title: "Agentic Data Stack Blog: Architecture & Best Practices",
     description:
-      "Deep-dive articles on agentic data architecture and autonomous data engineering.",
+      "Learn how to build data systems for AI agents. Deep-dive on agentic architecture, evaluation frameworks, and real-world implementation patterns.",
     type: "website",
   },
 };
