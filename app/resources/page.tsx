@@ -3,7 +3,9 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CategoryCard from "@/components/resources/CategoryCard";
+import FAQ from "@/components/FAQ";
 import { categories } from "@/lib/categories";
+import { resourcesFAQ } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
   title: "27+ Free Agentic Data Stack Tools | Open Source Directory",
@@ -18,8 +20,25 @@ export const metadata: Metadata = {
 };
 
 export default function ResourcesPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: resourcesFAQ.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navbar />
       <main className="min-h-screen pt-24 pb-16">
         {/* Hero */}
@@ -96,6 +115,13 @@ export default function ResourcesPage() {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <FAQ 
+          items={resourcesFAQ} 
+          title="Common Questions About Agentic Data Stack Tools"
+          description="Everything you need to know about building with open-source agentic components."
+        />
       </main>
       <Footer />
     </>
