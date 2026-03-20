@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://agenticdatastack.org/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -24,13 +24,13 @@
   <!-- Newsletter -->
   <url>
     <loc>https://agenticdatastack.org/newsletter</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/newsletter/2026-03-14</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -38,7 +38,7 @@
   <!-- Resources -->
   <url>
     <loc>https://agenticdatastack.org/resources</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -46,43 +46,43 @@
   <!-- Category Pages -->
   <url>
     <loc>https://agenticdatastack.org/resources/catalog-service</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/lake-format</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/sql-engine</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/semantic-layer</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/etl-elt-tools</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/bi-tools</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/data-agents</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -96,25 +96,25 @@
   <!-- Component Pages: Catalog Service -->
   <url>
     <loc>https://agenticdatastack.org/resources/catalog-service/apache-polaris</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/catalog-service/unity-catalog</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/catalog-service/gravitino</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/catalog-service/hive-metastore</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -122,25 +122,25 @@
   <!-- Component Pages: Lake Format -->
   <url>
     <loc>https://agenticdatastack.org/resources/lake-format/apache-iceberg</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/lake-format/delta-lake</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/lake-format/apache-hudi</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/lake-format/apache-paimon</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -148,25 +148,25 @@
   <!-- Component Pages: SQL Engine -->
   <url>
     <loc>https://agenticdatastack.org/resources/sql-engine/trino</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/sql-engine/duckdb</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/sql-engine/apache-spark</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/sql-engine/starrocks</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -180,57 +180,57 @@
   <!-- Component Pages: Semantic Layer -->
   <url>
     <loc>https://agenticdatastack.org/resources/semantic-layer/cube</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/semantic-layer/dbt-semantic-layer</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Component Pages: ETL & ELT Tools -->
   <url>
     <loc>https://agenticdatastack.org/resources/etl-elt-tools/airbyte</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/etl-elt-tools/dbt</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/etl-elt-tools/apache-flink</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Component Pages: BI Tools -->
   <url>
     <loc>https://agenticdatastack.org/resources/bi-tools/apache-superset</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/bi-tools/metabase</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/bi-tools/redash</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/bi-tools/lightdash</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -252,25 +252,25 @@
   <!-- Component Pages: Data Agents -->
   <url>
     <loc>https://agenticdatastack.org/resources/data-agents/datusai</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/data-agents/wrenai</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/data-agents/langchain</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticdatastack.org/resources/data-agents/crewai</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
