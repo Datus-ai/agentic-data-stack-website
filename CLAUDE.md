@@ -65,7 +65,7 @@ api/
 - Subscription via Cloudflare Worker → Buttondown API. Env: `NEXT_PUBLIC_SUBSCRIBE_API_URL`
 
 ### 3. Resources (`/resources`, `/resources/[category]`, `/resources/[category]/[slug]`)
-- Living wiki of agentic data stack tooling — 7 categories, 27+ tools
+- Living wiki of agentic data stack tooling — 9 categories, 30+ tools
 - Tool metadata in `lib/categories.ts` (structured data: MCP support, CLI support, agent skills)
 - Tool documentation in `content/resources/[category]/[tool].mdx`
 - Category overviews in `content/resources/[category]/_index.mdx`
@@ -90,6 +90,8 @@ interface AgentSkill {
 - **dbt Semantic Layer**: 2 skills (subset of dbt's)
 - **Apache Spark**: 1 skill (`spark-optimization`)
 - **Apache Polaris**: 1 skill from `skills.rest/skill/polaris-catalog`
+- **Neo4j**: 10 skills from `github.com/neo4j-contrib/neo4j-skills` (Oct 2026)
+- **NebulaGraph**: 1 community skill from `github.com/knqiufan/NebulaGraph-Skill` (Oct 2026)
 
 Sources for finding real skills: `github.com/dbt-labs/dbt-agent-skills`, `github.com/astronomer/agents/skills/`, `github.com/ClickHouse/agent-skills`, `skills.rest`, `github.com/kodustech/awesome-agent-skills`.
 

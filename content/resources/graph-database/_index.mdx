@@ -1,0 +1,16 @@
+---
+title: "Graph Database"
+description: "Graph databases and graph query engines that model relationships natively, powering GraphRAG, knowledge graphs, and multi-hop reasoning for AI agents."
+type: "overview"
+category: "graph-database"
+tags: ["graph database", "knowledge graph", "GraphRAG", "Cypher", "GQL", "multi-hop reasoning"]
+author:
+  name: "Agentic Data Stack"
+date: "2026-10-08"
+---
+
+Graph databases store entities and the relationships between them as first-class data. For AI agents, this matters because many of the hardest business questions are relational by nature: which customers are connected to a fraudulent account, how a supplier disruption propagates through a bill of materials, or which tables feed a broken dashboard. Answering these with SQL means chains of self-joins; in a graph they become a single traversal that an agent can express, inspect, and explain.
+
+Graphs have also become a core building block of agent memory and retrieval. GraphRAG pipelines extract entities and relationships from documents into a knowledge graph, then combine vector similarity with graph traversal so an agent retrieves not just similar chunks but connected context. The same structure works as long-term agent memory, recording facts, decisions, and their provenance in a form that can be queried and audited.
+
+The landscape spans several architectures. Native graph databases such as Neo4j optimize storage for traversal, distributed engines such as TigerGraph and NebulaGraph scale deep-link queries across clusters, and zero-ETL engines such as PuppyGraph query existing lakehouse and warehouse tables as a graph without moving data. Most now ship MCP servers that let agents inspect graph schemas and run Cypher, GSQL, or nGQL directly, making the graph layer a natural complement to SQL engines in the agentic data stack.
