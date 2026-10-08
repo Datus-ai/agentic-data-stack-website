@@ -1,0 +1,16 @@
+---
+title: "Vector Database"
+description: "Vector databases and retrieval engines that store embeddings for semantic, hybrid, and multimodal search, powering RAG and long-term memory for AI agents."
+type: "overview"
+category: "vector-database"
+tags: ["vector database", "embeddings", "RAG", "semantic search", "hybrid search", "agent memory"]
+author:
+  name: "Agentic Data Stack"
+date: "2026-10-08"
+---
+
+Vector databases store embeddings — dense numerical representations of text, images, code, and other data — and retrieve them by similarity. For AI agents, this is how unstructured knowledge becomes queryable: documentation, tickets, past conversations, and data catalog descriptions are embedded once, then an agent finds the most relevant context for a question in milliseconds, even when it shares no keywords with the source.
+
+This makes the vector layer the backbone of retrieval-augmented generation (RAG) and agent memory. In a data stack, agents use it to find the right tables and metrics from natural-language questions, ground generated SQL in documented business definitions, and recall prior decisions across sessions. Modern engines go beyond pure vector similarity with hybrid search that fuses dense vectors with BM25 keyword matching, metadata filtering for tenant and permission scoping, and reranking for precision.
+
+The landscape spans several architectures. Distributed databases such as Milvus scale to billions of vectors across clusters, Weaviate pairs hybrid search with built-in vectorizers and native multi-tenancy, Chroma prioritizes a simple developer experience from embedded prototypes to cloud, and LanceDB runs embedded on an open columnar format directly over object storage, close to the lakehouse. All four now offer MCP servers and official agent skills, so coding agents can create collections, ingest data, and run searches directly as part of the agentic data stack.

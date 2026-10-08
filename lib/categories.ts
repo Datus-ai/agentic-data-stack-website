@@ -2076,6 +2076,221 @@ export const categories: Category[] = [
       },
     ],
   },
+  {
+    title: "Vector Database",
+    slug: "vector-database",
+    description:
+      "Vector databases and retrieval engines that store embeddings for semantic, hybrid, and multimodal search, powering RAG and long-term memory for AI agents.",
+    icon: "vector",
+    components: [
+      {
+        name: "Milvus",
+        slug: "milvus",
+        description:
+          "Cloud-native, distributed open-source vector database built for billion-scale ANN search, with hybrid and full-text search.",
+        website: "https://milvus.io",
+        github: "https://github.com/milvus-io/milvus",
+        license: "Apache-2.0",
+        docsUrl: "https://milvus.io/docs",
+        apiDocsUrl: "https://milvus.io/api-reference/pymilvus/v2.6.x/About.md",
+        mcpSupport: true,
+        mcpServerUrl: "https://github.com/zilliztech/mcp-server-milvus",
+        cliSupport: true,
+        cliName: "milvus_cli",
+        cliDocsUrl: "https://milvus.io/docs/cli_overview.md",
+        cliInstall: "pip install milvus-cli",
+        agentSkills: [
+          { name: "milvus", url: "https://github.com/zilliztech/milvus-skill" },
+          { name: "zilliz", url: "https://github.com/zilliztech/zilliz-skill" },
+        ],
+        mainFeatures: [
+          "Distributed architecture with separated storage and compute, scaling to billions of vectors",
+          "Wide range of index types: HNSW, IVF, DiskANN, SCANN, and GPU-accelerated CAGRA",
+          "Hybrid search combining dense vectors, sparse vectors, and BM25 full-text search with reranking",
+          "Scalar filtering, partitions, and partition keys for multi-tenant workloads",
+          "Deployment modes from embedded Milvus Lite to standalone and Kubernetes clusters",
+          "RBAC, multiple databases, and per-collection resource isolation",
+          "SDKs for Python (pymilvus), Java, Go, Node.js, and a RESTful API",
+          "Zilliz Cloud fully managed service with zilliz-cli for cluster management",
+        ],
+        externalLinks: [
+          {
+            title: "Milvus MCP Server",
+            url: "https://github.com/zilliztech/mcp-server-milvus",
+            description:
+              "Official MCP server exposing collection management, vector search, full-text search, and hybrid search tools to agents",
+          },
+          {
+            title: "Milvus Agent Skill",
+            url: "https://github.com/zilliztech/milvus-skill",
+            description:
+              "Official skill teaching agents to operate Milvus with pymilvus: collections, CRUD, indexing, search, and RBAC",
+          },
+          {
+            title: "Zilliz Cloud Agent Skill",
+            url: "https://github.com/zilliztech/zilliz-skill",
+            description:
+              "Official skill for managing Zilliz Cloud clusters through zilliz-cli",
+          },
+          {
+            title: "Milvus CLI",
+            url: "https://github.com/zilliztech/milvus_cli",
+            description:
+              "Command-line client for connecting to Milvus and managing collections, data, and indexes",
+          },
+        ],
+      },
+      {
+        name: "ChromaDB",
+        slug: "chromadb",
+        description:
+          "Open-source, developer-friendly embedding database for AI applications, running embedded in-process, as a server, or on Chroma Cloud.",
+        website: "https://www.trychroma.com",
+        github: "https://github.com/chroma-core/chroma",
+        license: "Apache-2.0",
+        docsUrl: "https://docs.trychroma.com",
+        apiDocsUrl: "https://docs.trychroma.com/reference/python/client",
+        mcpSupport: true,
+        mcpServerUrl: "https://github.com/chroma-core/chroma-mcp",
+        cliSupport: true,
+        cliName: "chroma",
+        cliDocsUrl: "https://docs.trychroma.com/docs/cli/install",
+        cliInstall: "pip install chromadb (or curl -sSL https://raw.githubusercontent.com/chroma-core/chroma/main/rust/cli/install/install.sh | bash)",
+        agentSkills: [
+          { name: "chroma-local", url: "https://github.com/chroma-core/agent-skills/tree/main/skills/chroma-local" },
+          { name: "chroma-cloud", url: "https://github.com/chroma-core/agent-skills/tree/main/skills/chroma-cloud" },
+        ],
+        mainFeatures: [
+          "Simple API for adding documents, embeddings, and metadata, then querying by similarity",
+          "Runs embedded in Python or JavaScript, as a client-server deployment, or on Chroma Cloud",
+          "Built-in embedding functions for OpenAI, Cohere, Hugging Face, and other providers",
+          "Metadata filtering and full-text document filtering alongside vector search",
+          "Rust core with a storage engine optimized for embedding workloads",
+          "Chroma Cloud with serverless scaling, hybrid search, and schema configuration",
+          "Integrations with LangChain, LlamaIndex, and major agent frameworks",
+          "Official MCP server for collection management and semantic document queries",
+        ],
+        externalLinks: [
+          {
+            title: "Chroma MCP Server",
+            url: "https://github.com/chroma-core/chroma-mcp",
+            description:
+              "Official MCP server providing collection, document, and semantic query tools for ephemeral, persistent, HTTP, or cloud clients",
+          },
+          {
+            title: "Chroma Agent Skills",
+            url: "https://github.com/chroma-core/agent-skills",
+            description:
+              "Official skills for building with Chroma locally/self-hosted (chroma-local) and on Chroma Cloud (chroma-cloud)",
+          },
+          {
+            title: "Chroma MCP Integration Guide",
+            url: "https://docs.trychroma.com/integrations/frameworks/anthropic-mcp",
+            description:
+              "Docs for connecting Chroma to MCP clients such as Claude Desktop",
+          },
+        ],
+      },
+      {
+        name: "Weaviate",
+        slug: "weaviate",
+        description:
+          "Open-source AI-native vector database combining vector and keyword search with structured filtering, built-in vectorizers, and a native MCP server.",
+        website: "https://weaviate.io",
+        github: "https://github.com/weaviate/weaviate",
+        license: "BSD-3-Clause",
+        docsUrl: "https://docs.weaviate.io/weaviate",
+        apiDocsUrl: "https://docs.weaviate.io/weaviate/api/rest",
+        mcpSupport: true,
+        mcpServerUrl: "https://docs.weaviate.io/weaviate/configuration/mcp-server",
+        cliSupport: true,
+        cliName: "weaviate-cli",
+        cliDocsUrl: "https://github.com/weaviate/weaviate-cli",
+        cliInstall: "pip install weaviate-cli (or brew install weaviate-cli)",
+        agentSkills: [
+          { name: "weaviate", url: "https://github.com/weaviate/agent-skills/tree/main/skills/weaviate" },
+          { name: "weaviate-cookbooks", url: "https://github.com/weaviate/agent-skills/tree/main/skills/weaviate-cookbooks" },
+          { name: "engram_memory", url: "https://github.com/weaviate/agent-skills/tree/main/skills/engram_memory" },
+        ],
+        mainFeatures: [
+          "Hybrid search fusing vector similarity and BM25 keyword search in a single query",
+          "Built-in vectorizer and reranker modules for OpenAI, Cohere, Hugging Face, and more",
+          "Native multi-tenancy with per-tenant shards for isolated agent and customer data",
+          "HNSW, flat, and dynamic indexes with vector quantization (PQ, BQ, SQ, RQ)",
+          "Built-in MCP server (preview, v1.37.1+) served at /v1/mcp with RBAC and API-key auth",
+          "GraphQL, REST, and gRPC APIs with Python, TypeScript, Go, and Java clients",
+          "Weaviate Agents (Query, Transformation, Personalization) for agentic workflows",
+          "Weaviate Cloud managed service plus Engram managed memory for LLM agents",
+        ],
+        externalLinks: [
+          {
+            title: "Weaviate MCP Server",
+            url: "https://docs.weaviate.io/weaviate/configuration/mcp-server",
+            description:
+              "Docs for the MCP server built into Weaviate (enable with MCP_SERVER_ENABLED=true); replaces the deprecated standalone server",
+          },
+          {
+            title: "Weaviate Agent Skills",
+            url: "https://github.com/weaviate/agent-skills",
+            description:
+              "Official skills for schema inspection, ingestion, search, app cookbooks, and Engram agent memory",
+          },
+          {
+            title: "Weaviate CLI",
+            url: "https://github.com/weaviate/weaviate-cli",
+            description:
+              "Command-line tool for creating, querying, and managing Weaviate collections, tenants, and data",
+          },
+        ],
+      },
+      {
+        name: "LanceDB",
+        slug: "lancedb",
+        description:
+          "Embedded, serverless multimodal retrieval library built on the Lance columnar format, with vector, full-text, and hybrid search over local or object storage.",
+        website: "https://lancedb.com",
+        github: "https://github.com/lancedb/lancedb",
+        license: "Apache-2.0",
+        docsUrl: "https://docs.lancedb.com",
+        mcpSupport: true,
+        mcpServerUrl: "https://github.com/lancedb/lancedb-mcp-server",
+        cliSupport: false,
+        agentSkills: [
+          { name: "lancedb", url: "https://github.com/lancedb/lancedb-agent-plugins/tree/main/skills/lancedb" },
+        ],
+        mainFeatures: [
+          "Embedded, in-process database: no server to run, data lives on local disk or object storage (S3, GCS, Azure)",
+          "Built on the open Lance columnar format with fast random access and zero-copy versioning",
+          "Multimodal storage of vectors, text, images, and video alongside metadata in one table",
+          "Vector search with IVF-PQ and HNSW indexes, plus full-text and hybrid search with rerankers",
+          "SQL-style metadata filtering and Apache Arrow integration with pandas, Polars, and DuckDB",
+          "Table versioning and time travel for reproducible datasets and agent memory",
+          "SDKs for Python, TypeScript, and Rust",
+          "LanceDB Cloud and Enterprise for managed, distributed deployments",
+        ],
+        externalLinks: [
+          {
+            title: "LanceDB MCP Server",
+            url: "https://github.com/lancedb/lancedb-mcp-server",
+            description:
+              "Reference MCP server from LanceDB with tools to ingest docs, retrieve docs, and inspect table details",
+          },
+          {
+            title: "LanceDB Agent Plugins",
+            url: "https://github.com/lancedb/lancedb-agent-plugins",
+            description:
+              "Official Claude Code / Codex plugin with a LanceDB skill for writing, reviewing, and debugging LanceDB pipelines",
+          },
+          {
+            title: "Lance Format",
+            url: "https://github.com/lance-format/lance",
+            description:
+              "The open columnar data format for ML and multimodal AI that underpins LanceDB",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export function getCategoryBySlug(slug: string): Category | undefined {
