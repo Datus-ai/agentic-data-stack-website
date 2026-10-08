@@ -1848,6 +1848,234 @@ export const categories: Category[] = [
       },
     ],
   },
+  {
+    title: "Graph Database",
+    slug: "graph-database",
+    description:
+      "Graph databases and graph query engines that model relationships natively, powering GraphRAG, knowledge graphs, and multi-hop reasoning for AI agents.",
+    icon: "graph",
+    components: [
+      {
+        name: "Neo4j",
+        slug: "neo4j",
+        description:
+          "Leading native graph database with the Cypher query language, vector search, and a mature GraphRAG ecosystem.",
+        website: "https://neo4j.com",
+        github: "https://github.com/neo4j/neo4j",
+        license: "GPL-3.0 (Community) / Commercial (Enterprise)",
+        docsUrl: "https://neo4j.com/docs/",
+        apiDocsUrl: "https://neo4j.com/docs/query-api/current/",
+        mcpSupport: true,
+        mcpServerUrl: "https://github.com/neo4j/mcp",
+        cliSupport: true,
+        cliName: "cypher-shell",
+        cliDocsUrl: "https://neo4j.com/docs/operations-manual/current/cypher-shell/",
+        cliInstall: "brew install cypher-shell (also bundled with Neo4j)",
+        agentSkills: [
+          { name: "neo4j-cypher-skill", url: "https://github.com/neo4j-contrib/neo4j-skills/tree/main/neo4j-cypher-skill" },
+          { name: "neo4j-mcp-skill", url: "https://github.com/neo4j-contrib/neo4j-skills/tree/main/neo4j-mcp-skill" },
+          { name: "neo4j-modeling-skill", url: "https://github.com/neo4j-contrib/neo4j-skills/tree/main/neo4j-modeling-skill" },
+          { name: "neo4j-graphrag-skill", url: "https://github.com/neo4j-contrib/neo4j-skills/tree/main/neo4j-graphrag-skill" },
+          { name: "neo4j-agent-memory-skill", url: "https://github.com/neo4j-contrib/neo4j-skills/tree/main/neo4j-agent-memory-skill" },
+          { name: "neo4j-gds-skill", url: "https://github.com/neo4j-contrib/neo4j-skills/tree/main/neo4j-gds-skill" },
+          { name: "neo4j-vector-index-skill", url: "https://github.com/neo4j-contrib/neo4j-skills/tree/main/neo4j-vector-index-skill" },
+          { name: "neo4j-query-tuning-skill", url: "https://github.com/neo4j-contrib/neo4j-skills/tree/main/neo4j-query-tuning-skill" },
+          { name: "neo4j-import-skill", url: "https://github.com/neo4j-contrib/neo4j-skills/tree/main/neo4j-import-skill" },
+          { name: "neo4j-cli-tools-skill", url: "https://github.com/neo4j-contrib/neo4j-skills/tree/main/neo4j-cli-tools-skill" },
+        ],
+        mainFeatures: [
+          "Native graph storage with index-free adjacency for fast multi-hop traversals",
+          "Cypher declarative graph query language, with GQL (ISO/IEC 39075) alignment",
+          "Native vector indexes for combining semantic similarity search with graph traversal",
+          "Graph Data Science library with 65+ algorithms: centrality, community detection, path finding, embeddings",
+          "GraphRAG tooling (neo4j-graphrag Python package) for knowledge-graph-backed retrieval",
+          "Official MCP server exposing schema inspection and read/write Cypher tools to agents",
+          "Official drivers for Python, Java, JavaScript, Go, and .NET over the Bolt protocol",
+          "Neo4j AuraDB fully managed cloud service with Aura CLI for provisioning",
+        ],
+        externalLinks: [
+          {
+            title: "Neo4j MCP Server Documentation",
+            url: "https://neo4j.com/docs/mcp/current/",
+            description:
+              "Official docs for installing and configuring the Neo4j MCP server with AI agents and IDEs",
+          },
+          {
+            title: "Neo4j Labs MCP Servers",
+            url: "https://github.com/neo4j-contrib/mcp-neo4j",
+            description:
+              "Labs MCP servers for Cypher, data modeling, Aura management, and agent memory",
+          },
+          {
+            title: "Neo4j Agent Skills",
+            url: "https://github.com/neo4j-contrib/neo4j-skills",
+            description:
+              "Agent skills for Cypher, modeling, GraphRAG, GDS, import, drivers, and more",
+          },
+          {
+            title: "GraphRAG for Python",
+            url: "https://neo4j.com/docs/neo4j-graphrag-python/current/",
+            description:
+              "Official package for building knowledge-graph retrieval pipelines on Neo4j",
+          },
+          {
+            title: "Aura CLI",
+            url: "https://neo4j.com/docs/aura/aura-cli/",
+            description:
+              "Command-line tool for managing Neo4j AuraDB instances and tenants",
+          },
+        ],
+      },
+      {
+        name: "TigerGraph",
+        slug: "tigergraph",
+        description:
+          "Distributed native parallel graph database built for real-time deep-link analytics at scale, with GSQL and integrated vector search.",
+        website: "https://www.tigergraph.com",
+        github: "https://github.com/tigergraph",
+        license: "Commercial (free Community Edition)",
+        docsUrl: "https://docs.tigergraph.com",
+        apiDocsUrl: "https://docs.tigergraph.com/tigergraph-server/current/api/",
+        mcpSupport: true,
+        mcpServerUrl: "https://github.com/tigergraph/tigergraph-mcp",
+        cliSupport: true,
+        cliName: "gsql",
+        cliDocsUrl: "https://docs.tigergraph.com/tigergraph-server/current/gsql-shell/",
+        cliInstall: "Bundled with TigerGraph Server (GSQL shell)",
+        agentSkills: [],
+        mainFeatures: [
+          "Native Parallel Graph (MPP) architecture for distributed storage and computation",
+          "Real-time deep-link analytics across 10+ hops on billions of vertices and edges",
+          "GSQL: Turing-complete graph query language with accumulators for in-query analytics",
+          "TigerVector: integrated vector search for hybrid graph + vector retrieval (4.2+)",
+          "Graph Data Science library with algorithms for centrality, community, similarity, and paths",
+          "REST++ endpoints that expose installed queries as APIs",
+          "pyTigerGraph Python SDK for schema, data loading, queries, and ML workflows",
+          "TigerGraph Savanna managed cloud with built-in MCP connectivity for agents",
+        ],
+        externalLinks: [
+          {
+            title: "TigerGraph MCP Server",
+            url: "https://github.com/tigergraph/tigergraph-mcp",
+            description:
+              "Official MCP server (pip install tigergraph-mcp) exposing schema, data, GSQL, loading, and vector search tools",
+          },
+          {
+            title: "Connect an Agent via MCP (Savanna)",
+            url: "https://www.tigergraph.com/docs/savanna/main/get-started/connect-agent-mcp",
+            description:
+              "Guide to connecting AI agents to TigerGraph Savanna through MCP",
+          },
+          {
+            title: "pyTigerGraph",
+            url: "https://docs.tigergraph.com/pytigergraph/current/intro/",
+            description:
+              "Python SDK used by the MCP server and for programmatic graph access",
+          },
+          {
+            title: "GSQL Language Reference",
+            url: "https://docs.tigergraph.com/gsql-ref/current/intro/",
+            description:
+              "Reference for GSQL DDL, loading jobs, and graph queries",
+          },
+        ],
+      },
+      {
+        name: "PuppyGraph",
+        slug: "puppygraph",
+        description:
+          "Zero-ETL graph query engine that queries existing lakehouses, warehouses, and relational databases as a graph with openCypher and Gremlin.",
+        website: "https://www.puppygraph.com",
+        github: "https://github.com/puppygraph",
+        license: "Commercial (free Developer Edition)",
+        docsUrl: "https://docs.puppygraph.com",
+        mcpSupport: true,
+        mcpServerUrl: "https://github.com/puppygraph/puppygraph-mcp-server",
+        cliSupport: false,
+        agentSkills: [],
+        mainFeatures: [
+          "Zero-ETL: query relational and lakehouse tables as a graph without copying data into a graph store",
+          "Supports openCypher (Bolt protocol) and Gremlin query languages",
+          "Connects to Apache Iceberg (including REST catalogs), Delta Lake, Hudi, Hive, and Unity Catalog",
+          "Connects to warehouses and databases such as Snowflake, Databricks, BigQuery, ClickHouse, PostgreSQL, and MySQL",
+          "Graph schema defined as a mapping over existing tables, so one dataset can serve SQL and graph workloads",
+          "Distributed, vectorized execution with separated compute and storage for multi-hop queries",
+          "Web UI for schema building, query console, and graph visualization",
+          "Deploys in minutes via Docker, with Developer and Enterprise editions",
+        ],
+        externalLinks: [
+          {
+            title: "PuppyGraph MCP Server",
+            url: "https://github.com/puppygraph/puppygraph-mcp-server",
+            description:
+              "Official MCP server for running Cypher and Gremlin queries and inspecting graph schema from agents",
+          },
+          {
+            title: "AI Integrations",
+            url: "https://docs.puppygraph.com/ai/ai-integrations/",
+            description:
+              "Docs covering the MCP server, a text-to-Cypher chatbot demo, and custom agent query tools",
+          },
+        ],
+      },
+      {
+        name: "NebulaGraph",
+        slug: "nebulagraph",
+        description:
+          "Open-source distributed graph database with a shared-nothing architecture, built for massive-scale graphs with millisecond latency.",
+        website: "https://www.nebula-graph.io",
+        github: "https://github.com/vesoft-inc/nebula",
+        license: "Apache-2.0",
+        docsUrl: "https://docs.nebula-graph.io",
+        apiDocsUrl: "https://github.com/vesoft-inc/nebula-http-gateway",
+        mcpSupport: true,
+        mcpServerUrl: "https://github.com/nebula-contrib/nebulagraph-mcp-server",
+        cliSupport: true,
+        cliName: "nebula-console",
+        cliDocsUrl: "https://docs.nebula-graph.io/3.8.0/nebula-console/",
+        cliInstall: "docker run --rm -ti vesoft/nebula-console (or download from GitHub releases)",
+        agentSkills: [
+          { name: "nebulagraph", url: "https://github.com/knqiufan/NebulaGraph-Skill" },
+        ],
+        mainFeatures: [
+          "Shared-nothing distributed architecture with separate graphd, metad, and storaged services",
+          "Horizontal scalability to hundreds of billions of vertices and trillions of edges",
+          "nGQL query language with openCypher compatibility",
+          "Raft-based replication for strong consistency and high availability",
+          "Millisecond-latency multi-hop traversals for real-time workloads",
+          "Ecosystem tools: NebulaGraph Studio, Explorer, Exchange (Spark-based import), and Algorithm",
+          "Clients for Python, Java, Go, and C++",
+          "Community MCP server exposing schema, query, and shortcut graph algorithms to agents",
+        ],
+        externalLinks: [
+          {
+            title: "NebulaGraph MCP Server",
+            url: "https://github.com/nebula-contrib/nebulagraph-mcp-server",
+            description:
+              "MCP server (pip install nebulagraph-mcp-server) for NebulaGraph 3.x schema discovery and queries",
+          },
+          {
+            title: "NebulaGraph Console",
+            url: "https://github.com/vesoft-inc/nebula-console",
+            description:
+              "Native command-line client for running nGQL against NebulaGraph",
+          },
+          {
+            title: "NebulaGraph Agent Skill",
+            url: "https://github.com/knqiufan/NebulaGraph-Skill",
+            description:
+              "Community skill for nGQL generation and schema design guidance via the MCP server",
+          },
+          {
+            title: "NebulaGraph GitHub",
+            url: "https://github.com/vesoft-inc/nebula",
+            description:
+              "Main source repo for the distributed graph database",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export function getCategoryBySlug(slug: string): Category | undefined {
