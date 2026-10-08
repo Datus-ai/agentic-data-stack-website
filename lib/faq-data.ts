@@ -24,7 +24,7 @@ export const homepageFAQ: FAQItem[] = [
   },
   {
     question: "Are agentic data stack tools free and open source?",
-    answer: "Yes, most agentic data stack components are open-source and free to use. This includes Apache Iceberg, Delta Lake, DuckDB, Trino, dbt, Airbyte, Apache Airflow, Unity Catalog, Apache Superset, and many more. We maintain a directory of 27+ free tools across 8 categories.",
+    answer: "Yes, most agentic data stack components are open-source and free to use. This includes Apache Iceberg, Delta Lake, DuckDB, Trino, dbt, Airbyte, Apache Airflow, Unity Catalog, Apache Superset, and many more. We maintain a directory of 35+ free tools across 10 categories.",
   },
   {
     question: "Who should use an agentic data stack?",
@@ -36,7 +36,7 @@ export const homepageFAQ: FAQItem[] = [
 export const resourcesFAQ: FAQItem[] = [
   {
     question: "What tools are included in the agentic data stack directory?",
-    answer: "We catalog 27+ open-source tools across 8 categories: Catalog Services (Unity Catalog, Apache Polaris, Gravitino), Lake Formats (Apache Iceberg, Delta Lake, Apache Hudi), SQL Engines (Trino, DuckDB, Apache Spark), Semantic Layers (Cube, dbt Semantic Layer), ETL/ELT Tools (Airbyte, dbt, Apache Flink), BI Tools (Apache Superset, Metabase), Schedulers (Apache Airflow, Dagster), and Data Agents (DatusAI, WrenAI).",
+    answer: "We catalog 35+ open-source tools across 10 categories: Catalog Services (Unity Catalog, Apache Polaris, Gravitino), Lake Formats (Apache Iceberg, Delta Lake, Apache Hudi), SQL Engines (Trino, DuckDB, Apache Spark), Semantic Layers (Cube, dbt Semantic Layer), ETL/ELT Tools (Airbyte, dbt, Apache Flink), BI Tools (Apache Superset, Metabase), Schedulers (Apache Airflow, Dagster), Data Agents (DatusAI, WrenAI), Graph Databases (Neo4j, NebulaGraph), and Vector Databases (Milvus, ChromaDB, Weaviate, LanceDB).",
   },
   {
     question: "How do I choose the right tools for my agentic data stack?",

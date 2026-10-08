@@ -65,7 +65,7 @@ api/
 - Subscription via Cloudflare Worker → Buttondown API. Env: `NEXT_PUBLIC_SUBSCRIBE_API_URL`
 
 ### 3. Resources (`/resources`, `/resources/[category]`, `/resources/[category]/[slug]`)
-- Living wiki of agentic data stack tooling — 9 categories, 30+ tools
+- Living wiki of agentic data stack tooling — 10 categories, 35+ tools
 - Tool metadata in `lib/categories.ts` (structured data: MCP support, CLI support, agent skills)
 - Tool documentation in `content/resources/[category]/[tool].mdx`
 - Category overviews in `content/resources/[category]/_index.mdx`
@@ -92,6 +92,10 @@ interface AgentSkill {
 - **Apache Polaris**: 1 skill from `skills.rest/skill/polaris-catalog`
 - **Neo4j**: 10 skills from `github.com/neo4j-contrib/neo4j-skills` (Oct 2026)
 - **NebulaGraph**: 1 community skill from `github.com/knqiufan/NebulaGraph-Skill` (Oct 2026)
+- **Milvus**: 2 skills from `github.com/zilliztech/milvus-skill` and `github.com/zilliztech/zilliz-skill` (Oct 2026)
+- **ChromaDB**: 2 skills from `github.com/chroma-core/agent-skills` (Oct 2026)
+- **Weaviate**: 3 skills from `github.com/weaviate/agent-skills` (Oct 2026)
+- **LanceDB**: 1 skill from `github.com/lancedb/lancedb-agent-plugins` (Oct 2026)
 
 Sources for finding real skills: `github.com/dbt-labs/dbt-agent-skills`, `github.com/astronomer/agents/skills/`, `github.com/ClickHouse/agent-skills`, `skills.rest`, `github.com/kodustech/awesome-agent-skills`.
 
