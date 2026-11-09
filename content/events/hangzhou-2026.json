@@ -42,16 +42,6 @@
     }
   ],
   "organizerIds": [],
-  "cfp": {
-    "status": "coming-soon",
-    "formUrl": null,
-    "deadline": null,
-    "notificationDate": null,
-    "formats": {
-      "en": "Session formats and durations will be announced with the call.",
-      "zh": "分享形式与时长将在征集开放时公布。"
-    }
-  },
   "agenda": [
     {
       "time": "13:30–14:10",

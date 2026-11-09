@@ -1,25 +1,7 @@
-import { notFound } from "next/navigation";
-import { Cfp } from "@/components/community/Pages";
-import { getEventRouteParams, getEvent } from "@/lib/events";
 import EventUrlRedirect from "@/components/community/EventUrlRedirect";
-import { localPath } from "@/lib/community";
-import { pageMetadata } from "@/lib/community";
+import { getEventRouteParams } from "@/lib/events";
+import { pageMetadata, localPath, communityIntro } from "@/lib/community";
 export const dynamicParams = false;
-export function generateStaticParams() {
-  return getEventRouteParams();
-}
-type Props = { params: Promise<{ slug: string }> };
-export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
-  const e = getEvent(slug);
-  if (!e) return {};
-  const metadata = pageMetadata(e.title, e.description, `/cfp/${e.slug}`, "en");
-  return slug === e.slug ? metadata : { ...metadata, robots: { index: false, follow: true } };
-}
-export default async function Page({ params }: Props) {
-  const { slug } = await params;
-  const event = getEvent(slug);
-  if (!event) notFound();
-  if (slug !== event.slug) return <EventUrlRedirect to={localPath(`/cfp/${event.slug}`, "en")} locale="en" />;
-  return <Cfp event={event} locale="en" />;
-}
+export function generateStaticParams() { return getEventRouteParams(); }
+export const metadata = { ...pageMetadata({ en: "Call for Proposals", zh: "征集分享" },communityIntro,"/cfp","en"), robots: { index: false, follow: true } };
+export default function Page() { return <EventUrlRedirect to={localPath("/cfp","en")} locale="en"/>; }

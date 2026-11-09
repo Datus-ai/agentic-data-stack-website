@@ -17,7 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/resources",
     ...getEvents().flatMap((e) => [
       `/events/${e.slug}`,
-      `/cfp/${e.slug}`,
       ...(e.recap ? [`/events/${e.slug}/recap`] : []),
     ]),
     ...getAllBlogPosts().map((p) => `/blog/${p.slug}`),

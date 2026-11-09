@@ -239,3 +239,16 @@ a, button, input, summary { -webkit-tap-highlight-color: transparent; }
 .subscribe-input { height: 44px; padding: 0 13px; border: 1px solid #343044; border-radius: 7px; background: #111827; color: #f3f4f6; font-size: 13px; line-height: 20px; }
 .subscribe-input::placeholder { color: #81899c; }
 .subscribe-input:focus { border-color: #a78bfa; outline: 2px solid #a78bfa44; outline-offset: 1px; }
+.nav-learn { position: relative; }
+.nav-learn-toggle { display: inline-flex; align-items: center; gap: 7px; padding: 8px 0; color: inherit; font: inherit; cursor: pointer; }
+.nav-learn-toggle:hover, .nav-learn-toggle.is-active { color: #fff; }
+.nav-learn-toggle[aria-expanded="true"] > span { transform: rotate(180deg); }
+.nav-learn-menu { position: absolute; top: calc(100% + 12px); left: -20px; min-width: 270px; padding: 8px; border: 1px solid #383148; border-radius: 9px; background: #0e1220; box-shadow: 0 15px 40px #0006; }
+.nav-learn-menu a { display: block; padding: 12px; border-radius: 5px; }
+.nav-learn-menu a:hover, .nav-learn-menu a[aria-current="page"] { background: #211a31; }
+.nav-learn-menu strong { display: block; font-size: 13px; font-weight: 550; color: #ede7f6; }
+.nav-learn-menu small { display: block; margin-top: 5px; font-size: 11px; color: #909bb1; }
+@media (max-width: 760px) {
+  .nav-learn-toggle { width: 100%; padding: 12px 0; justify-content: space-between; }
+  .nav-learn-menu { position: static; min-width: 0; margin: 0 0 6px; box-shadow: none; }
+}

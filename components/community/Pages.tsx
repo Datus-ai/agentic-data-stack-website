@@ -18,13 +18,12 @@ import {
   getEvents,
   isPast,
   registrationOpen,
-  cfpOpen,
-  cfpState,
   eventDate,
   eventTime,
   type CommunityEvent,
 } from "@/lib/events";
 import { getTranslation } from "@/lib/translated-content";
+import { getCfpConfig, isCfpOpen } from "@/lib/cfp";
 import { getRecentBlogPosts } from "@/lib/blog";
 export function Shell({
   children,
@@ -489,7 +488,7 @@ export function Home({ locale }: { locale: Locale }) {
 }
 export function CfpBanner({ locale }: { locale: Locale }) {
   const zh = locale === "zh";
-  const open = getEvents().filter((e) => cfpOpen(e));
+  const open = isCfpOpen(getCfpConfig());
   return (
     <section className="site-section">
       <div className="site-width">
@@ -502,20 +501,20 @@ export function CfpBanner({ locale }: { locale: Locale }) {
                 : "Bring your experience to the room."}
             </h2>
             <p>
-              {open.length
+              {open
                 ? zh
-                  ? "查看正在征集的活动，分享你的架构、落地经验与遇到的挑战。"
-                  : "Explore open calls and share your architecture, implementation experience, and challenges."
+                  ? "分享你的架构、落地经验与挑战。可选择计划中的活动，也可留待后续排期。"
+                  : "Share your architecture, implementation experience, and challenges. Choose a planned event or leave scheduling open."
                 : zh
-                  ? "下一场活动的议题征集即将开放。先了解主题与投稿指南。"
-                  : "The next call is coming soon. Explore our topics and proposal guidelines."}
+                  ? "社区统一议题征集即将开放。先了解主题、投稿指南与灵活排期方式。"
+                  : "Our community call is coming soon. Explore the topics, proposal guidelines, and flexible scheduling."}
             </p>
           </div>
           <Link
             href={localPath("/cfp", locale)}
             className="button"
           >
-            {zh ? "查看征集安排" : "Explore calls & guidelines"} ↗
+            {zh ? "查看分享征集" : "View proposal guidelines"} ↗
           </Link>
         </div>
       </div>
@@ -627,7 +626,7 @@ export function Events({ locale }: { locale: Locale }) {
   const events = getEvents();
   const upcoming = events.filter((e) => !isPast(e));
   const past = events.filter((isPastEvent) => isPast(isPastEvent)).reverse();
-  const open = events.filter((e) => cfpOpen(e));
+
   return (
     <Shell locale={locale}>
       <section className="page-hero site-width">
@@ -670,24 +669,7 @@ export function Events({ locale }: { locale: Locale }) {
           )}
         </div>
       </section>
-      {open.length > 0 && (
-        <section className="site-section">
-          <div className="site-width">
-            <SectionTitle
-              title={zh ? "正在征集分享" : "Open calls for proposals"}
-            />
-            {open.map((e) => (
-              <Link
-                className="call-list-item"
-                key={e.slug}
-                href={localPath(`/cfp/${e.slug}`, locale)}
-              >
-                {text(e.title, locale)} →
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+
       <section className="site-section">
         <div className="site-width">
           <SectionTitle
@@ -754,9 +736,9 @@ export function EventDetail({
           )}
           <Link
             className="button button-outline"
-            href={localPath(`/cfp/${event.slug}`, locale)}
+            href={localPath("/cfp", locale)}
           >
-            {zh ? "查看本场 CFP" : "View this event's CFP"} →
+            {zh ? "提交分享提案" : "Submit a proposal"} →
           </Link>
           {event.recap && (
             <Link
@@ -899,206 +881,49 @@ export function EventDetail({
     </Shell>
   );
 }
-export function Cfp({
-  locale,
-  event,
-}: {
-  locale: Locale;
-  event?: CommunityEvent;
-}) {
+export function Cfp({ locale }: { locale: Locale }) {
   const zh = locale === "zh";
-  const events = getEvents().filter((e) => !isPast(e));
-  const open = event && cfpOpen(event);
-  return (
-    <Shell locale={locale}>
-      <section className="page-hero site-width">
-        <p className="eyebrow">CALL FOR PROPOSALS</p>
-        <h1>
-          {event
-            ? text(event.title, locale)
-            : zh
-              ? "分享你的经验，\n也分享你的问题。"
-              : "Share what worked.\nAnd what didn't."}
-        </h1>
-        <p className="hero-copy">
-          {zh
-            ? "欢迎分享 Data Agent 与数据基础设施的架构、技术实践、生产经验，以及失败的尝试和未解决的问题。"
-            : "Share architectures, technical practice, production lessons, failed attempts, and open questions about Data Agents and data infrastructure."}
-        </p>
-        {event && (
-          <Link
-            className="text-link"
-            href={localPath(`/events/${event.slug}`, locale)}
-          >
-            {zh ? "查看活动详情" : "View event details"} →
-          </Link>
-        )}
-      </section>
-      <section className="site-section">
-        <div className="site-width">
-          {event ? (
-            <div className="cfp-status">
-              <span className="status-pill">
-                {open
-                  ? zh
-                    ? "征集开放"
-                    : "Open for proposals"
-                  : isPast(event) ||
-                      event.cfp.status === "closed" ||
-                      (event.cfp.deadline &&
-                        Date.parse(event.cfp.deadline) <= Date.now())
-                    ? zh
-                      ? "征集已结束"
-                      : "Call closed"
-                    : zh
-                      ? "征集即将开放"
-                      : "Call coming soon"}
-              </span>
-              <p>
-                {event.cfp.deadline
-                  ? `${zh ? "截止时间" : "Deadline"}: ${new Intl.DateTimeFormat(zh ? "zh-CN" : "en-US", { dateStyle: "long", timeStyle: "short", timeZone: event.timezone }).format(new Date(event.cfp.deadline))} (${event.timezone})`
-                  : zh
-                    ? "截止时间与评选通知安排将在开放时公布。"
-                    : "The deadline and review timeline will be announced when the call opens."}
-              </p>
-              <p>{text(event.cfp.formats, locale)}</p>
-              {event.cfp.notificationDate && (
-                <p>
-                  {zh ? "预计通知日期：" : "Expected notification date: "}
-                  {event.cfp.notificationDate}
-                </p>
-              )}
-            </div>
-          ) : (
-            <>
-              <SectionTitle title={zh ? "按活动查看征集" : "Calls by event"} />
-              {events.length ? (
-                events.map((e) => (
-                  <Link
-                    key={e.slug}
-                    href={localPath(`/cfp/${e.slug}`, locale)}
-                    className="call-list-item"
-                  >
-                    <span>
-                      <strong>{text(e.title, locale)}</strong>
-                      <small>
-                        {eventDate(e, locale)} · {text(e.city, locale)}
-                      </small>
-                    </span>
-                    <span>
-                      {cfpOpen(e)
-                        ? zh
-                          ? "开放投稿"
-                          : "Submit a proposal"
-                        : cfpState(e) === "closed"
-                          ? zh
-                            ? "已截止"
-                            : "Closed"
-                          : zh
-                            ? "即将开放"
-                            : "Coming soon"}{" "}
-                      →
-                    </span>
-                  </Link>
-                ))
-              ) : (
-                <p className="empty-note">
-                  {zh
-                    ? "目前没有开放征集的活动，欢迎关注社区日历。"
-                    : "There are no active calls. Follow the community calendar for updates."}
-                </p>
-              )}
-            </>
-          )}
-        </div>
-      </section>
-      <section className="site-section">
-        <div className="site-width">
-          <SectionTitle
-            eyebrow="TOPICS"
-            title={zh ? "我们希望听到什么" : "What we'd love to hear"}
-          />
-          <div className="topic-grid">
-            {topics.map((t) => (
-              <div className="topic-card" key={t.category}>
-                <h3>{text(t.title, locale)}</h3>
-                <p>{text(t.description, locale)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="site-section">
-        <div className="site-width reading-width">
-          <SectionTitle title={zh ? "投稿指南" : "Proposal guidelines"} />
-          <ol className="guidelines">
-            <li>
-              {zh
-                ? "说清楚要解决的真实问题、采用的方法，以及听众能带走的 2–3 个收获。"
-                : "Describe the real problem, your approach, and 2–3 concrete takeaways for attendees."}
-            </li>
-            <li>
-              {zh
-                ? "说明内容处于研究、原型、试点还是生产阶段。欢迎分享限制、失败与权衡。"
-                : "Tell us whether the work is research, a prototype, a pilot, or in production. Limitations, failures, and trade-offs are welcome."}
-            </li>
-            <li>
-              {zh
-                ? "避免纯产品推销，不提交未经允许公开的客户数据或内部资料。"
-                : "Avoid sales pitches. Do not submit customer data or internal material without permission to share it."}
-            </li>
-            <li>
-              {zh
-                ? "准备标题、摘要与简短讲者介绍即可；无需在投稿时提交完整 Slides。"
-                : "Prepare a title, abstract, and short speaker bio. Finished slides are not required to propose a talk."}
-            </li>
-          </ol>
-          <h2 className="subheading">
-            {zh ? "如何评选" : "How proposals are reviewed"}
-          </h2>
-          <p className="muted-copy">
-            {zh
-              ? "重点关注主题相关性、真实实践、技术深度与听众价值。录制和材料公开意愿将单独沟通确认。"
-              : "We consider topic relevance, practical experience, technical depth, and value to attendees. Recording and publication preferences will be confirmed separately."}
-          </p>
-        </div>
-      </section>
-      {event && (
-        <section className="site-section">
-          <div className="site-width">
-            {open && event.cfp.formUrl ? (
-              <LumaEmbed
-                src={event.cfp.formUrl}
-                url={event.cfp.formUrl}
-                title={
-                  zh ? "提交分享提案（飞书）" : "Submit your proposal (Feishu)"
-                }
-                provider={zh ? "飞书" : "Feishu"}
-                zh={zh}
-              />
-            ) : (
-              <div className="empty-note">
-                <h2>{zh ? "当前不接受投稿" : "Submissions are not open"}</h2>
-                <p>
-                  {zh
-                    ? "请关注本场活动的征集状态。表单开放后，将在这里提供填写入口。"
-                    : "Follow this event's call status. The proposal form will appear here when submissions open."}
-                </p>
-                <a
-                  className="text-link"
-                  href={calendarUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {zh ? "关注社区日历" : "Follow the community calendar"} ↗
-                </a>
-              </div>
-            )}
-          </div>
-        </section>
-      )}
-    </Shell>
-  );
+  const config = getCfpConfig();
+  const open = isCfpOpen(config);
+  return <Shell locale={locale}>
+    <section className="page-hero site-width">
+      <p className="eyebrow">CALL FOR PROPOSALS</p>
+      <h1>{zh ? "分享你的经验，\n也分享你的问题。" : "Share what worked.\nAnd what didn't."}</h1>
+      <p className="hero-copy">{zh ? "欢迎分享 Data Agent 与数据基础设施的架构、技术实践、生产经验，以及失败的尝试和未解决的问题。所有分享提案都通过这个统一入口提交。" : "Share architectures, technical practice, production lessons, failed attempts, and open questions about Data Agents and data infrastructure. Submit every proposal through this single community call."}</p>
+      <div className="button-row"><a className="button" href="#proposal-form">{open ? (zh ? "提交分享提案" : "Submit a proposal") : (zh ? "查看投稿安排" : "View submission details")} ↓</a></div>
+    </section>
+    <section className="site-section">
+      <div className="site-width reading-width">
+        <SectionTitle title={zh ? "先提交想法，灵活安排活动。" : "Propose your talk. Keep the schedule flexible."}/>
+        <p className="large-copy">{zh ? "在投稿表单中，你可以选择希望参与的计划活动，也可以不选，交由社区后续沟通和排期。暂时没有适合的活动，也欢迎先提交。" : "In the proposal form, you can select a planned event or leave that choice blank. If no event fits yet, submit your idea and we will discuss a suitable future slot."}</p>
+        <p className="muted-copy">{zh ? "活动选择为可选项，不影响提案提交。具体活动、时间和分享形式将在评审后与你沟通确认。" : "Event preference is optional and does not prevent submission. The event, timing, and session format will be agreed with you after review."}</p>
+        <Link className="text-link" href={localPath("/events",locale)}>{zh ? "查看计划中的活动" : "Explore planned events"} →</Link>
+      </div>
+    </section>
+    <section className="site-section"><div className="site-width">
+      <SectionTitle eyebrow="TOPICS" title={zh ? "我们希望听到什么" : "What we'd love to hear"}/>
+      <div className="topic-grid">{topics.map(t=><div className="topic-card" key={t.category}><h3>{text(t.title,locale)}</h3><p>{text(t.description,locale)}</p></div>)}</div>
+    </div></section>
+    <section className="site-section"><div className="site-width reading-width">
+      <SectionTitle title={zh ? "投稿指南" : "Proposal guidelines"}/>
+      <ol className="guidelines">
+        <li>{zh ? "说清楚要解决的真实问题、采用的方法，以及听众能带走的 2–3 个收获。" : "Describe the real problem, your approach, and 2–3 concrete takeaways for attendees."}</li>
+        <li>{zh ? "说明内容处于研究、原型、试点还是生产阶段。欢迎分享限制、失败与权衡。" : "Tell us whether the work is research, a prototype, a pilot, or in production. Limitations, failures, and trade-offs are welcome."}</li>
+        <li>{zh ? "避免纯产品推销，不提交未经允许公开的客户数据或内部资料。" : "Avoid sales pitches. Do not submit customer data or internal material without permission to share it."}</li>
+        <li>{zh ? "准备标题、摘要与简短讲者介绍即可，无需在投稿时提交完整 Slides。活动偏好可留空。" : "Prepare a title, abstract, and short speaker bio. Finished slides are not required, and event preference can be left blank."}</li>
+      </ol>
+      <h2 className="subheading">{zh ? "如何评选与排期" : "Review and scheduling"}</h2>
+      <p className="muted-copy">{zh ? "重点关注主题相关性、真实实践、技术深度与听众价值。社区将根据提案内容、活动计划及讲者时间沟通安排；录制与材料公开意愿另行确认。" : "We consider topic relevance, practical experience, technical depth, and value to attendees. Scheduling takes your proposal, planned events, and availability into account. Recording and publication preferences are confirmed separately."}</p>
+    </div></section>
+    <section className="site-section" id="proposal-form"><div className="site-width">
+      <SectionTitle title={zh ? "提交分享提案" : "Submit your proposal"}/>
+      {open && config.formUrl ? <LumaEmbed src={config.formUrl} url={config.formUrl} title={zh ? "社区分享提案（飞书）" : "Community proposal form (Feishu)"} provider={zh ? "飞书" : "Feishu"} zh={zh}/> : <div className="empty-note">
+        <span className="status-pill">{config.status === "closed" ? (zh ? "投稿暂时关闭" : "Submissions paused") : (zh ? "投稿表单即将开放" : "Proposal form coming soon")}</span>
+        <p>{zh ? "表单开放后会在这里提供填写入口。你可以选择计划中的活动，也可以不选，由社区后续安排。" : "The form will appear here when submissions open. Select a planned event or leave the choice blank for future scheduling."}</p>
+        <a className="text-link" href={calendarUrl} target="_blank" rel="noopener noreferrer">{zh ? "关注社区日历" : "Follow the community calendar"} ↗</a>
+      </div>}
+    </div></section>
+  </Shell>;
 }
 export function Recap({
   event,

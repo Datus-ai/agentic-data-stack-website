@@ -19,13 +19,6 @@ export interface CommunityEvent {
   registrationNote: Localized;
   hosts: { name: string; url: string }[];
   organizerIds: string[];
-  cfp: {
-    status: "coming-soon" | "open" | "closed";
-    formUrl: string | null;
-    deadline: string | null;
-    notificationDate: string | null;
-    formats: Localized;
-  };
   agenda: { time: string; title: Localized; speaker: Localized }[];
   agendaConfirmed: boolean;
   recap: {
@@ -71,14 +64,6 @@ export function isPast(event: CommunityEvent, now = Date.now()) {
 export function registrationOpen(event: CommunityEvent, now = Date.now()) {
   return !isPast(event, now) && event.registrationStatus === "open";
 }
-export function cfpOpen(event: CommunityEvent, now = Date.now()) {
-  return (
-    !isPast(event, now) &&
-    event.cfp.status === "open" &&
-    !!event.cfp.formUrl &&
-    (!event.cfp.deadline || Date.parse(event.cfp.deadline) > now)
-  );
-}
 export function eventDate(event: CommunityEvent, locale: Locale) {
   return new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : "en-US", {
     year: "numeric",
@@ -95,11 +80,6 @@ export function eventTime(event: CommunityEvent) {
   });
   const offset = new Intl.DateTimeFormat("en-US", { timeZone: event.timezone, timeZoneName: "shortOffset" }).formatToParts(new Date(event.startAt)).find(p => p.type === "timeZoneName")?.value.replace("GMT", "UTC") || event.timezone;
   return `${f.format(new Date(event.startAt))}–${f.format(new Date(event.endAt))} (${offset})`;
-}
-
-export function cfpState(event: CommunityEvent, now = Date.now()): "open" | "closed" | "coming-soon" {
-  if (isPast(event, now) || event.cfp.status === "closed" || (event.cfp.deadline && Date.parse(event.cfp.deadline) <= now)) return "closed";
-  return cfpOpen(event, now) ? "open" : "coming-soon";
 }
 
 export function getEventRouteParams() {

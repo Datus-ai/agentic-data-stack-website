@@ -1,14 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import fs from "node:fs";
+import { getCfpConfig, isCfpOpen } from "../../lib/cfp.ts";
 import {
   getEvents,
   getEvent,
   getEventRouteParams,
   getCanonicalEventParams,
   isPast,
-  cfpOpen,
-  cfpState,
   registrationOpen,
 } from "../../lib/events.ts";
 const event = getEvents()[0];
@@ -20,28 +18,12 @@ test("confirmed event dates and current registration match supplied Luma event",
   assert.equal(isPast(event, Date.parse(event.endAt)), true);
   assert.equal(registrationOpen(event, Date.parse(event.endAt)), false);
 });
-test("CFP does not open without a real form and closes at its deadline", () => {
-  assert.equal(cfpOpen(event, now), false);
-  const active = {
-    ...event,
-    cfp: {
-      ...event.cfp,
-      status: "open",
-      formUrl: "https://example.com/form",
-      deadline: "2026-11-20T00:00:00Z",
-    },
-  };
-  assert.equal(cfpOpen(active, now), true);
-  assert.equal(
-    cfpOpen({ ...active, cfp: { ...active.cfp, formUrl: null } }, now),
-    false,
-  );
-  assert.equal(cfpOpen(active, Date.parse(active.cfp.deadline)), false);
-  assert.equal(
-    cfpOpen({ ...active, cfp: { ...active.cfp, status: "closed" } }, now),
-    false,
-  );
-  assert.equal(cfpOpen(active, Date.parse(event.endAt)), false);
+test("the single community CFP opens only with a real form, independently of event dates", () => {
+  assert.equal(isCfpOpen(getCfpConfig()), false);
+  assert.equal(isCfpOpen({status:"open",formUrl:null}), false);
+  assert.equal(isCfpOpen({status:"open",formUrl:"https://example.com/form"}), true);
+  assert.equal(isCfpOpen({status:"closed",formUrl:"https://example.com/form"}), false);
+  assert.ok(!("cfp" in event));
 });
 test("events have valid dates, bilingual content and safe public embed URLs", () => {
   const slugs = new Set();
@@ -60,23 +42,13 @@ test("events have valid dates, bilingual content and safe public embed URLs", ()
     for (const key of ["registrationUrl", "registrationEmbed"])
       assert.equal(new URL(e[key]).protocol, "https:");
     assert.equal(new URL(e.registrationEmbed).hostname, "luma.com");
-    if (e.cfp.status === "open") {
-      assert.ok(e.cfp.formUrl);
-      assert.equal(new URL(e.cfp.formUrl).protocol, "https:");
-    }
+
   }
 });
 test("no fabricated recaps or testimonials are present in the launch event", () => {
   assert.equal(event.recap, null);
   assert.deepEqual(event.testimonials, []);
   assert.deepEqual(event.organizerIds, []);
-});
-
-test("expired CFP is closed, never relabeled coming soon", () => {
- const active = {...event, cfp: {...event.cfp, status: "open", formUrl: "https://example.com/form", deadline: "2026-11-20T00:00:00Z"}};
- assert.equal(cfpState(event, now), "coming-soon");
- assert.equal(cfpState(active, now), "open");
- assert.equal(cfpState(active, Date.parse(active.cfp.deadline)), "closed");
 });
 
 test("event URLs are date-free and old event links resolve to their canonical event", () => {

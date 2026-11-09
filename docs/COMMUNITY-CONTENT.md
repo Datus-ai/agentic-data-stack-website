@@ -11,20 +11,22 @@ English URLs are retained. Chinese pages live at `/zh`. Next.js exports static p
 
 ## Add or update an event
 
-Edit `content/events/*.json`. Use the Hangzhou event as the template. Use a city/year slug, such as `hangzhou/2026`, so the canonical event URL is `/events/hangzhou/2026` and its CFP is `/cfp/hangzhou/2026`. Do not include a month, day, or `meetup` in the URL. Keep published slugs stable; `previousSlugs` preserves legacy single-segment URLs as redirects. Only canonical URLs appear in the sitemap. If more than one event is held in the same city and year, agree on a distinct additional route before publishing; do not overwrite the existing event. Supply English and Chinese text. Set ISO start/end timestamps including an offset or `Z`, plus an IANA timezone. `organizerIds` contains only confirmed per-event organization IDs from `lib/community.ts`; co-initiators are not automatically event organizers. `hosts` reflects named event hosts.
+Edit `content/events/*.json`. Use the Hangzhou event as the template. Use a city/year slug, such as `hangzhou/2026`, so the canonical event URL is `/events/hangzhou/2026` and all proposal links point to the shared `/cfp` page. Do not include a month, day, or `meetup` in the URL. Keep published slugs stable; `previousSlugs` preserves legacy single-segment URLs as redirects. Only canonical URLs appear in the sitemap. If more than one event is held in the same city and year, agree on a distinct additional route before publishing; do not overwrite the existing event. Supply English and Chinese text. Set ISO start/end timestamps including an offset or `Z`, plus an IANA timezone. `organizerIds` contains only confirmed per-event organization IDs from `lib/community.ts`; co-initiators are not automatically event organizers. `hosts` reflects named event hosts.
 
 Luma calendar is configured in `lib/community.ts`; per-event embeds and direct links live in the event file. Both embed types are responsive, have accessible titles, and always show a direct-open fallback. Registrations, approval, waitlists and confirmation are owned by Luma; the website does not claim successful registration from iframe load events. Embedded external UI follows Luma's own language settings.
 
 ## Enable the Feishu CFP when ready
 
-1. Set `cfp.formUrl` to the public HTTPS form link (never a private responses-table link).
-2. Set `cfp.deadline` to the confirmed ISO timestamp with timezone, and `notificationDate` to the communicated notification date.
-3. Update `cfp.formats` in both languages; set `cfp.status` to `open`.
-4. Verify the live form as a logged-out visitor, on desktop/mobile and with the intended international audience. Some forms block third-party embedding. The visible direct-open link remains available.
-5. Submit a real test entry with the owner's consent; verify it in Feishu and remove the test record there.
-6. When the call closes, stop collection in Feishu, set status to `closed`, and deploy the content update.
+The website has one shared CFP page at `/cfp` (Chinese: `/zh/cfp`). It is independent of event dates and does not open or close per event. Old per-event CFP addresses redirect to the shared page and are excluded from the sitemap.
 
-Until a real form is configured, the website shows “Coming soon” and does not render a dummy form. Add bilingual field labels inside Feishu; switching website language does not translate third-party forms.
+1. Edit `content/cfp.json`: set `formUrl` to the public HTTPS Feishu form link, never the response table URL; set `status` to `open` when ready.
+2. In Feishu, add an **optional** planned-event choice. Respondents may choose a planned event or leave it blank for future scheduling. Do not make that field required.
+3. Maintain the planned-event options in Feishu; the website does not duplicate that selection or pass an event requirement to the form.
+4. Verify the form logged out, on desktop/mobile and for the intended international audience. Third-party embedding may be restricted; a direct-open link is always visible.
+5. After review, confirm scheduling, session formats and publication/recording consent with the speaker.
+6. To pause submissions, set `status` to `closed`, stop collection in Feishu and rebuild. Until the real form is ready, use `coming-soon` with `formUrl: null`.
+
+Main navigation groups Blog and Resources under Learn / 学习资源. Their original page addresses remain unchanged. Newsletter remains in the footer and hero.
 
 ## Recaps and quotes
 
@@ -46,7 +48,7 @@ Recording, slides and code links are optional. Add quotes to `testimonials` only
 
 Core community copy: `lib/community.ts`. Chinese published articles: `content/zh/blog`. Chinese newsletter editorial versions: `content/zh/newsletter`. The existing unpublished definition article remains a draft and is not linked from the homepage. Chinese resource summaries and integration metadata are available; extended vendor feature lists remain in the linked English technical reference. Review new translations before publishing. Newsletter signup requires the existing `NEXT_PUBLIC_BUTTONDOWN_USERNAME` deployment setting.
 
-Every content change requires a new static build. Date-derived archive and CFP states are evaluated during that build. Publish an update or manually run the existing deployment workflow when an event ends or a CFP deadline is reached; no scheduled workflow has been added. Luma independently enforces live registration availability. Do not rely solely on static website state to close a form.
+Every content change requires a new static build. Date-derived archive and CFP states are evaluated during that build. Publish an update or manually run the existing deployment workflow when an event ends or the shared CFP status changes; no scheduled workflow has been added. Luma independently enforces live registration availability. Do not rely solely on static website state to close a form.
 
 ## Remaining owner-provided material
 
