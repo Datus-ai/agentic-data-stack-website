@@ -1,20 +1,25 @@
 import { notFound } from "next/navigation";
 import { Cfp } from "@/components/community/Pages";
-import { getEvents, getEvent } from "@/lib/events";
+import { getEventRouteParams, getEvent } from "@/lib/events";
+import EventUrlRedirect from "@/components/community/EventUrlRedirect";
+import { localPath } from "@/lib/community";
 import { pageMetadata } from "@/lib/community";
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return getEvents().map((e) => ({ slug: e.slug }));
+  return getEventRouteParams();
 }
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const e = getEvent(slug);
-  return e ? pageMetadata(e.title, e.description, `/cfp/${slug}`, "en") : {};
+  if (!e) return {};
+  const metadata = pageMetadata(e.title, e.description, `/cfp/${e.slug}`, "en");
+  return slug === e.slug ? metadata : { ...metadata, robots: { index: false, follow: true } };
 }
 export default async function Page({ params }: Props) {
   const { slug } = await params;
   const event = getEvent(slug);
   if (!event) notFound();
+  if (slug !== event.slug) return <EventUrlRedirect to={localPath(`/cfp/${event.slug}`, "en")} locale="en" />;
   return <Cfp event={event} locale="en" />;
 }

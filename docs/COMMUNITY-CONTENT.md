@@ -11,7 +11,7 @@ English URLs are retained. Chinese pages live at `/zh`. Next.js exports static p
 
 ## Add or update an event
 
-Edit `content/events/*.json`. Use the Hangzhou event as the template. Keep its slug stable. Supply English and Chinese text. Set ISO start/end timestamps including an offset or `Z`, plus an IANA timezone. `organizerIds` contains only confirmed per-event organization IDs from `lib/community.ts`; co-initiators are not automatically event organizers. `hosts` reflects named event hosts.
+Edit `content/events/*.json`. Use the Hangzhou event as the template. Use a city/year slug, such as `hangzhou/2026`, so the canonical event URL is `/events/hangzhou/2026` and its CFP is `/cfp/hangzhou/2026`. Do not include a month, day, or `meetup` in the URL. Keep published slugs stable; `previousSlugs` preserves legacy single-segment URLs as redirects. Only canonical URLs appear in the sitemap. If more than one event is held in the same city and year, agree on a distinct additional route before publishing; do not overwrite the existing event. Supply English and Chinese text. Set ISO start/end timestamps including an offset or `Z`, plus an IANA timezone. `organizerIds` contains only confirmed per-event organization IDs from `lib/community.ts`; co-initiators are not automatically event organizers. `hosts` reflects named event hosts.
 
 Luma calendar is configured in `lib/community.ts`; per-event embeds and direct links live in the event file. Both embed types are responsive, have accessible titles, and always show a direct-open fallback. Registrations, approval, waitlists and confirmation are owned by Luma; the website does not claim successful registration from iframe load events. Embedded external UI follows Luma's own language settings.
 

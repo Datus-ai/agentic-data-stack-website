@@ -3,6 +3,7 @@ import path from "node:path";
 import type { Localized, Locale } from "./community";
 export interface CommunityEvent {
   slug: string;
+  previousSlugs?: string[];
   title: Localized;
   description: Localized;
   startAt: string;
@@ -62,7 +63,7 @@ export function getEvents(): CommunityEvent[] {
     .sort((a, b) => a.startAt.localeCompare(b.startAt));
 }
 export function getEvent(slug: string) {
-  return getEvents().find((e) => e.slug === slug);
+  return getEvents().find((e) => e.slug === slug || e.previousSlugs?.includes(slug));
 }
 export function isPast(event: CommunityEvent, now = Date.now()) {
   return Date.parse(event.endAt) <= now;
@@ -99,4 +100,15 @@ export function eventTime(event: CommunityEvent) {
 export function cfpState(event: CommunityEvent, now = Date.now()): "open" | "closed" | "coming-soon" {
   if (isPast(event, now) || event.cfp.status === "closed" || (event.cfp.deadline && Date.parse(event.cfp.deadline) <= now)) return "closed";
   return cfpOpen(event, now) ? "open" : "coming-soon";
+}
+
+export function getEventRouteParams() {
+  return getEvents().flatMap(event => (event.previousSlugs || []).map(slug => ({ slug })));
+}
+
+export function getCanonicalEventParams() {
+  return getEvents().map(event => {
+    const [slug, year] = event.slug.split("/");
+    return { slug, year };
+  });
 }

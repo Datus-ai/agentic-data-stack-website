@@ -3,6 +3,9 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import {
   getEvents,
+  getEvent,
+  getEventRouteParams,
+  getCanonicalEventParams,
   isPast,
   cfpOpen,
   cfpState,
@@ -45,7 +48,7 @@ test("events have valid dates, bilingual content and safe public embed URLs", ()
   for (const e of getEvents()) {
     assert.ok(!slugs.has(e.slug));
     slugs.add(e.slug);
-    assert.match(e.slug, /^[a-z0-9-]+$/);
+    assert.match(e.slug, /^[a-z0-9-]+\/\d{4}$/);
     assert.ok(Date.parse(e.endAt) > Date.parse(e.startAt));
     assert.doesNotThrow(
       () => new Intl.DateTimeFormat("en", { timeZone: e.timezone }),
@@ -74,4 +77,16 @@ test("expired CFP is closed, never relabeled coming soon", () => {
  assert.equal(cfpState(event, now), "coming-soon");
  assert.equal(cfpState(active, now), "open");
  assert.equal(cfpState(active, Date.parse(active.cfp.deadline)), "closed");
+});
+
+test("event URLs are date-free and old event links resolve to their canonical event", () => {
+  for (const e of getEvents()) {
+    assert.doesNotMatch(e.slug, /\d{4}-\d{2}-\d{2}/);
+    for (const old of e.previousSlugs || []) {
+      assert.equal(getEvent(old)?.slug, e.slug);
+      assert.ok(getEventRouteParams().some(p => p.slug === old));
+    }
+  }
+  assert.equal(getEvent("hangzhou/2026")?.lumaId, "evt-dwoJFiooN0NPAJE");
+  assert.deepEqual(getCanonicalEventParams(), [{slug:"hangzhou",year:"2026"}]);
 });

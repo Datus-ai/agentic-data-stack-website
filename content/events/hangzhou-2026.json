@@ -1,5 +1,5 @@
 {
-  "slug": "hangzhou-2026-11-28",
+  "slug": "hangzhou/2026",
   "title": {
     "en": "Agentic Data Stack Meetup · Hangzhou",
     "zh": "Agentic Data Stack 杭州 Meetup"
@@ -11,12 +11,18 @@
   "startAt": "2026-11-28T05:30:00.000Z",
   "endAt": "2026-11-28T09:30:00.000Z",
   "timezone": "Asia/Shanghai",
-  "city": { "en": "Hangzhou, China", "zh": "中国 · 杭州" },
+  "city": {
+    "en": "Hangzhou, China",
+    "zh": "中国 · 杭州"
+  },
   "venue": {
     "en": "Hangzhou · Venue details will be shared on Luma.",
     "zh": "杭州 · 具体场地请关注 Luma 活动页。"
   },
-  "language": { "en": "Chinese", "zh": "中文" },
+  "language": {
+    "en": "Chinese",
+    "zh": "中文"
+  },
   "registrationStatus": "open",
   "registrationUrl": "https://luma.com/event/evt-dwoJFiooN0NPAJE",
   "registrationEmbed": "https://luma.com/embed/event/evt-dwoJFiooN0NPAJE/simple",
@@ -26,8 +32,14 @@
     "zh": "免费参加，报名需经主办方审核。"
   },
   "hosts": [
-    { "name": "Joanna He", "url": "https://luma.com/joannahe" },
-    { "name": "NebulaGraph", "url": "https://luma.com/NebulaGraph" }
+    {
+      "name": "Joanna He",
+      "url": "https://luma.com/joannahe"
+    },
+    {
+      "name": "NebulaGraph",
+      "url": "https://luma.com/NebulaGraph"
+    }
   ],
   "organizerIds": [],
   "cfp": {
@@ -55,5 +67,8 @@
   ],
   "agendaConfirmed": false,
   "recap": null,
-  "testimonials": []
+  "testimonials": [],
+  "previousSlugs": [
+    "hangzhou-2026-11-28"
+  ]
 }
