@@ -175,3 +175,9 @@ a, button, input, summary { -webkit-tap-highlight-color: transparent; }
 .organization-name { font-size:22px; color:#f3f4f6; letter-spacing:-.03em; margin-left:10px; }
 .founder-datus { background:#f3f4f6; padding:12px 15px; border-radius:5px; width:210px; max-width:100%; }
 .founder-datus img { max-height:40px; }
+
+.hero-newsletter { max-width: 480px; margin-top: 30px; padding-top: 25px; border-top: 1px solid #302b40; }
+.community-main .hero-newsletter h2 { font-size: 15px; letter-spacing: 0; font-weight: 550; }
+.hero-newsletter > p { color: #929cb1; font-size: 12px; line-height: 1.8; margin: 7px 0 14px; }
+.compact-subscribe { display: flex; flex-wrap: wrap; gap: 8px; }
+.compact-subscribe .subscribe-message { flex-basis: 100%; line-height: 1.8; }

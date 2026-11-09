@@ -79,7 +79,7 @@ export default function SubscribeForm({
 
   if (compact) {
     return (
-      <form onSubmit={handleSubmit} className="flex gap-2">
+      <form onSubmit={handleSubmit} className="compact-subscribe">
         <input
           type="email"
           aria-label={zh ? "邮箱地址" : "Email address"}
@@ -90,7 +90,7 @@ export default function SubscribeForm({
           }}
           placeholder="your@email.com"
           required
-          className="h-10 flex-1 rounded-lg border border-card-border bg-card-bg px-3 text-sm text-foreground placeholder:text-muted/60 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-colors"
+          className="h-10 min-w-0 flex-1 rounded-lg border border-card-border bg-card-bg px-3 text-sm text-foreground placeholder:text-muted/60 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-colors"
         />
         <button
           type="submit"
@@ -100,7 +100,7 @@ export default function SubscribeForm({
           {status === "loading" ? "..." : zh ? "订阅" : "Subscribe"}
         </button>
         {(status === "success" || status === "error") && (
-          <span className="self-center text-xs text-green-400">{message}</span>
+          <p role="status" className={`subscribe-message text-xs ${status === "error" ? "text-amber-300" : "text-green-400"}`}>{message}</p>
         )}
       </form>
     );

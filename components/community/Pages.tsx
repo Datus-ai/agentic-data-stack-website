@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import SubscribeForm from "@/components/newsletter/SubscribeForm";
 import Footer from "@/components/Footer";
 import LumaEmbed from "./LumaEmbed";
 import {
@@ -311,6 +312,11 @@ export function Home({ locale }: { locale: Locale }) {
               >
                 {zh ? "分享你的实践" : "Share your experience"} →
               </Link>
+            </div>
+            <div className="hero-newsletter">
+              <h2>{zh ? "订阅社区 Newsletter" : "Stay in the loop"}</h2>
+              <p>{zh ? "获取活动预告、技术分享与社区精选。" : "Get upcoming events, technical talks, and community highlights."}</p>
+              <SubscribeForm compact locale={locale} />
             </div>
             <p className="hero-principles">
               {zh
