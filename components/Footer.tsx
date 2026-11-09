@@ -15,27 +15,29 @@ export default function Footer() {
   return (
     <footer className="community-footer">
       <div className="site-width">
-        <div className="footer-top">
-          <div>
-            <p className="eyebrow">STAY IN THE LOOP</p>
-            <h2>
-              {zh ? "保持交流，持续探索。" : "Keep the conversation going."}
-            </h2>
-            <p>
-              {zh
-                ? "关注社区活动、技术分享与实践总结。"
-                : "Follow community meetups, technical talks, and lessons from practice."}
-            </p>
+        <section className="footer-participate" aria-labelledby="footer-participate-title">
+          <p className="eyebrow">{zh ? "参与社区" : "TAKE PART"}</p>
+          <h2 id="footer-participate-title">{zh ? "下一步，一起参与。" : "Find your way into the community."}</h2>
+          <div className="footer-actions">
+            <article className="footer-action-card">
+              <p className="eyebrow">{zh ? "面向讲者 / FOR SPEAKERS" : "FOR SPEAKERS"}</p>
+              <h3>{zh ? "分享你的实践与经验。" : "Share what you've learned."}</h3>
+              <p>{zh ? "带来真实架构、落地经验与值得讨论的问题，成为下一场活动的分享者。" : "Bring your architecture, production lessons, and open questions to a future community event."}</p>
+              <div className="button-row">
+                <Link className="button" href={localPath("/cfp", locale)}>{zh ? "查看分享征集" : "Explore Call for Proposals"} ↗</Link>
+              </div>
+            </article>
+            <article className="footer-action-card">
+              <p className="eyebrow">{zh ? "面向专业人士 / FOR PROFESSIONALS" : "FOR PROFESSIONALS"}</p>
+              <h3>{zh ? "持续学习，连接同行。" : "Keep learning. Meet your peers."}</h3>
+              <p>{zh ? "订阅社区精选，或参加下一场活动，与 Data Agent 和数据基础设施领域的实践者交流。" : "Get community highlights in your inbox or join an upcoming event with Data Agent and data infrastructure practitioners."}</p>
+              <div className="button-row">
+                <Link className="button" href={localPath("/newsletter", locale)}>{zh ? "订阅 Newsletter" : "Subscribe to the newsletter"} →</Link>
+                <Link className="button button-outline" href={`${localPath("/events", locale)}#upcoming`}>{zh ? "查看近期活动" : "View upcoming events"} ↗</Link>
+              </div>
+            </article>
           </div>
-          <a
-            className="button"
-            href={calendarUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {zh ? "关注 Luma 活动日历 ↗" : "Follow our Luma calendar ↗"}
-          </a>
-        </div>
+        </section>
         <div className="footer-bottom">
           <div>
             <Link className="brand" href={localPath("/", locale)}>
@@ -60,6 +62,7 @@ export default function Footer() {
                 {label}
               </Link>
             ))}
+            <a href={calendarUrl} target="_blank" rel="noopener noreferrer">Luma ↗</a>
             <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">
               LinkedIn ↗
             </a>

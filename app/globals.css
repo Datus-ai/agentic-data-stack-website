@@ -216,3 +216,18 @@ a, button, input, summary { -webkit-tap-highlight-color: transparent; }
   .home-upcoming .event-card-body h3 { font-size: 18px; }
   .home-upcoming .meta-line { gap: 7px 10px; }
 }
+
+.footer-participate { padding-bottom: 48px; border-bottom: 1px solid var(--community-line); }
+.footer-participate > .eyebrow { margin-bottom: 14px; }
+.footer-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 32px; }
+.footer-action-card { border: 1px solid #343044; border-radius: 10px; padding: 30px; background: linear-gradient(130deg, #171225, #0c1120); display: flex; flex-direction: column; }
+.footer-action-card .eyebrow { margin-bottom: 18px; font-size: 10px; }
+.footer-action-card h3 { font-size: 24px; font-weight: 550; letter-spacing: -.02em; line-height: 1.35; }
+.footer-action-card > p:not(.eyebrow) { color: #a3acc0; font-size: 14px; line-height: 1.85; margin: 14px 0 26px; max-width: 460px; }
+.footer-action-card .button-row { margin-top: auto; gap: 10px; }
+.footer-action-card .button { padding: 12px 15px; font-size: 12px; gap: 10px; }
+@media (max-width: 760px) {
+  .footer-actions { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
+  .footer-action-card { padding: 25px; }
+  .footer-action-card h3 { font-size: 22px; }
+}
