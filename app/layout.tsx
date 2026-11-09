@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import MotionEffects from "@/components/community/MotionEffects";
 import Language from "@/components/community/Language";
 import Analytics from "@/components/Analytics";
 import StructuredData from "@/components/StructuredData";
@@ -89,6 +90,7 @@ export default function RootLayout({
           Skip to content / 跳至内容
         </a>
         <Language />
+        <MotionEffects />
         <Analytics />
         {children}
       </body>

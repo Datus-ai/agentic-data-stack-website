@@ -252,3 +252,40 @@ a, button, input, summary { -webkit-tap-highlight-color: transparent; }
   .nav-learn-toggle { width: 100%; padding: 12px 0; justify-content: space-between; }
   .nav-learn-menu { position: static; min-width: 0; margin: 0 0 6px; box-shadow: none; }
 }
+
+/* Progressive enhancement: content is visible without JavaScript. */
+[data-scroll-reveal] { transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.65,.3,1); }
+[data-scroll-reveal="pending"] { opacity: 0; transform: translateY(22px); }
+[data-scroll-reveal="shown"] { opacity: 1; transform: translateY(0); }
+[data-scroll-item] { transition: opacity 520ms ease var(--reveal-delay, 0ms), transform 600ms cubic-bezier(.2,.65,.3,1) var(--reveal-delay, 0ms), border-color 180ms ease; }
+[data-scroll-reveal="pending"] [data-scroll-item] { opacity: 0; transform: translateY(12px); }
+[data-scroll-reveal="shown"] [data-scroll-item] { opacity: 1; transform: translateY(0); }
+.home-hero .hero-visual { animation: stack-float 9s ease-in-out infinite; }
+.home-hero .stack-node { animation: stack-glow 7s ease-in-out infinite; }
+.home-hero .node-context { animation-delay: 1.2s; }
+.home-hero .node-tools { animation-delay: 2.4s; }
+.stack-connector .flow-down, .stack-connector .flow-up { display: inline-block; animation: flow-down 2.8s ease-in-out infinite; }
+.stack-connector .flow-up { animation-name: flow-up; animation-delay: .7s; }
+@keyframes stack-float {
+  0%,100% { transform: perspective(1100px) rotateY(-5deg) translateY(0); }
+  50% { transform: perspective(1100px) rotateY(-4deg) translateY(-5px); }
+}
+@keyframes stack-glow {
+  0%,65%,100% { box-shadow: 0 0 0 0 #ac8cdf00, inset 0 0 0 #ac8cdf00; }
+  25% { box-shadow: 0 0 22px -8px #ac8cdf55, inset 0 0 15px #ac8cdf09; }
+}
+@keyframes flow-down {
+  0%,100% { opacity: .45; transform: translateY(-2px); }
+  50% { opacity: 1; transform: translateY(2px); }
+}
+@keyframes flow-up {
+  0%,100% { opacity: .45; transform: translateY(2px); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll-reveal], [data-scroll-item] { opacity: 1 !important; transform: none !important; }
+}
+@media print {
+  [data-scroll-reveal], [data-scroll-item] { opacity: 1 !important; transform: none !important; }
+  .hero-visual, .stack-node, .stack-connector span { animation: none !important; }
+}

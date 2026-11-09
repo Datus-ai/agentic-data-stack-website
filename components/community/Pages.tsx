@@ -319,11 +319,11 @@ export function Home({ locale }: { locale: Locale }) {
             <div className="stack-node node-agent">
               DATA AGENT<span>REASON · PLAN · ACT</span>
             </div>
-            <div className="stack-connector">↓ ↑</div>
+            <div className="stack-connector"><span className="flow-down">↓</span><span className="flow-up">↑</span></div>
             <div className="stack-node node-context">
               CONTEXT<span>SEMANTICS · KNOWLEDGE · METADATA</span>
             </div>
-            <div className="stack-connector">↓ ↑</div>
+            <div className="stack-connector"><span className="flow-down">↓</span><span className="flow-up">↑</span></div>
             <div className="stack-node node-tools">
               INFRASTRUCTURE<span>CATALOG · LAKEHOUSE · ENGINE · PIPELINE</span>
             </div>
