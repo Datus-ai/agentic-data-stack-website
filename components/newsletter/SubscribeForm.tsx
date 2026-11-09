@@ -90,12 +90,12 @@ export default function SubscribeForm({
           }}
           placeholder="your@email.com"
           required
-          className="h-10 min-w-0 flex-1 rounded-lg border border-card-border bg-card-bg px-3 text-sm text-foreground placeholder:text-muted/60 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-colors"
+          className="subscribe-input min-w-0 flex-1"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="h-10 shrink-0 rounded-lg bg-gradient-to-r from-violet-600 to-blue-500 px-4 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+          className="button shrink-0"
         >
           {status === "loading" ? "..." : zh ? "订阅" : "Subscribe"}
         </button>
@@ -148,12 +148,12 @@ export default function SubscribeForm({
             }}
             placeholder="you@company.com"
             required
-            className="h-12 flex-1 rounded-xl border border-card-border bg-background px-4 text-foreground placeholder:text-muted/60 focus:border-violet-500/50 focus:outline-none focus:ring-2 focus:ring-violet-500/20 transition-all"
+            className="subscribe-input min-w-0 flex-1"
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="h-12 shrink-0 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 px-6 font-medium text-white shadow-lg shadow-violet-500/20 transition-all hover:shadow-xl hover:shadow-violet-500/30 hover:brightness-110 disabled:opacity-50"
+            className="button shrink-0"
           >
             {status === "loading"
               ? zh

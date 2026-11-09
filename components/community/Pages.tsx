@@ -513,7 +513,7 @@ export function CfpBanner({ locale }: { locale: Locale }) {
           </div>
           <Link
             href={localPath("/cfp", locale)}
-            className="button button-light"
+            className="button"
           >
             {zh ? "查看征集安排" : "Explore calls & guidelines"} ↗
           </Link>
