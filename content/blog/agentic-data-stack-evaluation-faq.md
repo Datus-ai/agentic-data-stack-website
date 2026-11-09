@@ -38,7 +38,7 @@ The **Agentic Data Stack** builds on top of MDS but shifts the primary operator 
 | **Knowledge** | Docs, wikis, tribal knowledge | [Agent skills](/resources/data-agents), machine-readable specs |
 | **Orchestration** | Scheduled DAGs | Goal-driven missions with [adaptive pipelines](/resources/etl-elt-tools) |
 
-The MDS gave us the building blocks. The Agentic Data Stack makes those blocks **operable by machines**. For a deeper introduction, see [What Is the Agentic Data Stack?](/blog/what-is-agentic-data-stack).
+The MDS gave us the building blocks. The Agentic Data Stack makes those blocks **operable by machines**. For a deeper introduction, see [What Is the Agentic Data Stack?](/about).
 
 ### Q: Is having a CLI/API enough to be agent-ready?
 
@@ -158,7 +158,7 @@ The future of data platforms isn't more features or prettier UIs. It's **systems
 
 **Want to see the full framework?** Read the complete [Agentic Data Stack Evaluation Framework](/blog/agentic-data-stack-evaluation-framework) for decision-makers and platform architects.
 
-**New to the concept?** Start with [What Is the Agentic Data Stack?](/blog/what-is-agentic-data-stack) for a high-level introduction.
+**New to the concept?** Start with [What Is the Agentic Data Stack?](/about) for a high-level introduction.
 
 **Explore the tooling landscape:** Browse our [Resources](/resources) hub covering [catalog services](/resources/catalog-service), [lake formats](/resources/lake-format), [SQL engines](/resources/sql-engine), [semantic layers](/resources/semantic-layer), [ETL/ELT tools](/resources/etl-elt-tools), [BI tools](/resources/bi-tools), and [data agents](/resources/data-agents).
 

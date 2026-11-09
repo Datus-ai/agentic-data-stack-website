@@ -1,0 +1,59 @@
+{
+  "slug": "hangzhou-2026-11-28",
+  "title": {
+    "en": "Agentic Data Stack Meetup · Hangzhou",
+    "zh": "Agentic Data Stack 杭州 Meetup"
+  },
+  "description": {
+    "en": "Our first in-person meetup brings developers and practitioners together to discuss Data Agents, data infrastructure, and the challenges of building real systems.",
+    "zh": "社区首次线下交流将从杭州开始。邀请开发者与企业实践者围绕 Data Agent 和数据基础设施的实际问题展开分享与讨论，认识共同建设社区的伙伴。"
+  },
+  "startAt": "2026-11-28T05:30:00.000Z",
+  "endAt": "2026-11-28T09:30:00.000Z",
+  "timezone": "Asia/Shanghai",
+  "city": { "en": "Hangzhou, China", "zh": "中国 · 杭州" },
+  "venue": {
+    "en": "Hangzhou · Venue details will be shared on Luma.",
+    "zh": "杭州 · 具体场地请关注 Luma 活动页。"
+  },
+  "language": { "en": "Chinese", "zh": "中文" },
+  "registrationStatus": "open",
+  "registrationUrl": "https://luma.com/event/evt-dwoJFiooN0NPAJE",
+  "registrationEmbed": "https://luma.com/embed/event/evt-dwoJFiooN0NPAJE/simple",
+  "lumaId": "evt-dwoJFiooN0NPAJE",
+  "registrationNote": {
+    "en": "Free to attend. Registration is subject to host approval.",
+    "zh": "免费参加，报名需经主办方审核。"
+  },
+  "hosts": [
+    { "name": "Joanna He", "url": "https://luma.com/joannahe" },
+    { "name": "NebulaGraph", "url": "https://luma.com/NebulaGraph" }
+  ],
+  "organizerIds": [],
+  "cfp": {
+    "status": "coming-soon",
+    "formUrl": null,
+    "deadline": null,
+    "notificationDate": null,
+    "formats": {
+      "en": "Session formats and durations will be announced with the call.",
+      "zh": "分享形式与时长将在征集开放时公布。"
+    }
+  },
+  "agenda": [
+    {
+      "time": "13:30–14:10",
+      "title": {
+        "en": "Agentic Data Stack: technical evolution & why this community (tentative)",
+        "zh": "Agentic Data Stack：技术演进与社区初衷（暂定）"
+      },
+      "speaker": {
+        "en": "Zhao Heng · DatusAI (tentative)",
+        "zh": "赵恒 · DatusAI（暂定）"
+      }
+    }
+  ],
+  "agendaConfirmed": false,
+  "recap": null,
+  "testimonials": []
+}

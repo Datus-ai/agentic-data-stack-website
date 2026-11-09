@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!category) return {};
 
   return {
+    alternates: { canonical: `/resources/${slug}`, languages: { en: `/resources/${slug}`, "zh-CN": `/zh${`/resources/${slug}`}` } },
     title: `${category.title} — Agentic Data Stack Resources`,
     description: category.description,
     openGraph: {
@@ -50,7 +51,7 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-16">
+      <main id="main-content" className="min-h-screen pt-24 pb-16">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
 
   return {
+    alternates: { canonical: `/blog/${slug}`, languages: { en: `/blog/${slug}`, "zh-CN": `/zh${`/blog/${slug}`}` } },
     title: `${post.frontmatter.title} — Agentic Data Stack Blog`,
     description: post.frontmatter.description,
     keywords: post.frontmatter.keywords,
@@ -83,7 +84,7 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-16">
+      <main id="main-content" className="min-h-screen pt-24 pb-16">
         {post.isDraft && (
           <div className="mx-auto mb-6 max-w-6xl px-6">
             <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-center text-sm font-medium text-amber-400">

@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!issue) return {};
 
   return {
+    alternates: { canonical: `/newsletter/${slug}`, languages: { en: `/newsletter/${slug}`, "zh-CN": `/zh${`/newsletter/${slug}`}` } },
     title: `${issue.frontmatter.title} — Agentic Data Stack`,
     description: issue.frontmatter.description,
     openGraph: {
@@ -57,7 +58,7 @@ export default async function NewsletterIssuePage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-16">
+      <main id="main-content" className="min-h-screen pt-24 pb-16">
         <article className="mx-auto max-w-3xl px-6">
           {/* Header */}
           <header className="pb-8 border-b border-card-border">

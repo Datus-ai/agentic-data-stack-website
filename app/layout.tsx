@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Language from "@/components/community/Language";
 import Analytics from "@/components/Analytics";
 import StructuredData from "@/components/StructuredData";
 
@@ -15,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Agentic Data Stack: Free Tools & Architecture Guides",
+  title: "Agentic Data Stack | Community, Events & Architecture",
   description:
-    "Build AI-ready data systems with 27+ free, open-source tools. Learn agentic architecture patterns, compare components, and deploy intelligent data stacks today.",
+    "An open, vendor-neutral, practice-driven community exploring Data Agents and next-generation data infrastructure. Join meetups, share experience, and explore architecture.",
   keywords: [
     "agentic data stack",
     "autonomous data engineering",
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://agenticdatastack.org",
-    title: "Agentic Data Stack: Free Tools & Architecture Guides",
+    title: "Agentic Data Stack | Community, Events & Architecture",
     description:
       "Build AI-ready data systems with 27+ free, open-source tools. Learn agentic architecture patterns, compare components like MCP catalogs, lake formats, and SQL engines. Vendor-neutral and practice-driven.",
     siteName: "Agentic Data Stack",
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agentic Data Stack: Free Tools & Architecture Guides",
+    title: "Agentic Data Stack | Community, Events & Architecture",
     description:
       "Build AI-ready data systems with 27+ free tools. Learn agentic architecture, compare components, and deploy intelligent stacks. Vendor-neutral & practice-driven.",
     images: ["/images/twitter-card.png"],
@@ -84,6 +85,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <a className="skip-link" href="#main-content">
+          Skip to content / 跳至内容
+        </a>
+        <Language />
         <Analytics />
         {children}
       </body>

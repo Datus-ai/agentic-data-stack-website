@@ -1,116 +1,74 @@
 "use client";
-
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-
-const navLinks = [
-  { label: "Resources", href: "/resources" },
-  { label: "Newsletter", href: "/newsletter" },
-  { label: "Blog", href: "/blog" },
-];
-
+import { localPath, type Locale } from "@/lib/community";
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  function isActive(href: string) {
-    return pathname.startsWith(href);
-  }
-
+  const locale: Locale =
+    pathname === "/zh" || pathname.startsWith("/zh/") ? "zh" : "en";
+  const base = pathname.replace(/^\/zh(?=\/|$)/, "") || "/";
+  const [open, setOpen] = useState(false);
+  const links = [
+    ["/events", "Events", "活动"],
+    ["/blog", "Blog", "博客"],
+    ["/resources", "Resources", "资源"],
+    ["/about", "About", "关于社区"],
+  ];
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-card-border shadow-lg shadow-black/10"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight">
-          <img src="/images/logo.png" alt="Agentic Data Stack" className="h-8 w-8 rounded-md" />
-          <span className="hidden sm:inline">Agentic Data Stack</span>
+    <header className="site-header">
+      <nav
+        className="site-nav"
+        aria-label={locale === "zh" ? "主导航" : "Main navigation"}
+      >
+        <Link href={localPath("/", locale)} className="brand">
+          <img src="/images/logo.png" alt="" width="32" height="32" />
+          <span>Agentic Data Stack</span>
         </Link>
-
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
+        <button
+          className="menu-toggle"
+          aria-expanded={open}
+          aria-controls="main-menu"
+          onClick={() => setOpen(!open)}
+        >
+          {open
+            ? locale === "zh"
+              ? "关闭"
+              : "Close"
+            : locale === "zh"
+              ? "菜单"
+              : "Menu"}
+        </button>
+        <div id="main-menu" className={`nav-items ${open ? "is-open" : ""}`}>
+          {links.map(([href, en, zh]) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm transition-colors hover:text-foreground ${
-                isActive(link.href)
-                  ? "text-foreground font-medium"
-                  : "text-muted"
-              }`}
+              key={href}
+              href={localPath(href, locale)}
+              aria-current={base.startsWith(href) ? "page" : undefined}
+              onClick={() => setOpen(false)}
             >
-              {link.label}
+              {locale === "zh" ? zh : en}
             </Link>
           ))}
           <Link
-            href="/newsletter"
-            className="rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            href={localPath(base, locale === "zh" ? "en" : "zh")}
+            hrefLang={locale === "zh" ? "en" : "zh-CN"}
+            lang={locale === "zh" ? "en" : "zh-CN"}
+            onClick={() => setOpen(false)}
+            className="language-link"
           >
-            Subscribe
+            {locale === "zh" ? "EN" : "中文"}
+          </Link>
+          <Link
+            href={localPath("/cfp", locale)}
+            onClick={() => setOpen(false)}
+            className="button button-small"
+          >
+            {locale === "zh" ? "征集分享" : "Call for Proposals"}
+            <span aria-hidden="true">↗</span>
           </Link>
         </div>
-
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex flex-col gap-1.5 md:hidden"
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`block h-0.5 w-6 bg-foreground transition-transform ${
-              mobileOpen ? "translate-y-2 rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-foreground transition-opacity ${
-              mobileOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-foreground transition-transform ${
-              mobileOpen ? "-translate-y-2 -rotate-45" : ""
-            }`}
-          />
-        </button>
-      </div>
-
-      {mobileOpen && (
-        <div className="border-t border-card-border bg-background/95 backdrop-blur-lg md:hidden">
-          <div className="flex flex-col gap-4 px-6 py-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className={`text-sm transition-colors hover:text-foreground ${
-                  isActive(link.href)
-                    ? "text-foreground font-medium"
-                    : "text-muted"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/newsletter"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 py-2 text-center text-sm font-medium text-white"
-            >
-              Subscribe
-            </Link>
-          </div>
-        </div>
-      )}
-    </nav>
+      </nav>
+    </header>
   );
 }
