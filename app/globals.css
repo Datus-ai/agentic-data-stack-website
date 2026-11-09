@@ -231,3 +231,8 @@ a, button, input, summary { -webkit-tap-highlight-color: transparent; }
   .footer-action-card { padding: 25px; }
   .footer-action-card h3 { font-size: 22px; }
 }
+
+.footer-newsletter { margin-top: auto; }
+.footer-subscribe-label { font-size: 12px; color: #c1bad0; margin-bottom: 10px; }
+.footer-newsletter .compact-subscribe { width: 100%; }
+.footer-newsletter > .button { margin-top: 16px; }

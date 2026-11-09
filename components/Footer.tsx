@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import SubscribeForm from "@/components/newsletter/SubscribeForm";
 import { usePathname } from "next/navigation";
 import {
   localPath,
@@ -31,8 +32,9 @@ export default function Footer() {
               <p className="eyebrow">{zh ? "面向专业人士 / FOR PROFESSIONALS" : "FOR PROFESSIONALS"}</p>
               <h3>{zh ? "持续学习，连接同行。" : "Keep learning. Meet your peers."}</h3>
               <p>{zh ? "订阅社区精选，或参加下一场活动，与 Data Agent 和数据基础设施领域的实践者交流。" : "Get community highlights in your inbox or join an upcoming event with Data Agent and data infrastructure practitioners."}</p>
-              <div className="button-row">
-                <Link className="button" href={localPath("/newsletter", locale)}>{zh ? "订阅 Newsletter" : "Subscribe to the newsletter"} →</Link>
+              <div className="footer-newsletter">
+                <p className="footer-subscribe-label">{zh ? "订阅社区 Newsletter" : "Subscribe to the newsletter"}</p>
+                <SubscribeForm compact locale={locale} />
                 <Link className="button button-outline" href={`${localPath("/events", locale)}#upcoming`}>{zh ? "查看近期活动" : "View upcoming events"} ↗</Link>
               </div>
             </article>
