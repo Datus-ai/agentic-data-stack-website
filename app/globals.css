@@ -181,3 +181,38 @@ a, button, input, summary { -webkit-tap-highlight-color: transparent; }
 .hero-newsletter > p { color: #929cb1; font-size: 12px; line-height: 1.8; margin: 7px 0 14px; }
 .compact-subscribe { display: flex; flex-wrap: wrap; gap: 8px; }
 .compact-subscribe .subscribe-message { flex-basis: 100%; line-height: 1.8; }
+
+/* Keep the first event visible alongside the homepage introduction. */
+.home-hero { padding: 38px 0 30px; }
+.home-hero .hero-grid { gap: 52px; }
+.community-main .home-hero h1 { font-size: clamp(36px, 4.2vw, 54px); }
+.home-hero .eyebrow { margin-bottom: 14px; }
+.home-hero .hero-copy { margin-top: 16px; font-size: 14px; line-height: 1.75; max-width: 530px; }
+.home-hero .hero-newsletter { margin-top: 20px; padding-top: 17px; }
+.home-hero .hero-principles { margin-top: 18px; }
+.home-hero .hero-visual { padding: 22px; }
+.home-hero .diagram-label { margin-bottom: 18px; }
+.home-hero .stack-node { padding: 14px 12px; font-size: 16px; }
+.home-hero .stack-connector { padding: 4px; }
+.home-hero .diagram-footer { margin-top: 18px; }
+.home-upcoming { padding: 26px 0 40px; }
+.home-upcoming .section-heading-row { margin-bottom: 16px; align-items: center; flex-direction: row; }
+.community-main .home-upcoming h2 { font-size: 25px; }
+.home-upcoming .event-card { margin-top: 0; padding: 22px 26px; }
+.home-upcoming .event-card-body h3 { margin: 10px 0 8px; font-size: 22px; }
+.home-upcoming .event-card-body > p:not(.event-hosts) { display: none; }
+.home-upcoming .event-hosts { margin: 8px 0; }
+@media (max-width: 760px) {
+  .home-hero { padding: 26px 0 24px; }
+  .home-hero .hero-grid { grid-template-columns: 1fr; gap: 0; }
+  .home-hero .hero-visual { display: none; }
+  .community-main .home-hero h1 { font-size: 36px; }
+  .home-hero .hero-copy { font-size: 13px; margin-top: 14px; }
+  .home-hero .hero-newsletter { margin-top: 16px; padding-top: 14px; }
+  .home-hero .hero-principles { margin-top: 14px; font-size: 8px; }
+  .home-upcoming { padding: 22px 0 30px; }
+  .community-main .home-upcoming h2 { font-size: 22px; }
+  .home-upcoming .event-card { padding: 18px 16px; gap: 16px; }
+  .home-upcoming .event-card-body h3 { font-size: 18px; }
+  .home-upcoming .meta-line { gap: 7px 10px; }
+}

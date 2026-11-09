@@ -218,20 +218,22 @@ export function Voices({ locale }: { locale: Locale }) {
     </section>
   );
 }
-function Upcoming({ locale }: { locale: Locale }) {
+function Upcoming({ locale, compact = false }: { locale: Locale; compact?: boolean }) {
   const events = getEvents()
     .filter((e) => !isPast(e))
     .slice(0, 3);
   return (
-    <section className="site-section" id="upcoming">
+    <section className={`site-section ${compact ? "home-upcoming" : ""}`} id="upcoming">
       <div className="site-width">
         <div className="section-heading-row">
           <SectionTitle
-            eyebrow="MEET IN PERSON"
+            eyebrow={compact ? undefined : "MEET IN PERSON"}
             title={
-              locale === "zh"
-                ? "下一次，一起讨论。"
-                : "The next conversation starts here."
+              compact
+                ? (locale === "zh" ? "近期活动" : "Upcoming events")
+                : locale === "zh"
+                  ? "下一次，一起讨论。"
+                  : "The next conversation starts here."
             }
           />
           <Link href={localPath("/events", locale)} className="text-link">
@@ -293,26 +295,15 @@ export function Home({ locale }: { locale: Locale }) {
                 </>
               ) : (
                 <>
-                  Data systems.
+                  Data systems for
                   <br />
-                  Built for the
-                  <br />
-                  <em>agentic era.</em>
+                  <em>the agentic era.</em>
                 </>
               )}
             </h1>
-            <p className="hero-copy">{text(communityIntro, locale)}</p>
-            <div className="button-row">
-              <Link className="button" href={localPath("/events", locale)}>
-                {zh ? "参加社区活动" : "Explore events"} ↗
-              </Link>
-              <Link
-                className="button button-outline"
-                href={localPath("/cfp", locale)}
-              >
-                {zh ? "分享你的实践" : "Share your experience"} →
-              </Link>
-            </div>
+            <p className="hero-copy">{zh
+              ? "一个开放、厂商中立、实践驱动的社区，共探 Data Agent 与下一代数据基础设施。"
+              : "An open, vendor-neutral community exploring Data Agents and next-generation data infrastructure through practice and shared experience."}</p>
             <div className="hero-newsletter">
               <h2>{zh ? "订阅社区 Newsletter" : "Stay in the loop"}</h2>
               <p>{zh ? "获取活动预告、技术分享与社区精选。" : "Get upcoming events, technical talks, and community highlights."}</p>
@@ -345,6 +336,7 @@ export function Home({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+      <Upcoming locale={locale} compact />
       <section className="site-section definition-section" id="architecture">
         <div className="site-width">
           <div className="definition-grid">
@@ -443,7 +435,6 @@ export function Home({ locale }: { locale: Locale }) {
         </div>
       </section>
       <Founders locale={locale} />
-      <Upcoming locale={locale} />
       <CfpBanner locale={locale} />
       <Voices locale={locale} />
       <Recaps locale={locale} />
