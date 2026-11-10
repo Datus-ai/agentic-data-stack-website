@@ -86,7 +86,7 @@ export function Founders({
           {organizations.map((o) => (
             <article className="founder" key={o.id}>
               <a className="founder-mark" href={o.url} target="_blank" rel="noopener noreferrer" aria-label={`${o.name} ${zh ? "官网（新窗口打开）" : "website (opens in a new tab)"}`}>
-                <img src={o.logo} alt="" width={o.id !== "datus" ? "44" : "180"} height="48" />
+                <img src={o.logo} alt="" width={o.id !== "datus" ? "44" : "145"} height={o.id === "datus" ? "38" : "48"} />
                 {o.id !== "datus" && <strong className="organization-name" aria-hidden="true">{o.name}</strong>}
               </a>
               {detail && <p>{text(o.description, locale)}</p>}
