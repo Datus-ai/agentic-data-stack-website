@@ -162,8 +162,8 @@ export function EventCard({
         </h3>
         <p>{text(event.description, locale)}</p>
         <p className="event-hosts">
-          {zh ? "Luma 主办人：" : "Hosted on Luma by: "}
-          {event.hosts.map((h) => h.name).join(" · ")}
+          {zh ? "主办方：" : "Hosted by: "}
+          {event.hosts.map((host,index) => <span key={host.name}><a href={host.url} target="_blank" rel="noopener noreferrer">{host.name}</a>{index < event.hosts.length - 1 ? " · " : ""}</span>)}
         </p>
         <Link
           className="text-link"
@@ -782,11 +782,6 @@ export function EventDetail({
             <h2 className="subheading">
               {zh ? "活动主办信息" : "Event hosts"}
             </h2>
-            <p className="muted-copy">
-              {zh
-                ? "Luma 页面列出的主办人："
-                : "Hosts listed on the Luma event:"}
-            </p>
             <div className="host-links">
               {event.hosts.map((h) => (
                 <a

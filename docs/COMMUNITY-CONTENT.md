@@ -6,7 +6,7 @@ English URLs are retained. Chinese pages live at `/zh`. Next.js exports static p
 
 - Community positioning and definition: user-provided Google Doc `14vFN_ihxg_hBhOLl3MXoKl8IANdanHjNEx4NFefmKV0`.
 - Co-initiators: DatusAI, NebulaGraph, StarRocks. The document's `NebularGraph` spelling is normalized to the organization's official `NebulaGraph` spelling.
-- Hangzhou event times, admission, and hosts: public Luma embed, checked 2026-11-09. 2026-11-28 13:30–17:30 Asia/Shanghai; free, approval required. Hosts: Joanna He and NebulaGraph. Venue is currently only Hangzhou.
+- Hangzhou event times, admission, from the public Luma embed, checked 2026-11-09. 2026-11-28 13:30–17:30 Asia/Shanghai; free, approval required. Event hosts updated by the owner on 2026-11-10: DatusAI, NebulaGraph and StarRocks, linking to their official websites. Venue is currently only Hangzhou.
 - Tentative first agenda item: community introduction document. No unconfirmed full agenda, attendance numbers, or testimonials are published.
 
 ## Add or update an event

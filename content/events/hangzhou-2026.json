@@ -33,12 +33,16 @@
   },
   "hosts": [
     {
-      "name": "Joanna He",
-      "url": "https://luma.com/joannahe"
+      "name": "DatusAI",
+      "url": "https://datus.ai"
     },
     {
       "name": "NebulaGraph",
-      "url": "https://luma.com/NebulaGraph"
+      "url": "https://www.nebula-graph.io"
+    },
+    {
+      "name": "StarRocks",
+      "url": "https://www.starrocks.io"
     }
   ],
   "organizerIds": [],

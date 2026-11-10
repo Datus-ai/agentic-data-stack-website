@@ -289,3 +289,6 @@ a, button, input, summary { -webkit-tap-highlight-color: transparent; }
   [data-scroll-reveal], [data-scroll-item] { opacity: 1 !important; transform: none !important; }
   .hero-visual, .stack-node, .stack-connector span { animation: none !important; }
 }
+
+.event-hosts a { color: #c4b0ee; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; }
+.event-hosts a:hover { color: #fff; text-decoration-color: currentColor; }
