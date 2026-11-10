@@ -84,28 +84,13 @@ export function Founders({
         </SectionTitle>
         <div className="founder-grid">
           {organizations.map((o) => (
-            <a
-              className="founder"
-              key={o.id}
-              href={o.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className={`founder-mark ${o.id === "datus" ? "founder-datus" : ""}`}>
-                <img
-                  src={o.logo}
-                  alt=""
-                  width={o.id !== "datus" ? "44" : "180"}
-                  height="48"
-                />
-                {o.id !== "datus" && (
-                  <strong className="organization-name" aria-hidden="true">{o.name}</strong>
-                )}
-                <span className="sr-only">{o.name}</span>
-              </div>
+            <article className="founder" key={o.id}>
+              <a className="founder-mark" href={o.url} target="_blank" rel="noopener noreferrer" aria-label={`${o.name} ${zh ? "官网（新窗口打开）" : "website (opens in a new tab)"}`}>
+                <img src={o.logo} alt="" width={o.id !== "datus" ? "44" : "180"} height="48" />
+                {o.id !== "datus" && <strong className="organization-name" aria-hidden="true">{o.name}</strong>}
+              </a>
               {detail && <p>{text(o.description, locale)}</p>}
-              <span>{zh ? "访问官网" : "Visit website"} ↗</span>
-            </a>
+            </article>
           ))}
         </div>
       </div>
