@@ -473,7 +473,7 @@ export function Home({ locale }: { locale: Locale }) {
 }
 export function CfpBanner({ locale }: { locale: Locale }) {
   const zh = locale === "zh";
-  const open = isCfpOpen(getCfpConfig());
+  const open = isCfpOpen(getCfpConfig(), locale);
   return (
     <section className="site-section">
       <div className="site-width">
@@ -864,7 +864,8 @@ export function EventDetail({
 export function Cfp({ locale }: { locale: Locale }) {
   const zh = locale === "zh";
   const config = getCfpConfig();
-  const open = isCfpOpen(config);
+  const formUrl = config.formUrls[locale];
+  const open = isCfpOpen(config, locale);
   return <Shell locale={locale}>
     <section className="page-hero site-width">
       <p className="eyebrow">CALL FOR PROPOSALS</p>
@@ -897,7 +898,7 @@ export function Cfp({ locale }: { locale: Locale }) {
     </div></section>
     <section className="site-section" id="proposal-form"><div className="site-width">
       <SectionTitle title={zh ? "提交分享提案" : "Submit your proposal"}/>
-      {open && config.formUrl ? <LumaEmbed src={config.formUrl} url={config.formUrl} title={zh ? "社区分享提案（飞书）" : "Community proposal form (Feishu)"} provider={zh ? "飞书" : "Feishu"} zh={zh}/> : <div className="empty-note">
+      {open && formUrl ? <LumaEmbed src={formUrl} url={formUrl} title={zh ? "社区分享提案（飞书）" : "Community proposal form (Feishu)"} provider={zh ? "飞书" : "Feishu"} zh={zh}/> : <div className="empty-note">
         <span className="status-pill">{config.status === "closed" ? (zh ? "投稿暂时关闭" : "Submissions paused") : (zh ? "投稿表单即将开放" : "Proposal form coming soon")}</span>
         <p>{zh ? "表单开放后会在这里提供填写入口。你可以选择计划中的活动，也可以不选，由社区后续安排。" : "The form will appear here when submissions open. Select a planned event or leave the choice blank for future scheduling."}</p>
         <a className="text-link" href={calendarUrl} target="_blank" rel="noopener noreferrer">{zh ? "关注社区日历" : "Follow the community calendar"} ↗</a>

@@ -19,12 +19,12 @@ Luma calendar is configured in `lib/community.ts`; per-event embeds and direct l
 
 The website has one shared CFP page at `/cfp` (Chinese: `/zh/cfp`). It is independent of event dates and does not open or close per event. Old per-event CFP addresses redirect to the shared page and are excluded from the sitemap.
 
-1. Edit `content/cfp.json`: set `formUrl` to the public HTTPS Feishu form link, never the response table URL; set `status` to `open` when ready.
+1. Edit `content/cfp.json`: set `formUrls.en` and `formUrls.zh` to their respective public HTTPS Feishu form links, never the response table URL; set `status` to `open` when ready.
 2. In Feishu, add an **optional** planned-event choice. Respondents may choose a planned event or leave it blank for future scheduling. Do not make that field required.
 3. Maintain the planned-event options in Feishu; the website does not duplicate that selection or pass an event requirement to the form.
 4. Verify the form logged out, on desktop/mobile and for the intended international audience. Third-party embedding may be restricted; a direct-open link is always visible.
 5. After review, confirm scheduling, session formats and publication/recording consent with the speaker.
-6. To pause submissions, set `status` to `closed`, stop collection in Feishu and rebuild. Until the real form is ready, use `coming-soon` with `formUrl: null`.
+6. To pause submissions, set `status` to `closed`, stop collection in Feishu and rebuild. Until the real form is ready, use `coming-soon` with null form URLs.
 
 Main navigation groups Blog and Resources under Learn / 学习资源. Their original page addresses remain unchanged. Newsletter remains in the footer and hero.
 
@@ -59,4 +59,4 @@ Every content change requires a new static build. Date-derived archive and CFP s
 
 ## CFP activation — 2026-11-11
 
-The owner supplied the public Feishu form link and the shared CFP is now open. The form was verified loading inside the local CFP iframe with an anonymous-submit button; no response was submitted. The current form does not yet include a planned-event selector. Until the owner adds an optional selector, website guidance asks speakers to mention a preference in additional notes or leave scheduling open.
+The owner supplied separate English and Chinese public Feishu form links and the shared CFP is now open. Each website language embeds its corresponding form. The form was verified loading inside the local CFP iframe with an anonymous-submit button; no response was submitted. The current form does not yet include a planned-event selector. Until the owner adds an optional selector, website guidance asks speakers to mention a preference in additional notes or leave scheduling open.

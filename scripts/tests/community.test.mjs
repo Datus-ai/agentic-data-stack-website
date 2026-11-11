@@ -19,11 +19,13 @@ test("confirmed event dates and current registration match supplied Luma event",
   assert.equal(registrationOpen(event, Date.parse(event.endAt)), false);
 });
 test("the single community CFP opens only with a real form, independently of event dates", () => {
-  assert.equal(isCfpOpen(getCfpConfig()), true);
-  assert.equal(new URL(getCfpConfig().formUrl).hostname, "gaaoegmov5r.feishu.cn");
-  assert.equal(isCfpOpen({status:"open",formUrl:null}), false);
-  assert.equal(isCfpOpen({status:"open",formUrl:"https://example.com/form"}), true);
-  assert.equal(isCfpOpen({status:"closed",formUrl:"https://example.com/form"}), false);
+  const config = getCfpConfig();
+  assert.equal(isCfpOpen(config,"en"), true);
+  assert.equal(isCfpOpen(config,"zh"), true);
+  assert.equal(config.formUrls.en, "https://gaaoegmov5r.feishu.cn/share/base/form/shrcnSKtLBAfjvDXOMO3dQUDT7b");
+  assert.equal(config.formUrls.zh, "https://gaaoegmov5r.feishu.cn/share/base/form/shrcnOvVIk30ciancZbb0wx1CAb");
+  assert.equal(isCfpOpen({status:"open",formUrls:{en:null,zh:config.formUrls.zh}},"en"),false);
+  assert.equal(isCfpOpen({...config,status:"closed"},"en"),false);
   assert.ok(!("cfp" in event));
 });
 test("events have valid dates, bilingual content and safe public embed URLs", () => {
