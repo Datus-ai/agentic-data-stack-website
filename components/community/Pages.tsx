@@ -299,24 +299,8 @@ export function Home({ locale }: { locale: Locale }) {
                 : "OPEN / VENDOR-NEUTRAL / PRACTICE-DRIVEN"}
             </p>
           </div>
-          <div className="hero-visual" aria-hidden="true">
-            <div className="diagram-label">A NEW KIND OF DATA STACK</div>
-            <div className="stack-node node-agent">
-              DATA AGENT<span>REASON · PLAN · ACT</span>
-            </div>
-            <div className="stack-connector"><span className="flow-down">↓</span><span className="flow-up">↑</span></div>
-            <div className="stack-node node-context">
-              CONTEXT<span>SEMANTICS · KNOWLEDGE · METADATA</span>
-            </div>
-            <div className="stack-connector"><span className="flow-down">↓</span><span className="flow-up">↑</span></div>
-            <div className="stack-node node-tools">
-              INFRASTRUCTURE<span>CATALOG · LAKEHOUSE · ENGINE · PIPELINE</span>
-            </div>
-            <div className="diagram-footer">
-              <span>GOVERNED</span>
-              <span>VERIFIABLE</span>
-              <span>HUMAN-IN-THE-LOOP</span>
-            </div>
+          <div className="hero-visual hero-reference">
+            <img src="/images/agentic-data-stack-reference.svg" width="1600" height="940" alt={zh ? "Agentic Data Stack 参考架构概览：上下文与语义、规划与编排、执行与数据操作、存储与治理" : "Agentic Data Stack reference architecture: context, planning, execution, and governance"}/>
           </div>
         </div>
       </section>
@@ -347,19 +331,19 @@ export function Home({ locale }: { locale: Locale }) {
           </div>
           <a
             className="architecture-image"
-            href="/images/agentic-data-stack-architecture.png"
+            href="/images/agentic-data-stack-reference.svg"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src="/images/agentic-data-stack-architecture.png"
+              src="/images/agentic-data-stack-reference.svg"
               alt={
                 zh
                   ? "Agentic Data Stack 参考架构：连接 Data Agent、上下文与数据基础设施（图内为英文）"
                   : "Agentic Data Stack reference architecture connecting agents, context, and data infrastructure"
               }
-              width="1400"
-              height="800"
+              width="1600"
+              height="940"
             />
             <span>
               {zh

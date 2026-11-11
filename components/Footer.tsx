@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import AboutFAQ from "@/components/community/AboutFAQ";
 import SubscribeForm from "@/components/newsletter/SubscribeForm";
 import { usePathname } from "next/navigation";
 import {
@@ -40,6 +41,7 @@ export default function Footer() {
             </article>
           </div>
         </section>
+        {(path.replace(/\/$/, "") === "/about" || path.replace(/\/$/, "") === "/zh/about") && <AboutFAQ locale={locale} />}
         <div className="footer-bottom">
           <div>
             <Link className="brand" href={localPath("/", locale)}>
