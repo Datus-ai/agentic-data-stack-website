@@ -488,8 +488,8 @@ export function CfpBanner({ locale }: { locale: Locale }) {
             <p>
               {open
                 ? zh
-                  ? "分享你的架构、落地经验与挑战。可选择计划中的活动，也可留待后续排期。"
-                  : "Share your architecture, implementation experience, and challenges. Choose a planned event or leave scheduling open."
+                  ? "分享你的架构、落地经验与挑战。可提出活动意向，也可留待后续排期。"
+                  : "Share your architecture, implementation experience, and challenges. Share an event preference or leave scheduling open."
                 : zh
                   ? "社区统一议题征集即将开放。先了解主题、投稿指南与灵活排期方式。"
                   : "Our community call is coming soon. Explore the topics, proposal guidelines, and flexible scheduling."}
@@ -875,8 +875,8 @@ export function Cfp({ locale }: { locale: Locale }) {
     <section className="site-section">
       <div className="site-width reading-width">
         <SectionTitle title={zh ? "先提交想法，灵活安排活动。" : "Propose your talk. Keep the schedule flexible."}/>
-        <p className="large-copy">{zh ? "在投稿表单中，你可以选择希望参与的计划活动，也可以不选，交由社区后续沟通和排期。暂时没有适合的活动，也欢迎先提交。" : "In the proposal form, you can select a planned event or leave that choice blank. If no event fits yet, submit your idea and we will discuss a suitable future slot."}</p>
-        <p className="muted-copy">{zh ? "活动选择为可选项，不影响提案提交。具体活动、时间和分享形式将在评审后与你沟通确认。" : "Event preference is optional and does not prevent submission. The event, timing, and session format will be agreed with you after review."}</p>
+        <p className="large-copy">{zh ? "你可以先提交分享提案，有明确活动意向时可在补充说明中提出；暂时没有适合的活动，也欢迎先提交，由社区后续沟通和排期。" : "Submit your idea first. If you have a preferred event, mention it in the additional notes. If no event fits yet, we will discuss a suitable future slot with you."}</p>
+        <p className="muted-copy">{zh ? "无需指定活动即可提交。具体活动、时间和分享形式将在评审后与你沟通确认。" : "You do not need to specify an event to submit. The event, timing, and session format will be agreed with you after review."}</p>
         <Link className="text-link" href={localPath("/events",locale)}>{zh ? "查看计划中的活动" : "Explore planned events"} →</Link>
       </div>
     </section>

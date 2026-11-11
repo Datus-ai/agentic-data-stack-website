@@ -19,7 +19,8 @@ test("confirmed event dates and current registration match supplied Luma event",
   assert.equal(registrationOpen(event, Date.parse(event.endAt)), false);
 });
 test("the single community CFP opens only with a real form, independently of event dates", () => {
-  assert.equal(isCfpOpen(getCfpConfig()), false);
+  assert.equal(isCfpOpen(getCfpConfig()), true);
+  assert.equal(new URL(getCfpConfig().formUrl).hostname, "gaaoegmov5r.feishu.cn");
   assert.equal(isCfpOpen({status:"open",formUrl:null}), false);
   assert.equal(isCfpOpen({status:"open",formUrl:"https://example.com/form"}), true);
   assert.equal(isCfpOpen({status:"closed",formUrl:"https://example.com/form"}), false);

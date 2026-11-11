@@ -56,3 +56,7 @@ Every content change requires a new static build. Date-derived archive and CFP s
 - Feishu CFP link, deadline, review notifications, accepted formats/durations, and recording terms.
 - Community contribution contact if a separate email is desired (currently visitors can contact hosts via Luma).
 - Authorized recap materials and attendee quotes after the first event.
+
+## CFP activation — 2026-11-11
+
+The owner supplied the public Feishu form link and the shared CFP is now open. The form was verified loading inside the local CFP iframe with an anonymous-submit button; no response was submitted. The current form does not yet include a planned-event selector. Until the owner adds an optional selector, website guidance asks speakers to mention a preference in additional notes or leave scheduling open.
