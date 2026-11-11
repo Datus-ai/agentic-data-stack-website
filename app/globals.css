@@ -291,8 +291,7 @@ a, button, input, summary { -webkit-tap-highlight-color: transparent; }
 .event-hosts a { color: #c4b0ee; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; }
 .event-hosts a:hover { color: #fff; text-decoration-color: currentColor; }
 
-.home-hero .hero-reference { padding: 0; overflow: hidden; background: #07111f; }
-.hero-reference img { display: block; width: 100%; height: auto; }
+
 .about-faq { padding: 56px 0; border-bottom: 1px solid var(--community-line); }
 .about-faq > .eyebrow { margin-bottom: 14px; }
 .about-faq-list { margin-top: 30px; max-width: 920px; }
@@ -308,3 +307,30 @@ a, button, input, summary { -webkit-tap-highlight-color: transparent; }
   .about-faq { padding: 40px 0; }
   .about-faq-item summary { font-size: 15px; padding-block: 18px; }
 }
+
+/* HTML reference architecture, matching the official four-layer diagram. */
+.reference-architecture { margin:45px 0 24px; padding:36px 24px 28px; border:1px solid #343548; border-radius:16px; background:radial-gradient(ellipse at top right,#0ea5e914,transparent 50%),radial-gradient(ellipse at bottom left,#a855f714,transparent 50%),linear-gradient(135deg,#07111f,#0f172a); }
+.reference-experience { position:relative; width:72%; margin:0 auto 36px; padding:22px; text-align:center; border:1px solid transparent; border-radius:20px; background:linear-gradient(#0f172a,#0f172a) padding-box,linear-gradient(100deg,#22d3ee,#a855f7) border-box; box-shadow:0 0 30px #22d3ee12,0 0 35px #a855f712; }
+.reference-architecture h3 { margin:0; font-size:19px; font-weight:700; line-height:1.4; letter-spacing:0; color:#f8fafc; }
+.reference-architecture p { margin:8px 0 0; line-height:1.65; }
+.reference-experience p { font-size:12px; color:#c4b5fd; }
+.reference-experience::after,.reference-card::after { content:""; position:absolute; top:100%; left:50%; height:36px; border-left:1px dashed #64748b; }
+.reference-layers { list-style:none; margin:0; padding:0; display:grid; gap:22px; }
+.reference-row { display:grid; grid-template-columns:100px minmax(0,1fr) 112px; align-items:center; gap:18px; --layer-color:#22d3ee; }
+.reference-row-2 { --layer-color:#60a5fa; }
+.reference-row-3 { --layer-color:#a855f7; }
+.reference-row-4 { --layer-color:#f59e0b; }
+.reference-card { position:relative; padding:22px 24px; border:1px solid transparent; border-radius:18px; background:linear-gradient(#111827,#111827) padding-box,linear-gradient(100deg,#22d3ee70,#a855f770) border-box; box-shadow:0 10px 24px #02061740; }
+.reference-card::after { height:22px; }
+.reference-components { font-size:12px; color:#cbd5e1; }
+.reference-description { font-size:11px; color:#94a3b8; }
+.reference-label,.reference-outcome { position:relative; display:block; padding:8px 5px; border:1px solid #475569; border-radius:24px; text-align:center; font-size:10px; line-height:1.4; color:#94a3b8; }
+.reference-label { border-color:color-mix(in srgb,var(--layer-color) 40%,transparent); background:color-mix(in srgb,var(--layer-color) 12%,#07111f); color:#e0f2fe; font-weight:600; }
+.reference-label::after,.reference-outcome::before { content:""; position:absolute; width:19px; top:50%; border-top:1px solid #47556980; }
+.reference-label::after { left:100%; border-color:color-mix(in srgb,var(--layer-color) 30%,transparent); }
+.reference-outcome::before { right:100%; }
+.reference-feedback { position:relative; width:78%; margin:26px auto 0; padding:18px 14px 0; border-top:1px solid #334155; border-radius:50% 50% 0 0 / 14px 14px 0 0; text-align:center; }
+.reference-feedback strong { font-size:18px; color:#e2e8f0; }
+.reference-feedback p { color:#94a3b8; font-size:11px; }
+@media(max-width:950px) { .reference-row { grid-template-columns:78px minmax(0,1fr) 88px; gap:12px; } .reference-label::after,.reference-outcome::before { width:13px; } .reference-card { padding:18px; } .reference-architecture h3 { font-size:17px; } }
+@media(max-width:760px) { .reference-architecture { padding:24px 16px; } .reference-experience { width:100%; padding:18px 14px; } .reference-row { grid-template-columns:1fr 1fr; gap:10px; } .reference-card { grid-column:1 / -1; grid-row:2; padding:18px 16px; } .reference-label,.reference-outcome { justify-self:start; padding:6px 12px; } .reference-outcome { justify-self:end; border-color:transparent; } .reference-label::after,.reference-outcome::before { display:none; } .reference-layers { gap:24px; } .reference-card::after { height:24px; } .reference-experience::after { height:36px; } .reference-feedback { width:100%; } .reference-architecture h3 { font-size:16px; } .reference-components { font-size:12px; } .reference-description { font-size:12px; } }
