@@ -23,7 +23,7 @@ export const organizations = [
     id: "datus",
     name: "DatusAI",
     url: "https://datus.ai",
-    logo: "/images/organizations/datus-white.svg",
+    logo: "/images/organizations/datus.svg",
     description: {
       en: "AI-native workflows for data teams.",
       zh: "面向数据团队的 AI 原生工作流。",

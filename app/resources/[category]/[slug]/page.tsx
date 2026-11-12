@@ -156,7 +156,7 @@ export default async function ResourcePage({ params }: Props) {
 
               {/* MDX content if available */}
               {resource && (
-                <div className="prose-invert mt-8 max-w-none">
+                <div className=" mt-8 max-w-none">
                   {resource.content.split("\n").filter(Boolean).map((p, i) => (
                     <p key={i} className="mt-4 text-muted leading-relaxed">
                       {p}

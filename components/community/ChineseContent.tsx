@@ -67,7 +67,7 @@ export default function ChineseContent({ slug }: { slug: string[] }) {
           </p>
           <h1>{translation.title}</h1>
           <p className="hero-copy">{translation.description}</p>
-          <div className="prose prose-invert prose-lg max-w-none prose-headings:tracking-tight prose-p:text-muted prose-li:text-muted prose-a:text-violet-300 prose-pre:bg-card-bg prose-img:rounded-xl prose-table:text-sm">
+          <div className="prose  prose-lg max-w-none prose-headings:tracking-tight prose-p:text-muted prose-li:text-muted prose-a:text-violet-300 prose-pre:bg-card-bg prose-img:rounded-xl prose-table:text-sm">
             <MDXRemote
               source={translation.content}
               options={{

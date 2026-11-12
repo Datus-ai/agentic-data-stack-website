@@ -5,7 +5,7 @@ import type { Locale } from "@/lib/community";
 
 const layers = [
   {
-    label: "Context", color: "#46d6df", title: "Context & Semantic Intelligence", zhTitle: "上下文与语义智能",
+    label: "Context", color: "#167e87", title: "Context & Semantic Intelligence", zhTitle: "上下文与语义智能",
     outcome: "Shared meaning", zhOutcome: "建立共同理解",
     description: "Agents need more than access to tables. They need to understand what data means, where it comes from, who owns it, and which rules apply.",
     zhDescription: "Agent 不仅需要访问数据表，还需要理解数据的含义、来源、负责人以及适用的规则。上下文与语义让它从“找到数据”走向“理解数据”。",
@@ -14,7 +14,7 @@ const layers = [
     nodes: ["Catalog & Metadata", "Lineage & Ownership", "Semantic Layer", "Metrics", "Business Glossary", "Policy Context"], hub: "Shared context", zhHub: "共享上下文",
   },
   {
-    label: "Planning", color: "#78aaff", title: "Planning, Orchestration & Skills", zhTitle: "规划、编排与技能",
+    label: "Planning", color: "#3a6ca9", title: "Planning, Orchestration & Skills", zhTitle: "规划、编排与技能",
     outcome: "Task routing", zhOutcome: "将目标转化为行动",
     description: "A request becomes a sequence of steps. The agent chooses tools and skills, coordinates sub-agents, routes memory, and brings people in when approval is needed.",
     zhDescription: "将一个请求拆解为可执行的步骤：选择工具和技能、协调子 Agent、调取记忆，并在需要审批时引入人的判断。",
@@ -23,7 +23,7 @@ const layers = [
     nodes: ["Planner", "Workflow Engine", "MCP / Tooling", "Skills & Sub-agents", "Human Approval", "Memory Routing"], hub: "Plan → coordinate", zhHub: "规划 → 协同",
   },
   {
-    label: "Execution", color: "#bb8aff", title: "Execution & Data Operations", zhTitle: "执行与数据操作",
+    label: "Execution", color: "#8453b5", title: "Execution & Data Operations", zhTitle: "执行与数据操作",
     outcome: "Operational action", zhOutcome: "在数据平台上完成任务",
     description: "Plans become queries, pipelines, transformations, and validation. Execution connects agent decisions to real data operations, with versioning and time travel supporting reproducibility.",
     zhDescription: "把计划落实为查询、流水线、转换和验证，让 Agent 的决策连接到真实的数据操作。版本管理与时间旅行帮助复现和追溯执行结果。",
@@ -32,7 +32,7 @@ const layers = [
     nodes: ["SQL Engines", "Lakehouse / Warehouse", "ETL / ELT", "Transformations", "Data Quality", "Versioning / Time Travel"], hub: "Execute → validate", zhHub: "执行 → 验证",
   },
   {
-    label: "Foundation", color: "#efbc67", title: "Storage, Systems & Governance Foundation", zhTitle: "存储、系统与治理基础",
+    label: "Foundation", color: "#936824", title: "Storage, Systems & Governance Foundation", zhTitle: "存储、系统与治理基础",
     outcome: "Control & trust", zhOutcome: "支撑可靠、可治理的运行",
     description: "Durable storage and scalable systems support every layer above. Access controls, security, observability, and cost controls keep agent activity within clear operational boundaries.",
     zhDescription: "持久化存储和可扩展系统支撑上层能力。访问控制、安全、可观测性与成本控制，为 Agent 的活动建立清晰的运行边界。",
