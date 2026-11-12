@@ -4,6 +4,7 @@ import SubscribeForm from "@/components/newsletter/SubscribeForm";
 import Footer from "@/components/Footer";
 import LumaEmbed from "./LumaEmbed";
 import ArchitectureDiagram from "./ArchitectureDiagram";
+import CommunityPhotos from "./CommunityPhotos";
 import {
   communityIntro,
   definition,
@@ -322,6 +323,49 @@ export function Home({ locale }: { locale: Locale }) {
         </div>
       </section>
       <Upcoming locale={locale} compact />
+      <section className="site-section community-section" id="community">
+        <div className="site-width">
+          <SectionTitle
+            eyebrow="A COMMUNITY OF PRACTICE"
+            title={
+              zh
+                ? "真实问题，开放交流。"
+                : "Real questions. Open conversations."
+            }
+          >
+            {zh
+              ? "关注真实问题与生产实践，鼓励不同技术路线的交流。通过 Meetup、技术分享与实践总结，持续共同探索。"
+              : "We focus on real problems and production practice, welcoming different technical approaches through meetups, technical talks, and shared lessons."}
+          </SectionTitle>
+          <CommunityPhotos locale={locale} />
+          <div className="topic-grid">
+            {topics.slice(0, 3).map((t, i) => (
+              <Link
+                href={localPath(`/resources/${t.category}`, locale)}
+                key={t.category}
+                className="topic-card"
+              >
+                <span className="topic-index">0{i + 1}</span>
+                <h3>{text(t.title, locale)}</h3>
+                <p>{text(t.description, locale)}</p>
+                <span className="text-link">
+                  {zh ? "探索相关资源" : "Explore resources"} ↗
+                </span>
+              </Link>
+            ))}
+          </div>
+          <Link
+            className="text-link block-link"
+            href={localPath("/about", locale)}
+          >
+            {zh
+              ? "了解全部社区议题与参与方式"
+              : "Discover our focus and how to contribute"}{" "}
+            →
+          </Link>
+        </div>
+      </section>
+
       <section className="site-section definition-section" id="architecture">
         <div className="site-width">
           <div className="definition-grid">
@@ -354,47 +398,6 @@ export function Home({ locale }: { locale: Locale }) {
           </p>
           <Link className="text-link" href={localPath("/resources", locale)}>
             {zh ? "探索架构中的组件" : "Explore the components"} →
-          </Link>
-        </div>
-      </section>
-      <section className="site-section community-section">
-        <div className="site-width">
-          <SectionTitle
-            eyebrow="A COMMUNITY OF PRACTICE"
-            title={
-              zh
-                ? "真实问题，开放交流。"
-                : "Real questions. Open conversations."
-            }
-          >
-            {zh
-              ? "关注真实问题与生产实践，鼓励不同技术路线的交流。通过 Meetup、技术分享与实践总结，持续共同探索。"
-              : "We focus on real problems and production practice, welcoming different technical approaches through meetups, technical talks, and shared lessons."}
-          </SectionTitle>
-          <div className="topic-grid">
-            {topics.slice(0, 3).map((t, i) => (
-              <Link
-                href={localPath(`/resources/${t.category}`, locale)}
-                key={t.category}
-                className="topic-card"
-              >
-                <span className="topic-index">0{i + 1}</span>
-                <h3>{text(t.title, locale)}</h3>
-                <p>{text(t.description, locale)}</p>
-                <span className="text-link">
-                  {zh ? "探索相关资源" : "Explore resources"} ↗
-                </span>
-              </Link>
-            ))}
-          </div>
-          <Link
-            className="text-link block-link"
-            href={localPath("/about", locale)}
-          >
-            {zh
-              ? "了解全部社区议题与参与方式"
-              : "Discover our focus and how to contribute"}{" "}
-            →
           </Link>
         </div>
       </section>
@@ -540,16 +543,29 @@ export function About({ locale }: { locale: Locale }) {
         </div>
       </section>
       <Founders locale={locale} detail />
-      <section className="site-section">
+      <section className="site-section community-organizing" id="how-we-meet">
         <div className="site-width">
-          <SectionTitle
-            eyebrow="MEET, SHARE, BUILD"
-            title={zh ? "社区活动与组织方式" : "How we meet and organize"}
-          >
-            {zh
-              ? "通过 Meetup 连接开发者、技术厂商和企业实践团队。每场活动的主办人及组织信息单独标注；经许可的演讲材料、文章和实践总结将持续沉淀在官网。"
-              : "Meetups connect developers, technology builders, and enterprise practitioners. Hosts are identified per event; public talks, articles, and lessons are collected on this website with permission."}
-          </SectionTitle>
+          <div className="community-organizing-intro">
+            <SectionTitle
+              eyebrow="MEET, SHARE, BUILD"
+              title={zh ? "社区活动与组织方式" : "How we meet and organize"}
+            >
+              {zh
+                ? "通过 Meetup 连接开发者、技术厂商和企业实践团队。带着真实问题来，带着新的想法与同行的连接离开。"
+                : "Meetups connect developers, technology builders, and enterprise practitioners. Bring a real question; leave with new ideas and connections."}
+            </SectionTitle>
+            <div className="community-meeting-formats">
+              {[
+                { en: "Share what you’ve built", zh: "分享真实实践", description: zh ? "从技术架构、生产经验到失败的尝试，展开具体讨论。" : "Discuss architecture, production lessons, and the attempts that did not work." },
+                { en: "Make room for questions", zh: "把问题带到现场", description: zh ? "在分享与问答中交换观点，一起推敲尚未解决的问题。" : "Exchange perspectives through talks and Q&A, including questions that remain open." },
+                { en: "Connect with your peers", zh: "与同行建立连接", description: zh ? "在自由交流中认识不同背景的实践者，让讨论延续到活动之外。" : "Meet practitioners from different backgrounds and keep the conversation going beyond the event." },
+              ].map((format, index) => <div className="community-meeting-format" key={format.en}>
+                <span>0{index + 1}</span><div><h3>{zh ? format.zh : format.en}</h3><p>{format.description}</p></div>
+              </div>)}
+            </div>
+          </div>
+          <CommunityPhotos locale={locale} banner />
+          <p className="community-organizing-note">{zh ? "每场活动的主办人及组织信息单独标注；经许可的演讲材料、文章和实践总结将持续沉淀在官网。" : "Hosts are identified per event. Talks, articles, and shared lessons are published on this website with permission."}</p>
           {getEvents()
             .filter((e) => !isPast(e))
             .slice(0, 1)

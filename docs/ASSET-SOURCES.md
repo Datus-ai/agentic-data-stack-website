@@ -9,3 +9,7 @@ Retrieved on 2026-11-09 for the co-initiator list supplied by the owner:
 Existing community logo and architecture illustrations are retained from the repository. No generated partner logos, testimonials, or attendance statistics are used.
 
 - Homepage reference architecture: SVG captured from the public `https://agenticdatastack.org/` homepage on 2026-11-11, with the label “Agentic Data Stack reference architecture”. Preserved without changes to its content in `public/images/agentic-data-stack-reference.svg`; retained as a source reference. The “What is Agentic Data Stack” section explains its four-layer hierarchy through bilingual scroll-driven narrative and responsive HTML/CSS visuals in `ArchitectureDiagram.tsx`. The hero retains its original animated three-layer illustration.
+
+## Illustrative community scenes
+
+The owner requested synthetic activity photos for the homepage community introduction and About meeting section. `public/images/community/meetup-*-illustration.jpg` are AI-generated fictional technical meetup scenes, not photographs of an actual event. Both languages display an explicit AI illustration disclosure; image alt text also identifies them as illustrations. These assets are never used in event recaps. Replace their entries in `components/community/CommunityPhotos.tsx` with approved real photos when available and remove `illustrative: true` only for real photographs.
