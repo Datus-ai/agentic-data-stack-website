@@ -53,23 +53,31 @@ function LayerSymbol({ index }: { index: number }) {
 
 function TopicVisual({ index, zh }: { index: number; zh: boolean }) {
   const layer = layers[index];
-  return <figure className="layer-convergence" style={{ "--layer-color": layer.color } as CSSProperties} aria-label={`${layer.title}: ${layer.nodes.join(", ")} → ${layer.hub}`}>
-    <div className="layer-visual-heading"><span>LAYER 0{index + 1} / {zh ? "本层能力" : "LAYER FOCUS"}</span><strong>{zh ? layer.zhHub : layer.hub}</strong></div>
+  return <figure className="layer-convergence" style={{ "--layer-color": layer.color } as CSSProperties} aria-label={zh ? "四层能力共同汇聚为 Agentic Experience" : "Four layers converge into Agentic Experience"}>
+    <div className="layer-visual-heading"><span>{zh ? "四层协同 · 一个共同的体验" : "FOUR LAYERS · ONE AGENTIC EXPERIENCE"}</span></div>
     <div className="layer-stream-canvas">
-      <svg className="layer-stream-lines" viewBox="0 0 600 440" fill="none" aria-hidden="true">
-        {layer.nodes.map((node, i) => {
-          const y = 50 + i * 62;
-          const path = `M 8 ${y} H 245 C 380 ${y}, 420 205, 540 205`;
-          return <g key={node}><path className="layer-stream-track" d={path}/><path className="layer-stream-pulse" d={path} pathLength="100" style={{ animationDelay: `${i * -.65}s` }}/><circle cx="8" cy={y} r="3" fill="currentColor"/></g>;
+      <svg className="layer-stream-lines" viewBox="0 0 600 360" fill="none" aria-hidden="true">
+        {layers.map((source, i) => {
+          const y = 65 + i * 80;
+          const path = `M 8 ${y} H 230 C 365 ${y}, 405 185, 510 185`;
+          return <g key={source.label} className={`layer-source-ray${i === index ? " is-active" : ""}`} style={{ "--source-color": source.color } as CSSProperties}>
+            <path className="layer-stream-track" d={path}/>
+            <path className="layer-stream-pulse" d={path} pathLength="100" style={{ animationDelay: `${i * -.65}s` }}/>
+            <circle cx="8" cy={y} r={i === index ? 4 : 3} fill="currentColor"/>
+          </g>;
         })}
-        <circle className="layer-stream-halo" cx="540" cy="205" r="43"/>
-        <circle className="layer-stream-core" cx="540" cy="205" r="32"/>
+        <circle className="layer-stream-halo" cx="510" cy="185" r="43"/>
+        <circle className="layer-stream-core" cx="510" cy="185" r="32"/>
       </svg>
-      <ol className="layer-stream-labels">{layer.nodes.map((node, i) => <li key={node} style={{ top: `${(50 + i * 62) / 440 * 100}%` }}><span>0{i + 1}</span>{node}</li>)}</ol>
-      <div className="layer-stream-symbol"><LayerSymbol index={index}/></div>
-      <span className="layer-stream-result">{zh ? layer.zhOutcome : layer.outcome}</span>
+      <ol className="layer-stream-labels">{layers.map((source, i) => <li className={i === index ? "is-active" : ""} key={source.label} style={{ top: `${(65 + i * 80) / 360 * 100}%`, "--source-color": source.color } as CSSProperties}><LayerSymbol index={i}/><span>0{i + 1}</span>{source.label}</li>)}</ol>
+      <div className="layer-stream-symbol"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="6" y="9" width="20" height="18" rx="6"/><path d="M16 9V5m-4 13h.01M20 18h.01M12 23h8M3 15v6m26-6v6"/><circle cx="16" cy="4" r="1.5"/></svg></div>
+      <strong className="layer-stream-result" lang="en">Agentic<br/>Experience</strong>
     </div>
-    <figcaption>{zh ? "多个组件协同，汇聚为这一层的能力。" : "Distinct components converge into a shared capability."}</figcaption>
+    <figcaption className="layer-capabilities" key={index}>
+      <span className="layer-capabilities-eyebrow">LAYER 0{index + 1} / {zh ? "具体能力" : "CAPABILITIES"}</span>
+      <strong>{zh ? layer.zhTitle : layer.title}</strong>
+      <ul>{layer.nodes.map(node => <li key={node}>{node}</li>)}</ul>
+    </figcaption>
   </figure>;
 }
 
@@ -115,7 +123,7 @@ export default function ArchitectureDiagram({ locale }: { locale: Locale }) {
       </article>)}
     </div>
     <aside className="architecture-story-stage" aria-label={zh ? "架构层级可视化" : "Architecture layer visualization"}>
-      <div className="architecture-topic-panel" key={active}><TopicVisual index={active} zh={zh} /></div>
+      <div className="architecture-topic-panel"><TopicVisual index={active} zh={zh} /></div>
     </aside>
   </div>;
 }
