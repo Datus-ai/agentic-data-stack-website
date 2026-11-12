@@ -325,6 +325,7 @@ export function Home({ locale }: { locale: Locale }) {
       <Upcoming locale={locale} compact />
       <section className="site-section community-section" id="community">
         <div className="site-width">
+          <div className="community-home-intro">
           <SectionTitle
             eyebrow="A COMMUNITY OF PRACTICE"
             title={
@@ -338,8 +339,9 @@ export function Home({ locale }: { locale: Locale }) {
               : "We focus on real problems and production practice, welcoming different technical approaches through meetups, technical talks, and shared lessons."}
           </SectionTitle>
           <CommunityPhotos locale={locale} />
+          </div>
           <div className="topic-grid">
-            {topics.slice(0, 3).map((t, i) => (
+            {topics.map((t, i) => (
               <Link
                 href={localPath(`/resources/${t.category}`, locale)}
                 key={t.category}
