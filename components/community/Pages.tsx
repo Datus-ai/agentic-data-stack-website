@@ -346,7 +346,7 @@ export function Home({ locale }: { locale: Locale }) {
               </Link>
             </div>
           </div>
-          <ArchitectureDiagram />
+          <ArchitectureDiagram locale={locale} />
           <p className="muted-copy">
             {zh
               ? "从 Agent 的规划与执行，到元数据、语义和业务上下文，再到数据存储、查询与流水线；治理、验证和人的协作贯穿全栈。"
