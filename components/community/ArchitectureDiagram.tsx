@@ -42,88 +42,74 @@ const layers = [
   },
 ];
 
-function LayerSymbol({ index }: { index: number }) {
-  return <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    {index === 0 && <><circle cx="16" cy="16" r="5"/><circle cx="5" cy="6" r="2.5"/><circle cx="27" cy="6" r="2.5"/><circle cx="16" cy="28" r="2.5"/><path d="m7 8 6 5m12-5-6 5m-3 8v4"/></>}
-    {index === 1 && <><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="21" y="21" width="8" height="8" rx="2"/><path d="M11 7h10a4 4 0 0 1 4 4v10M7 15v6a4 4 0 0 0 4 4h5m-3-3 3 3-3 3"/></>}
-    {index === 2 && <><ellipse cx="16" cy="7" rx="11" ry="4"/><path d="M5 7v17c0 2 5 4 11 4s11-2 11-4V7M5 15c0 2 5 4 11 4"/><path d="m15 11-4 7h6l-2 7 7-10h-6l2-4"/></>}
-    {index === 3 && <><path d="M16 3 27 7v9c0 6-6 11-11 14C11 27 5 22 5 16V7Z"/><path d="m11 16 4 4 7-8"/></>}
-  </svg>;
-}
-
-function TopicVisual({ index, zh }: { index: number; zh: boolean }) {
-  const layer = layers[index];
-  return <figure className="layer-convergence" style={{ "--layer-color": layer.color } as CSSProperties} aria-label={zh ? "四层能力共同汇聚为 Agentic Experience" : "Four layers converge into Agentic Experience"}>
-    <div className="layer-visual-heading"><span>{zh ? "四层协同 · 一个共同的体验" : "FOUR LAYERS · ONE AGENTIC EXPERIENCE"}</span></div>
-    <div className="layer-stream-canvas">
-      <svg className="layer-stream-lines" viewBox="0 0 600 360" fill="none" aria-hidden="true">
-        {layers.map((source, i) => {
-          const y = 65 + i * 80;
-          const path = `M 8 ${y} H 230 C 365 ${y}, 405 185, 510 185`;
-          return <g key={source.label} className={`layer-source-ray${i === index ? " is-active" : ""}`} style={{ "--source-color": source.color } as CSSProperties}>
-            <path className="layer-stream-track" d={path}/>
-            <path className="layer-stream-pulse" d={path} pathLength="100" style={{ animationDelay: `${i * -.65}s` }}/>
-            <circle cx="8" cy={y} r={i === index ? 4 : 3} fill="currentColor"/>
-          </g>;
-        })}
-        <circle className="layer-stream-halo" cx="510" cy="185" r="43"/>
-        <circle className="layer-stream-core" cx="510" cy="185" r="32"/>
-      </svg>
-      <ol className="layer-stream-labels">{layers.map((source, i) => <li className={i === index ? "is-active" : ""} key={source.label} style={{ top: `${(65 + i * 80) / 360 * 100}%`, "--source-color": source.color } as CSSProperties}><LayerSymbol index={i}/><span>0{i + 1}</span>{source.label}</li>)}</ol>
-      <div className="layer-stream-symbol"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="6" y="9" width="20" height="18" rx="6"/><path d="M16 9V5m-4 13h.01M20 18h.01M12 23h8M3 15v6m26-6v6"/><circle cx="16" cy="4" r="1.5"/></svg></div>
-      <strong className="layer-stream-result" lang="en">Agentic<br/>Experience</strong>
-    </div>
-    <figcaption className="layer-capabilities" key={index}>
-      <span className="layer-capabilities-eyebrow">LAYER 0{index + 1} / {zh ? "具体能力" : "CAPABILITIES"}</span>
-      <strong>{zh ? layer.zhTitle : layer.title}</strong>
-      <ul>{layer.nodes.map(node => <li key={node}>{node}</li>)}</ul>
-    </figcaption>
-  </figure>;
-}
-
 export default function ArchitectureDiagram({ locale }: { locale: Locale }) {
   const zh = locale === "zh";
   const [active, setActive] = useState(0);
-  const steps = useRef<(HTMLElement | null)[]>([]);
+  const [enhanced, setEnhanced] = useState(false);
+  const scene = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    setEnhanced(true);
     let frame = 0;
     const update = () => {
       frame = 0;
-      const target = window.innerHeight * 0.46;
-      let nearest = 0;
-      let distance = Infinity;
-      steps.current.forEach((step, index) => {
-        if (!step) return;
-        const rect = step.getBoundingClientRect();
-        const nextDistance = Math.abs(rect.top + rect.height / 2 - target);
-        if (nextDistance < distance) { nearest = index; distance = nextDistance; }
-      });
-      setActive(nearest);
+      const element = scene.current;
+      if (!element) return;
+      const headerHeight = document.querySelector(".site-header")?.getBoundingClientRect().height ?? 73;
+      element.style.setProperty("--scene-top", `${headerHeight}px`);
+      const rect = element.getBoundingClientRect();
+      const runway = rect.height - (window.innerHeight - headerHeight);
+      if (runway <= 0) return;
+      const progress = (headerHeight - rect.top) / runway;
+      setActive(Math.max(0, Math.min(3, Math.floor(progress * 4))));
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
-    update();
+    schedule();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
     return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); };
   }, []);
-
-  return <div className="architecture-story">
-    <div className="architecture-story-copy">
-      <p className="architecture-scroll-hint">{zh ? "向下滚动，逐层探索架构 ↓" : "Scroll to explore the stack, layer by layer ↓"}</p>
-        <nav className="architecture-layer-nav" aria-label={zh ? "跳转到架构层" : "Jump to an architecture layer"}>
-          {layers.map((layer, index) => <a href={`#architecture-layer-${index + 1}`} key={layer.label} aria-current={active === index ? "step" : undefined} style={{ "--layer-color": layer.color } as CSSProperties}><span>0{index + 1}</span>{layer.label}<span aria-hidden="true">↗</span></a>)}
-        </nav>
-      {layers.map((layer, index) => <article id={`architecture-layer-${index + 1}`} key={layer.label} ref={el => { steps.current[index] = el; }} className={`architecture-step${active === index ? " is-active" : ""}`} style={{ "--layer-color": layer.color } as CSSProperties}>
-        <p className="layer-step-number">LAYER 0{index + 1} <span>/ 04</span></p>
-        <h3>{zh ? layer.zhTitle : layer.title}</h3>
-        {zh && <p className="layer-english-title" lang="en">{layer.title}</p>}
-        <p className="layer-explanation">{zh ? layer.zhDescription : layer.description}</p>
-        <div className="layer-example"><span>{zh ? "以一次业务分析为例" : "FOLLOW ONE INVESTIGATION"}</span><p>{zh ? layer.zhExample : layer.example}</p></div>
-        <div className="layer-mobile-visual"><TopicVisual index={index} zh={zh} /></div>
-      </article>)}
+  function selectLayer(index: number) {
+    const element = scene.current;
+    if (!element) return;
+    const headerHeight = document.querySelector(".site-header")?.getBoundingClientRect().height ?? 73;
+    const rect = element.getBoundingClientRect();
+    const runway = rect.height - (window.innerHeight - headerHeight);
+    setActive(index);
+    window.scrollTo({ top: window.scrollY + rect.top - headerHeight + runway * ((index + 0.5) / 4), behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  }
+  const layer = layers[active];
+  return <div className="architecture-immersive" data-enhanced={enhanced ? "true" : undefined}>
+    <div className="architecture-scroll-track" ref={scene}>
+      <div className="architecture-full-canvas" data-active={active}>
+        <div className="architecture-canvas-guide"><span>AGENTIC DATA STACK</span><span>{zh ? "向下滚动，逐层探索 ↓" : "Scroll to explore each layer ↓"}</span></div>
+        <svg className="architecture-convergence-lines" viewBox="0 0 1600 800" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          {layers.map((source, index) => {
+            const y = 152 + index * 152;
+            const path = `M -40 ${y} H 1000 C 1230 ${y}, 1330 380, 1480 380`;
+            return <g key={source.label} className={`architecture-long-ray${active === index ? " is-active" : ""}`}>
+              <path className="architecture-ray-base" d={path}/>
+              <path className="architecture-ray-flow" d={path} pathLength="100"/>
+            </g>;
+          })}
+        </svg>
+        <div className="architecture-ray-sources" aria-label={zh ? "选择架构层" : "Select a layer"}>
+          {layers.map((source, index) => <button key={source.label} type="button" className="architecture-source-label" aria-pressed={active === index} onClick={() => selectLayer(index)} style={{ "--ray-position": `${19 + index * 19}%`, "--mobile-ray-position": `${(19 + index * 19) * 0.51}%` } as CSSProperties}>
+            <span>0{index + 1}</span>{source.label}<span className="architecture-source-indicator" aria-hidden="true"/>
+          </button>)}
+        </div>
+        <div className="architecture-experience-point" aria-hidden="true"/>
+        <div className="architecture-experience-label" lang="en">Agentic<br/><strong>Experience</strong></div>
+        <article className={`architecture-floating-card${active > 1 ? " floats-above" : ""}`} key={active}>
+          <p className="architecture-floating-index">LAYER 0{active + 1} <span>/ 04</span></p>
+          <h3>{zh ? layer.zhTitle : layer.title}</h3>
+          {zh && <p className="architecture-floating-subtitle" lang="en">{layer.title}</p>}
+          <p className="architecture-floating-description">{zh ? layer.zhDescription : layer.description}</p>
+          <ul className="architecture-floating-capabilities">{layer.nodes.map(node => <li key={node}>{node}</li>)}</ul>
+          <div className="architecture-floating-example"><span>{zh ? "一次业务分析中的作用" : "IN A REAL-WORLD WORKFLOW"}</span><p>{zh ? layer.zhExample : layer.example}</p></div>
+        </article>
+        <div className="architecture-canvas-progress" aria-hidden="true"><span>0{active + 1} / 04</span><div>{layers.map((item, index) => <i key={item.label} className={index === active ? "is-active" : ""}/>)}</div></div>
+      </div>
     </div>
-    <aside className="architecture-story-stage" aria-label={zh ? "架构层级可视化" : "Architecture layer visualization"}>
-      <div className="architecture-topic-panel"><TopicVisual index={active} zh={zh} /></div>
-    </aside>
+    <noscript><div className="architecture-static-content">{layers.map(item => <article key={item.label}><h3>{zh ? item.zhTitle : item.title}</h3><p>{zh ? item.zhDescription : item.description}</p><p>{item.nodes.join(" · ")}</p></article>)}</div></noscript>
   </div>;
 }
