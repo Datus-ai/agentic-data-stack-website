@@ -24,7 +24,6 @@ export default function CommunityPhotos({ locale, banner = false }: { locale: Lo
   const photos = banner ? communityPhotos.slice(0, 1) : communityPhotos.slice(0, 3);
   if (!photos.length) return null;
   return <div className={`community-photos${banner ? " community-photos-banner" : ""}`}>
-    {photos.some(photo => photo.illustrative) && <p className="community-photos-disclosure">{locale === "zh" ? "社区活动示意图 · AI 生成，非真实活动记录" : "Community scenes · AI-generated illustrations, not event photographs"}</p>}
     {photos.map(photo => <figure key={photo.src}>
       <img src={photo.src} alt={photo.alt[locale]} width={banner ? 1440 : 800} height={banner ? 720 : 600} loading="lazy"/>
       <figcaption>{photo.caption[locale]}</figcaption>

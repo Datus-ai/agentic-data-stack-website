@@ -417,5 +417,3 @@ a, button, input, summary { -webkit-tap-highlight-color: transparent; }
 .community-meeting-format p { color:#62646d; font-size:13px; line-height:1.85; margin:9px 0 0; }
 .community-organizing-note { color:#62646d; max-width:760px; font-size:12px; line-height:1.9; margin:35px 0 26px; }
 @media(max-width:760px) { .community-organizing-intro { grid-template-columns:1fr; gap:28px; } .community-photos { grid-template-columns:1fr; gap:24px; } .community-photos-banner img { aspect-ratio:4/3; } }
-
-.community-photos-disclosure { grid-column:1 / -1; margin:0 0 -7px; font-size:10px; color:#747079; line-height:1.7; }
