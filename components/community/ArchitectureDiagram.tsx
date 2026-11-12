@@ -42,13 +42,35 @@ const layers = [
   },
 ];
 
+function LayerSymbol({ index }: { index: number }) {
+  return <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {index === 0 && <><circle cx="16" cy="16" r="5"/><circle cx="5" cy="6" r="2.5"/><circle cx="27" cy="6" r="2.5"/><circle cx="16" cy="28" r="2.5"/><path d="m7 8 6 5m12-5-6 5m-3 8v4"/></>}
+    {index === 1 && <><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="21" y="21" width="8" height="8" rx="2"/><path d="M11 7h10a4 4 0 0 1 4 4v10M7 15v6a4 4 0 0 0 4 4h5m-3-3 3 3-3 3"/></>}
+    {index === 2 && <><ellipse cx="16" cy="7" rx="11" ry="4"/><path d="M5 7v17c0 2 5 4 11 4s11-2 11-4V7M5 15c0 2 5 4 11 4"/><path d="m15 11-4 7h6l-2 7 7-10h-6l2-4"/></>}
+    {index === 3 && <><path d="M16 3 27 7v9c0 6-6 11-11 14C11 27 5 22 5 16V7Z"/><path d="m11 16 4 4 7-8"/></>}
+  </svg>;
+}
+
 function TopicVisual({ index, zh }: { index: number; zh: boolean }) {
   const layer = layers[index];
-  return <div className="layer-topic-visual" style={{ "--layer-color": layer.color } as CSSProperties}>
-    <div className="layer-topic-hub"><span aria-hidden="true">0{index + 1}</span><strong>{zh ? layer.zhHub : layer.hub}</strong></div>
-    <div className="layer-topic-nodes">{layer.nodes.map((node, i) => <span key={node} style={{ "--node-order": i } as CSSProperties}>{node}</span>)}</div>
-    <p className="layer-topic-outcome">{zh ? layer.zhOutcome : layer.outcome}</p>
-  </div>;
+  return <figure className="layer-convergence" style={{ "--layer-color": layer.color } as CSSProperties} aria-label={`${layer.title}: ${layer.nodes.join(", ")} → ${layer.hub}`}>
+    <div className="layer-visual-heading"><span>LAYER 0{index + 1} / {zh ? "本层能力" : "LAYER FOCUS"}</span><strong>{zh ? layer.zhHub : layer.hub}</strong></div>
+    <div className="layer-stream-canvas">
+      <svg className="layer-stream-lines" viewBox="0 0 600 440" fill="none" aria-hidden="true">
+        {layer.nodes.map((node, i) => {
+          const y = 50 + i * 62;
+          const path = `M 8 ${y} H 245 C 380 ${y}, 420 205, 540 205`;
+          return <g key={node}><path className="layer-stream-track" d={path}/><path className="layer-stream-pulse" d={path} pathLength="100" style={{ animationDelay: `${i * -.65}s` }}/><circle cx="8" cy={y} r="3" fill="currentColor"/></g>;
+        })}
+        <circle className="layer-stream-halo" cx="540" cy="205" r="43"/>
+        <circle className="layer-stream-core" cx="540" cy="205" r="32"/>
+      </svg>
+      <ol className="layer-stream-labels">{layer.nodes.map((node, i) => <li key={node} style={{ top: `${(50 + i * 62) / 440 * 100}%` }}><span>0{i + 1}</span>{node}</li>)}</ol>
+      <div className="layer-stream-symbol"><LayerSymbol index={index}/></div>
+      <span className="layer-stream-result">{zh ? layer.zhOutcome : layer.outcome}</span>
+    </div>
+    <figcaption>{zh ? "多个组件协同，汇聚为这一层的能力。" : "Distinct components converge into a shared capability."}</figcaption>
+  </figure>;
 }
 
 export default function ArchitectureDiagram({ locale }: { locale: Locale }) {
@@ -80,6 +102,9 @@ export default function ArchitectureDiagram({ locale }: { locale: Locale }) {
   return <div className="architecture-story">
     <div className="architecture-story-copy">
       <p className="architecture-scroll-hint">{zh ? "向下滚动，逐层探索架构 ↓" : "Scroll to explore the stack, layer by layer ↓"}</p>
+        <nav className="architecture-layer-nav" aria-label={zh ? "跳转到架构层" : "Jump to an architecture layer"}>
+          {layers.map((layer, index) => <a href={`#architecture-layer-${index + 1}`} key={layer.label} aria-current={active === index ? "step" : undefined} style={{ "--layer-color": layer.color } as CSSProperties}><span>0{index + 1}</span>{layer.label}<span aria-hidden="true">↗</span></a>)}
+        </nav>
       {layers.map((layer, index) => <article id={`architecture-layer-${index + 1}`} key={layer.label} ref={el => { steps.current[index] = el; }} className={`architecture-step${active === index ? " is-active" : ""}`} style={{ "--layer-color": layer.color } as CSSProperties}>
         <p className="layer-step-number">LAYER 0{index + 1} <span>/ 04</span></p>
         <h3>{zh ? layer.zhTitle : layer.title}</h3>
@@ -90,15 +115,7 @@ export default function ArchitectureDiagram({ locale }: { locale: Locale }) {
       </article>)}
     </div>
     <aside className="architecture-story-stage" aria-label={zh ? "架构层级可视化" : "Architecture layer visualization"}>
-      <div className="architecture-stage-inner">
-        <p className="architecture-stage-eyebrow">AGENTIC EXPERIENCE LAYER</p>
-        <p className="architecture-stage-experience">Data Agents · Copilots · APIs · Chat Interfaces</p>
-        <nav className="architecture-layer-nav" aria-label={zh ? "跳转到架构层" : "Jump to an architecture layer"}>
-          {layers.map((layer, index) => <a href={`#architecture-layer-${index + 1}`} key={layer.label} aria-current={active === index ? "step" : undefined} style={{ "--layer-color": layer.color } as CSSProperties}><span>0{index + 1}</span>{layer.label}<span aria-hidden="true">↗</span></a>)}
-        </nav>
-        <div className="architecture-topic-panel" key={active}><TopicVisual index={active} zh={zh} /></div>
-        <div className="architecture-stage-feedback"><span aria-hidden="true">↻</span><div><strong>{zh ? "持续反馈，贯穿全栈" : "Continuous feedback loop"}</strong><p>{zh ? "评估 · 监控 · 成本优化 · 可靠性 · 治理改进" : "Evaluation · Monitoring · Cost · Reliability · Governance"}</p></div></div>
-      </div>
+      <div className="architecture-topic-panel" key={active}><TopicVisual index={active} zh={zh} /></div>
     </aside>
   </div>;
 }
