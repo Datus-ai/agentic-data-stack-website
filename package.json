@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8001",
-    "build": "next build",
+    "dev": "npm run build && python3 scripts/preview-designer.py --port 8001",
+    "build": "next build && python3 scripts/designer-theme/integrate.py && python3 scripts/designer-theme/audit.py",
     "start": "npx serve out -l 8001",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:prototype": "next build",
+    "dev:prototype": "next dev -p 8002"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
