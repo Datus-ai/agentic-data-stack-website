@@ -21,9 +21,9 @@ export const communityPhotos: CommunityPhoto[] = [
 ];
 
 export default function CommunityPhotos({ locale, banner = false }: { locale: Locale; banner?: boolean }) {
-  const photos = banner ? communityPhotos.slice(0, 1) : communityPhotos.slice(0, 3);
+  const photos = banner ? communityPhotos.slice(0, 1) : communityPhotos.slice(1, 2);
   if (!photos.length) return null;
-  return <div className={`community-photos${banner ? " community-photos-banner" : ""}`}>
+  return <div className={`community-photos${banner ? " community-photos-banner" : " community-photos-single"}`}>
     {photos.map(photo => <figure key={photo.src}>
       <img src={photo.src} alt={photo.alt[locale]} width={banner ? 1440 : 800} height={banner ? 720 : 600} loading="lazy"/>
       <figcaption>{photo.caption[locale]}</figcaption>
