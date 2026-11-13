@@ -11,13 +11,13 @@ Merged locally into `feat/community-events-bilingual`; no main merge or producti
 
 ## Owner review needed: event facts
 
-The designer package includes an updated event brief in `scripts/designer-theme/event_data.py`. The local designer preview uses these facts. The owner confirmed the agenda and speakers, now synced into `content/events/hangzhou-2026.json`. Venue and the post-talk time interval remain pending review.
+The designer package includes an updated event brief in `scripts/designer-theme/event_data.py`. The local designer preview uses these facts. The owner confirmed the agenda and speakers, now synced into `content/events/hangzhou-2026.json`. Venue remains pending review. The owner confirmed 16:40–17:30 as open networking on 2026-11-13.
 
 1. Venue: designer version says **22F, AUX Building, Yuhang District, Hangzhou (杭州市余杭区奥克斯写字楼22层)**; local content says venue details will be announced on Luma. Confirm the new venue.
 2. Program and speakers: designer version replaces the single tentative Zhao Heng session with Zhao Heng 13:30–13:50, Ran Panfeng 13:50–14:20, He Jingke 14:20–14:50, break 14:50–15:10, Tang Feihu (topic TBA) 15:10–15:40, Fang Yang 15:40–16:10, Zhang Chen 16:10–16:40. Confirmed by the owner on 2026-11-12; synced to the repository event JSON, which the theme adapter now reads. The opening slot is 20 minutes, despite the package's general note about 30-minute talks.
-3. End time: event remains 17:30, while the final listed talk ends at 16:40. Confirm whether 16:40–17:30 is open discussion or the event end time should change.
+3. End time: confirmed by the owner on 2026-11-13. The event remains 17:30; 16:40–17:30 is open networking (自由交流), now added to both languages.
 
-Once the remaining venue/end-time facts are confirmed, sync those into `content/events/hangzhou-2026.json`. Agenda data already uses this single source. Until then, do not treat this local draft as publication approval. Metadata remains sourced from the original content, so it must be synced with the confirmed facts before deployment.
+Once the remaining venue fact are confirmed, sync those into `content/events/hangzhou-2026.json`. Agenda data already uses this single source. Until then, do not treat this local draft as publication approval. Metadata remains sourced from the original content, so it must be synced with the confirmed facts before deployment.
 
 ## Existing configuration gap
 

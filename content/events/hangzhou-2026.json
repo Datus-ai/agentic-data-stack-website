@@ -217,6 +217,22 @@
         "en": "Zhang Chen",
         "zh": "张晨"
       }
+    },
+    {
+      "time": "16:40–17:30",
+      "title": {
+        "en": "Open networking",
+        "zh": "自由交流"
+      },
+      "speaker": {
+        "en": "",
+        "zh": ""
+      },
+      "designer": {
+        "kind": "networking",
+        "note_zh": "与讲者和同行自由交流，活动于 17:30 结束。",
+        "note_en": "Connect with speakers and fellow attendees. The event ends at 17:30."
+      }
     }
   ],
   "agendaConfirmed": true,

@@ -234,7 +234,7 @@ def agenda_html(loc):
     zh = loc == 'zh'; t = T[loc]; out = ['<ol class="agenda">']
     for a in AGENDA:
         title = a['title_zh'] if zh else a['title_en']
-        if a['kind'] == 'break':
+        if a['kind'] in ('break', 'networking'):
             out.append(f'<li class="agenda-item is-break"><time>{a["time"]}</time><div class="agenda-body"><h3>{E(title)}</h3><p>{E(a["note_zh"] if zh else a["note_en"])}</p></div></li>'); continue
         name = a['speaker_zh'] if zh else a['speaker_en']; role = a['role_zh'] if zh else a['role_en']
         initial = a['speaker_zh'][0] if zh else ''.join(w[0] for w in a['speaker_en'].split())[:2]

@@ -23,6 +23,6 @@ for slot in _event['agenda']:
         entry.update(speaker_en=slot['speaker']['en'], speaker_zh=slot['speaker']['zh'])
     AGENDA.append(entry)
 
-TALKS = [a for a in AGENDA if a['kind'] != 'break']
+TALKS = [a for a in AGENDA if a['kind'] in ('talk', 'tba')]
 # portraits: speakers/raw (from the brief) -> speakers.py -> static/images/speakers/<photo>.png (web) and speakers/work/<photo>-640.png (materials)
 STARTS = [a['time'][:5] for a in AGENDA]
