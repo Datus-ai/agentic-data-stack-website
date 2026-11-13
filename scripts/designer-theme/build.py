@@ -222,7 +222,7 @@ def arch_diagram(loc, png_href, caption, story=''):
 </figure>'''
 def ticket(loc):
     zh = loc == 'zh'
-    rows = [('时间' if zh else 'Time', EVENT['time']), ('地点' if zh else 'Venue', EVENT['venue_short_zh'] if zh else EVENT['venue_short_en']), ('报名' if zh else 'Admission', '免费 · 需主办方审核' if zh else 'Free · host approval')]
+    rows = [('时间' if zh else 'Time', EVENT['time']), ('地点' if zh else 'Venue', EVENT['venue_short_zh'] if zh else EVENT['venue_short_en']), ('报名' if zh else 'Admission', '免费 · 直接报名' if zh else 'Free · direct registration')]
     return f'''<aside class="ticket" aria-label="{'活动信息' if zh else 'Event pass'}">
   <div class="ticket-top">{G.logo_mark('ticket-mark', 24)}</div>
   <p class="ticket-city">{'杭州' if zh else 'Hangzhou'}</p>
