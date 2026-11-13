@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
 
   return {
+    alternates: { canonical: `/blog/${slug}`, languages: { en: `/blog/${slug}`, "zh-CN": `/zh${`/blog/${slug}`}` } },
     title: `${post.frontmatter.title} — Agentic Data Stack Blog`,
     description: post.frontmatter.description,
     keywords: post.frontmatter.keywords,
@@ -83,7 +84,7 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-16">
+      <main id="main-content" className="min-h-screen pt-24 pb-16">
         {post.isDraft && (
           <div className="mx-auto mb-6 max-w-6xl px-6">
             <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-center text-sm font-medium text-amber-400">
@@ -137,7 +138,7 @@ export default async function BlogPostPage({ params }: Props) {
               </header>
 
               {/* Content */}
-              <div className="mt-10 prose-invert prose prose-lg max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-muted prose-p:leading-relaxed prose-a:text-violet-400 prose-a:no-underline hover:prose-a:text-violet-300 prose-strong:text-foreground prose-code:text-violet-300 prose-code:bg-violet-500/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-pre:bg-card-bg prose-pre:border prose-pre:border-card-border prose-img:rounded-xl prose-img:border prose-img:border-card-border prose-li:text-muted prose-blockquote:border-violet-500/50 prose-blockquote:text-muted">
+              <div className="mt-10  prose prose-lg max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-muted prose-p:leading-relaxed prose-a:text-violet-400 prose-a:no-underline hover:prose-a:text-violet-300 prose-strong:text-foreground prose-code:text-violet-300 prose-code:bg-violet-500/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-pre:bg-card-bg prose-pre:border prose-pre:border-card-border prose-img:rounded-xl prose-img:border prose-img:border-card-border prose-li:text-muted prose-blockquote:border-violet-500/50 prose-blockquote:text-muted">
                 <MDXRemote
                   source={post.content}
                   options={{

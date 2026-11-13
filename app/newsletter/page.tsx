@@ -6,6 +6,7 @@ import SubscribeForm from "@/components/newsletter/SubscribeForm";
 import { getAllNewsletterIssues } from "@/lib/newsletter";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/newsletter", languages: { en: "/newsletter", "zh-CN": `/zh${"/newsletter"}` } },
   title: "Free Newsletter: Agentic Data Stack Weekly Updates",
   description:
     "Get curated weekly insights on agentic data infrastructure, AI tooling, and modern data stacks. Built for data engineers and team leaders. Subscribe free—no spam.",
@@ -23,7 +24,7 @@ export default function NewsletterPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-16">
+      <main id="main-content" className="min-h-screen pt-24 pb-16">
         {/* Hero + Subscribe */}
         <section className="mx-auto max-w-4xl px-6 pb-16">
           <div className="text-center">

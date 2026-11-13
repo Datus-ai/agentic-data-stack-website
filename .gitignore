@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/.designer-source/
+__pycache__/
+scripts/designer-theme/build-report.json
+scripts/designer-theme/merge-audit.json

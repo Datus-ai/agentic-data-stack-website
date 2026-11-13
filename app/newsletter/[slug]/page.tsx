@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!issue) return {};
 
   return {
+    alternates: { canonical: `/newsletter/${slug}`, languages: { en: `/newsletter/${slug}`, "zh-CN": `/zh${`/newsletter/${slug}`}` } },
     title: `${issue.frontmatter.title} — Agentic Data Stack`,
     description: issue.frontmatter.description,
     openGraph: {
@@ -57,7 +58,7 @@ export default async function NewsletterIssuePage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-16">
+      <main id="main-content" className="min-h-screen pt-24 pb-16">
         <article className="mx-auto max-w-3xl px-6">
           {/* Header */}
           <header className="pb-8 border-b border-card-border">
@@ -92,7 +93,7 @@ export default async function NewsletterIssuePage({ params }: Props) {
           </header>
 
           {/* Content */}
-          <div className="mt-10 prose-invert prose prose-lg max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-card-border prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-muted prose-p:leading-relaxed prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300 prose-strong:text-foreground prose-li:text-muted prose-ul:text-muted prose-blockquote:border-blue-500/50 prose-blockquote:text-muted prose-hr:border-card-border">
+          <div className="mt-10  prose prose-lg max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-card-border prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-muted prose-p:leading-relaxed prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300 prose-strong:text-foreground prose-li:text-muted prose-ul:text-muted prose-blockquote:border-blue-500/50 prose-blockquote:text-muted prose-hr:border-card-border">
             <MDXRemote
               source={issue.content}
               options={{

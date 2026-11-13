@@ -9,7 +9,14 @@ import { useState, FormEvent } from "react";
  * NEXT_PUBLIC_BUTTONDOWN_USERNAME must be set to your Buttondown username.
  */
 
-export default function SubscribeForm({ compact }: { compact?: boolean }) {
+export default function SubscribeForm({
+  compact,
+  locale = "en",
+}: {
+  compact?: boolean;
+  locale?: "en" | "zh";
+}) {
+  const zh = locale === "zh";
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
@@ -24,7 +31,11 @@ export default function SubscribeForm({ compact }: { compact?: boolean }) {
 
     if (!username) {
       setStatus("error");
-      setMessage("Subscription is not configured yet. Please try again later.");
+      setMessage(
+        zh
+          ? "订阅暂未开放，请先关注社区 Luma 日历。"
+          : "Subscription is not configured yet. Follow our Luma calendar for updates.",
+      );
       return;
     }
 
@@ -37,31 +48,41 @@ export default function SubscribeForm({ compact }: { compact?: boolean }) {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: new URLSearchParams({ email }),
-        }
+        },
       );
 
       if (res.ok || res.status === 302) {
         setStatus("success");
-        setMessage("You're in! Check your inbox for confirmation.");
+        setMessage(
+          zh
+            ? "请查看邮箱确认订阅。"
+            : "Check your inbox to confirm your subscription.",
+        );
         setEmail("");
       } else {
         setStatus("error");
-        setMessage("Something went wrong. Please try again.");
+        setMessage(
+          zh
+            ? "暂时无法订阅，请稍后重试。"
+            : "Something went wrong. Please try again.",
+        );
       }
     } catch {
-      // Buttondown may redirect on success which can cause a CORS error
-      // in fetch — treat as success since the subscription went through
-      setStatus("success");
-      setMessage("You're in! Check your inbox for confirmation.");
-      setEmail("");
+      setStatus("error");
+      setMessage(
+        zh
+          ? "暂时无法确认订阅结果，请稍后重试或查看邮箱。"
+          : "We could not confirm your subscription. Please check your inbox or try again later.",
+      );
     }
   }
 
   if (compact) {
     return (
-      <form onSubmit={handleSubmit} className="flex gap-2">
+      <form onSubmit={handleSubmit} className="compact-subscribe">
         <input
           type="email"
+          aria-label={zh ? "邮箱地址" : "Email address"}
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
@@ -69,17 +90,17 @@ export default function SubscribeForm({ compact }: { compact?: boolean }) {
           }}
           placeholder="your@email.com"
           required
-          className="h-10 flex-1 rounded-lg border border-card-border bg-card-bg px-3 text-sm text-foreground placeholder:text-muted/60 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-colors"
+          className="subscribe-input min-w-0 flex-1"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="h-10 shrink-0 rounded-lg bg-gradient-to-r from-violet-600 to-blue-500 px-4 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+          className="button shrink-0"
         >
-          {status === "loading" ? "..." : "Subscribe"}
+          {status === "loading" ? "..." : zh ? "订阅" : "Subscribe"}
         </button>
-        {status === "success" && (
-          <span className="self-center text-xs text-green-400">{message}</span>
+        {(status === "success" || status === "error") && (
+          <p role="status" className={`subscribe-message text-xs ${status === "error" ? "text-amber-300" : "text-green-400"}`}>{message}</p>
         )}
       </form>
     );
@@ -105,11 +126,12 @@ export default function SubscribeForm({ compact }: { compact?: boolean }) {
         </div>
         <div>
           <h3 className="text-lg font-semibold text-foreground">
-            Agentic Data Stack Weekly
+            {zh ? "Agentic Data Stack 周刊" : "Agentic Data Stack Weekly"}
           </h3>
           <p className="mt-1 text-sm text-muted">
-            Curated news on data infrastructure, agent tooling, and the
-            evolving data stack. For data engineers and team leaders.
+            {zh
+              ? "为数据工程师与团队负责人整理数据基础设施、Agent 工具与社区动态。"
+              : "Curated news on data infrastructure, agent tooling, and the evolving data stack. For data engineers and team leaders."}
           </p>
         </div>
       </div>
@@ -118,6 +140,7 @@ export default function SubscribeForm({ compact }: { compact?: boolean }) {
         <div className="flex gap-3">
           <input
             type="email"
+            aria-label={zh ? "邮箱地址" : "Email address"}
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -125,14 +148,20 @@ export default function SubscribeForm({ compact }: { compact?: boolean }) {
             }}
             placeholder="you@company.com"
             required
-            className="h-12 flex-1 rounded-xl border border-card-border bg-background px-4 text-foreground placeholder:text-muted/60 focus:border-violet-500/50 focus:outline-none focus:ring-2 focus:ring-violet-500/20 transition-all"
+            className="subscribe-input min-w-0 flex-1"
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="h-12 shrink-0 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 px-6 font-medium text-white shadow-lg shadow-violet-500/20 transition-all hover:shadow-xl hover:shadow-violet-500/30 hover:brightness-110 disabled:opacity-50"
+            className="button shrink-0"
           >
-            {status === "loading" ? "Subscribing..." : "Subscribe"}
+            {status === "loading"
+              ? zh
+                ? "正在订阅…"
+                : "Subscribing..."
+              : zh
+                ? "订阅"
+                : "Subscribe"}
           </button>
         </div>
 

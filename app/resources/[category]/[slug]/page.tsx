@@ -41,6 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     `${title} — ${category.title} component in the agentic data stack ecosystem.`;
 
   return {
+    alternates: { canonical: `/resources/${catSlug}/${slug}`, languages: { en: `/resources/${catSlug}/${slug}`, "zh-CN": `/zh${`/resources/${catSlug}/${slug}`}` } },
     title: `${title} — ${category.title} — Agentic Data Stack`,
     description,
     openGraph: {
@@ -116,7 +117,7 @@ export default async function ResourcePage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-16">
+      <main id="main-content" className="min-h-screen pt-24 pb-16">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -155,7 +156,7 @@ export default async function ResourcePage({ params }: Props) {
 
               {/* MDX content if available */}
               {resource && (
-                <div className="prose-invert mt-8 max-w-none">
+                <div className=" mt-8 max-w-none">
                   {resource.content.split("\n").filter(Boolean).map((p, i) => (
                     <p key={i} className="mt-4 text-muted leading-relaxed">
                       {p}

@@ -8,6 +8,7 @@ import { categories } from "@/lib/categories";
 import { resourcesFAQ } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/resources", languages: { en: "/resources", "zh-CN": `/zh${"/resources"}` } },
   title: "27+ Free Agentic Data Stack Tools | Open Source Directory",
   description:
     "Compare 27+ open-source tools for building agentic data stacks: MCP catalogs, lake formats (Iceberg, Delta), SQL engines (Trino, DuckDB), semantic layers, and data agents. Start free.",
@@ -40,7 +41,7 @@ export default function ResourcesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
-      <main className="min-h-screen pt-24 pb-16">
+      <main id="main-content" className="min-h-screen pt-24 pb-16">
         {/* Hero */}
         <section className="mx-auto max-w-6xl px-6 pb-16">
           <div className="text-center">

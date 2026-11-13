@@ -42,7 +42,7 @@ export default function Hero() {
             href="https://lu.ma/AgenticDataStack"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-8 text-sm font-medium text-white shadow-lg shadow-violet-500/25 transition-all hover:shadow-xl hover:shadow-violet-500/30 hover:brightness-110"
+            className="button"
           >
             Join the Community
           </a>

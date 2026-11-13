@@ -1,116 +1,40 @@
 "use client";
-
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-
-const navLinks = [
-  { label: "Resources", href: "/resources" },
-  { label: "Newsletter", href: "/newsletter" },
-  { label: "Blog", href: "/blog" },
-];
-
+import { localPath, type Locale } from "@/lib/community";
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-
+  const locale: Locale = pathname === "/zh" || pathname.startsWith("/zh/") ? "zh" : "en";
+  const zh = locale === "zh";
+  const base = pathname.replace(/^\/zh(?=\/|$)/, "") || "/";
+  const [open, setOpen] = useState(false);
+  const [learnOpen, setLearnOpen] = useState(false);
+  const learnRef = useRef<HTMLDivElement>(null);
+  const learningActive = base.startsWith("/blog") || base.startsWith("/resources");
+  const close = () => { setOpen(false); setLearnOpen(false); };
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const dismiss = (event: PointerEvent) => {
+      if (learnRef.current && !learnRef.current.contains(event.target as Node)) setLearnOpen(false);
+    };
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
   }, []);
-
-  function isActive(href: string) {
-    return pathname.startsWith(href);
-  }
-
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-card-border shadow-lg shadow-black/10"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight">
-          <img src="/images/logo.png" alt="Agentic Data Stack" className="h-8 w-8 rounded-md" />
-          <span className="hidden sm:inline">Agentic Data Stack</span>
-        </Link>
-
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm transition-colors hover:text-foreground ${
-                isActive(link.href)
-                  ? "text-foreground font-medium"
-                  : "text-muted"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            href="/newsletter"
-            className="rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
-          >
-            Subscribe
-          </Link>
-        </div>
-
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex flex-col gap-1.5 md:hidden"
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`block h-0.5 w-6 bg-foreground transition-transform ${
-              mobileOpen ? "translate-y-2 rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-foreground transition-opacity ${
-              mobileOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-foreground transition-transform ${
-              mobileOpen ? "-translate-y-2 -rotate-45" : ""
-            }`}
-          />
-        </button>
+  return <header className="site-header"><nav className="site-nav" aria-label={zh ? "主导航" : "Main navigation"}>
+    <Link href={localPath("/",locale)} className="brand" onClick={close}><img src="/images/logo.png" alt="" width="32" height="32"/><span>Agentic Data Stack</span></Link>
+    <button className="menu-toggle" aria-expanded={open} aria-controls="main-menu" onClick={() => { setOpen(!open); setLearnOpen(false); }}>{open ? (zh ? "关闭" : "Close") : (zh ? "菜单" : "Menu")}</button>
+    <div id="main-menu" className={`nav-items ${open ? "is-open" : ""}`}>
+      <Link href={localPath("/events",locale)} aria-current={base.startsWith("/events") ? "page" : undefined} onClick={close}>{zh ? "活动" : "Events"}</Link>
+      <div className="nav-learn" ref={learnRef} onKeyDown={event => { if(event.key === "Escape") {setLearnOpen(false); learnRef.current?.querySelector("button")?.focus();} }} onBlur={event => { if(!event.currentTarget.contains(event.relatedTarget))setLearnOpen(false); }}>
+        <button className={`nav-learn-toggle ${learningActive ? "is-active" : ""}`} aria-expanded={learnOpen} aria-controls="learn-menu" onClick={() => setLearnOpen(!learnOpen)}>{zh ? "学习资源" : "Learn"}<span aria-hidden="true">⌄</span></button>
+        {learnOpen && <div id="learn-menu" className="nav-learn-menu">
+          <Link href={localPath("/blog",locale)} aria-current={base.startsWith("/blog") ? "page" : undefined} onClick={close}><strong>{zh ? "博客" : "Blog"}</strong><small>{zh ? "架构、观点与实践文章" : "Architecture, ideas, and practice"}</small></Link>
+          <Link href={localPath("/resources",locale)} aria-current={base.startsWith("/resources") ? "page" : undefined} onClick={close}><strong>{zh ? "资源中心" : "Resources"}</strong><small>{zh ? "数据组件与 Agent 集成" : "Data components and agent integrations"}</small></Link>
+        </div>}
       </div>
-
-      {mobileOpen && (
-        <div className="border-t border-card-border bg-background/95 backdrop-blur-lg md:hidden">
-          <div className="flex flex-col gap-4 px-6 py-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className={`text-sm transition-colors hover:text-foreground ${
-                  isActive(link.href)
-                    ? "text-foreground font-medium"
-                    : "text-muted"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/newsletter"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 py-2 text-center text-sm font-medium text-white"
-            >
-              Subscribe
-            </Link>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
+      <Link href={localPath("/about",locale)} aria-current={base.startsWith("/about") ? "page" : undefined} onClick={close}>{zh ? "关于社区" : "About"}</Link>
+      <Link href={localPath(base,zh ? "en" : "zh")} hrefLang={zh ? "en" : "zh-CN"} lang={zh ? "en" : "zh-CN"} onClick={close} className="language-link">{zh ? "EN" : "中文"}</Link>
+      <Link href={localPath("/cfp",locale)} onClick={close} className="button button-small">{zh ? "征集分享" : "Call for Proposals"}<span aria-hidden="true">↗</span></Link>
+    </div>
+  </nav></header>;
 }
