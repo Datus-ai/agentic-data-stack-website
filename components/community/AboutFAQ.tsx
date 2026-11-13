@@ -22,7 +22,7 @@ const questions = [
   },
   {
     question: { en: "Are all events free, and what language are they held in?", zh: "活动都免费吗？使用什么语言？" },
-    answer: { en: "Admission, location, language, and registration details are listed on each event page. The Hangzhou meetup is free, is held in Chinese, and accepts direct registration without prior approval. Other events may have different arrangements.", zh: "每场活动的费用、地点、语言和报名方式以对应活动页面为准。杭州 Meetup 免费、使用中文，可直接报名，无需提前审核；其他活动可能有不同安排。" },
+    answer: { en: "Admission, location, language, and registration details are listed on each event page. The Hangzhou meetup is free and is held in Chinese. Other events may have different arrangements.", zh: "每场活动的费用、地点、语言和报名方式以对应活动页面为准。杭州 Meetup 免费、使用中文；其他活动可能有不同安排。" },
   },
   {
     question: { en: "Where can I find recordings, slides, and event recaps?", zh: "在哪里查看回放、Slides 和活动回顾？" },
