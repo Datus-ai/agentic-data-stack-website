@@ -386,10 +386,6 @@ export function Home({ locale }: { locale: Locale }) {
                   ? "Modern Data Stack 围绕人的工作方式构建。Agent 时代既需要更强大的 Data Agent，也需要重新思考数据基础设施的架构与设计。"
                   : "The Modern Data Stack was built around how people work. The agentic era calls for both more capable Data Agents and a fresh look at the infrastructure beneath them."}
               </p>
-              <Link className="text-link" href={localPath("/about", locale)}>
-                {zh ? "深入理解 Agentic Data Stack" : "Explore the definition"}{" "}
-                →
-              </Link>
             </div>
           </div>
           <ArchitectureDiagram locale={locale} />
