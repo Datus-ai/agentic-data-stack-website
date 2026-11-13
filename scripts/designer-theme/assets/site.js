@@ -50,27 +50,8 @@
     if (toggle && toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); }
   });
 
-  /* newsletter forms (Buttondown embed endpoint; username comes from <meta name="buttondown-username">) */
-  var bd = ($('meta[name="buttondown-username"]') || {}).content || '';
-  $$('form[data-subscribe]').forEach(function (form) {
-    var input = $('input[type="email"]', form), btn = $('button[type="submit"]', form), msg = $('.subscribe-message', form), label = btn ? btn.textContent : '';
-    function say(state, text) { if (!msg) return; msg.setAttribute('data-state', state); msg.textContent = text || ''; }
-    if (input) input.addEventListener('input', function () { input.removeAttribute('aria-invalid'); if (msg && msg.getAttribute('data-state') !== 'ok') say('', ''); });
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!input || !input.value || !input.checkValidity()) { if (input) { input.setAttribute('aria-invalid', 'true'); input.focus(); } return; }
-      if (!bd) { say('off', i18n.sub_off); return; }
-      btn.disabled = true; btn.textContent = btn.getAttribute('data-busy') || label; say('', '');
-      fetch('https://buttondown.com/api/emails/embed-subscribe/' + encodeURIComponent(bd), {
-        method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'email=' + encodeURIComponent(input.value)
-      }).then(function (res) {
-        if (res.type === 'opaque' || res.ok) { form.classList.add('is-done'); say('ok', i18n.sub_ok); }
-        else say('error', i18n.sub_err);
-      }).catch(function () { say('error', navigator.onLine === false ? i18n.sub_err : i18n.sub_unk); })
-        .then(function () { btn.disabled = false; btn.textContent = label; });
-    });
-  });
+  /* Newsletter uses Buttondown's native POST embed. Browser validation and the
+     provider's response handle subscription; do not infer success from opaque CORS responses. */
 
   /* copy buttons on install commands */
   $$('.code-wrap .copy').forEach(function (btn) {

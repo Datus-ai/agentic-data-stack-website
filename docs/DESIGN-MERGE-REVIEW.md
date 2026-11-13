@@ -21,7 +21,7 @@ Once the remaining venue fact are confirmed, sync those into `content/events/han
 
 ## Existing configuration gap
 
-Newsletter account is still not configured. This was already true before the design merge. The theme displays the existing unavailable message rather than collecting submissions silently. Set the Buttondown username through the theme adapter before activating signup.
+Newsletter configured on 2026-11-13 using the supplied Buttondown embed for `agentic-data-stack`. The username lives in `content/newsletter-settings.json`. Native POST forms use Buttondown’s confirmation/error page, with the current site typography and colors. No real subscription was submitted during verification.
 
 ## Validation
 
