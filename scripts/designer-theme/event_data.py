@@ -1,4 +1,4 @@
-"""Hangzhou meetup facts. Source: Feishu doc「[设计需求]Agentic Data Stack Meetup｜杭州站」(first read 2026-11-11 14:57; re-read 2026-11-12 after the organiser's 11-11 16:21 edit: talks are 30 min, last talk ends 16:40) + the exported site."""
+"""Hangzhou event facts. Agenda source: owner-pasted Feishu update, 2026-11-15; last talk ends 16:30. Event remains 17:30 per the owner’s prior confirmation."""
 EVENT = {
     'slug': 'hangzhou/2026',
     'name_doc': 'Agentic Data Stack Meetup｜杭州站',

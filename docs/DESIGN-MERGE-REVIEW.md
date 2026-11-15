@@ -29,3 +29,7 @@ Newsletter configured on 2026-11-13 using the supplied Buttondown embed for `age
 - Link/asset audit via `python3 scripts/designer-theme/audit.py`.
 - Existing five community tests and designer JavaScript syntax check.
 - `merge-audit.json` records per-page text deltas. Most are intentionally removed duplicate category/eyebrow labels and replaced hero illustration captions; the substantive changes are the designer architecture presentation and proposed event facts above.
+
+## Agenda update — 2026-11-15
+
+Updated from the owner-pasted Feishu agenda: MirrorShip SemanticView title and abstract refreshed; Fang Yang moved to 15:10–15:40; Limin (Technical Lead, Bonjour!) added at 15:40–16:00; Zhang Chen moved to 16:00–16:30; the previous Tang Feihu TBA slot removed. Existing portraits remain; no image was invented for Limin or the owner’s `[图片]` placeholders. In keeping with the previously confirmed 17:30 end, networking now runs 16:30–17:30. Both localized title sets and the rich designer renderer read the same event JSON.
