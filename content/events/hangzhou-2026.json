@@ -117,7 +117,8 @@
         "role_zh": "产品市场经理",
         "speaker_en": "He Jingke",
         "role_en": "Product Marketing Manager",
-        "para_zh": "Agent 要高效完成数据分析，首先需要理解业务。本次分享将介绍 Datus 语义层的构建实践，结合产品主流程 Demo，展示如何将业务知识转化为 Agent 可理解、可复用的分析基础，帮助业务人员开展可信的自助分析。"
+        "para_zh": "Agent 要高效完成数据分析，首先需要理解业务。本次分享将介绍 Datus 语义层的构建实践，结合产品主流程 Demo，展示如何将业务知识转化为 Agent 可理解、可复用的分析基础，帮助业务人员开展可信的自助分析。",
+        "photo": "hejingke"
       },
       "speaker": {
         "en": "He Jingke",
@@ -192,7 +193,8 @@
         ],
         "time": "15:40–16:00",
         "title_zh": "AI 加速迭代，谁来保证业务、数据与实现一致？",
-        "title_en": "As AI accelerates iteration, who keeps business, data, and implementation aligned?"
+        "title_en": "As AI accelerates iteration, who keeps business, data, and implementation aligned?",
+        "photo": "limin"
       }
     },
     {
