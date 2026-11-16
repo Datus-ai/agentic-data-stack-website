@@ -13,3 +13,5 @@ Existing community logo and architecture illustrations are retained from the rep
 ## Illustrative community scenes
 
 The owner requested synthetic activity photos for the homepage community introduction and About meeting section. `public/images/community/meetup-*-illustration.jpg` are AI-generated fictional technical meetup scenes, not photographs of an actual event. The owner requested removing the visible illustration note. Image alt text and the source metadata still identify the assets as AI-generated illustrations. These assets are never used in event recaps. Replace their entries in `components/community/CommunityPhotos.tsx` with approved real photos when available and remove `illustrative: true` only for real photographs.
+
+- Speaker portraits `hejingke.png` and `limin.png`: supplied by the owner on 2026-11-15 and assigned to the named speakers. Original image contents retained; the existing website CSS displays them as circular avatars.

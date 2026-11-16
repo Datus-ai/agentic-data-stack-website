@@ -21,7 +21,7 @@ Once the remaining venue fact are confirmed, sync those into `content/events/han
 
 ## Existing configuration gap
 
-Newsletter account is still not configured. This was already true before the design merge. The theme displays the existing unavailable message rather than collecting submissions silently. Set the Buttondown username through the theme adapter before activating signup.
+Newsletter configured on 2026-11-13 using the supplied Buttondown embed for `agentic-data-stack`. The username lives in `content/newsletter-settings.json`. Native POST forms use Buttondown’s confirmation/error page, with the current site typography and colors. No real subscription was submitted during verification.
 
 ## Validation
 
@@ -29,3 +29,7 @@ Newsletter account is still not configured. This was already true before the des
 - Link/asset audit via `python3 scripts/designer-theme/audit.py`.
 - Existing five community tests and designer JavaScript syntax check.
 - `merge-audit.json` records per-page text deltas. Most are intentionally removed duplicate category/eyebrow labels and replaced hero illustration captions; the substantive changes are the designer architecture presentation and proposed event facts above.
+
+## Agenda update — 2026-11-15
+
+Updated from the owner-pasted Feishu agenda: MirrorShip SemanticView title and abstract refreshed; Fang Yang moved to 15:10–15:40; Limin (Technical Lead, Bonjour!) added at 15:40–16:00; Zhang Chen moved to 16:00–16:30; the previous Tang Feihu TBA slot removed. Existing portraits remain; no image was invented for Limin or the owner’s `[图片]` placeholders. In keeping with the previously confirmed 17:30 end, networking now runs 16:30–17:30. Both localized title sets and the rich designer renderer read the same event JSON.

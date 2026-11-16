@@ -78,23 +78,23 @@
     {
       "time": "13:50–14:20",
       "title": {
-        "en": "Semantic View on StarRocks: design and practice",
-        "zh": "基于 StarRocks 的 Semantic View：设计与实践"
+        "zh": "MirrorShip SemanticView：探索与实践",
+        "en": "MirrorShip SemanticView: exploration and practice"
       },
       "designer": {
         "time": "13:50–14:20",
         "kind": "talk",
-        "title_zh": "基于 StarRocks 的 Semantic View：设计与实践",
-        "title_en": "Semantic View on StarRocks: design and practice",
+        "title_zh": "MirrorShip SemanticView：探索与实践",
+        "title_en": "MirrorShip SemanticView: exploration and practice",
         "speaker_zh": "冉攀峰",
         "role_zh": "StarRocks Committer · 镜舟科技高级工程师",
         "speaker_en": "Ran Panfeng",
-        "role_en": "StarRocks Committer; Senior Engineer, Mirrorship (镜舟科技)",
+        "role_en": "StarRocks Committer · Senior Engineer, MirrorShip",
         "points_zh": [
-          "介绍 Semantic View 的设计思路与核心架构；",
-          "展示 YAML 定义、语义查询及向标准 StarRocks SQL 的转换过程；",
-          "分享 Table Pruning、Aggregation Elimination 等语义优化实践；",
-          "探讨 Semantic View 的推荐、合并及其与 Data Agent 的协同演进。"
+          "介绍基于 StarRocks 社区版研发的企业级 Semantic View，及其在 MirrorShip MIP 语义层中的定位；",
+          "展示 YAML 定义、语义查询与开放互通，以及将语义查询降级转换（lowering）为标准 StarRocks SQL 的过程；",
+          "分享在 StarRocks 现有优化器之上实现的 Table Pruning、Aggregation Elimination 语义优化；",
+          "介绍 SV 推荐与合并的实践，探讨语义层与 Data Agent 协同演进的方向。"
         ]
       },
       "speaker": {
@@ -117,7 +117,8 @@
         "role_zh": "产品市场经理",
         "speaker_en": "He Jingke",
         "role_en": "Product Marketing Manager",
-        "para_zh": "Agent 要高效完成数据分析，首先需要理解业务。本次分享将介绍 Datus 语义层的构建实践，结合产品主流程 Demo，展示如何将业务知识转化为 Agent 可理解、可复用的分析基础，帮助业务人员开展可信的自助分析。"
+        "para_zh": "Agent 要高效完成数据分析，首先需要理解业务。本次分享将介绍 Datus 语义层的构建实践，结合产品主流程 Demo，展示如何将业务知识转化为 Agent 可理解、可复用的分析基础，帮助业务人员开展可信的自助分析。",
+        "photo": "hejingke"
       },
       "speaker": {
         "en": "He Jingke",
@@ -146,32 +147,11 @@
     {
       "time": "15:10–15:40",
       "title": {
-        "en": "Topic to be announced",
-        "zh": "议题待公布"
-      },
-      "designer": {
-        "time": "15:10–15:40",
-        "kind": "tba",
-        "title_zh": "议题待公布",
-        "title_en": "Topic to be announced",
-        "speaker_zh": "唐飞虎",
-        "role_zh": "",
-        "speaker_en": "Tang Feihu",
-        "role_en": ""
-      },
-      "speaker": {
-        "en": "Tang Feihu",
-        "zh": "唐飞虎"
-      }
-    },
-    {
-      "time": "15:40–16:10",
-      "title": {
         "en": "Ontology × Graph: practice and exploration",
         "zh": "Ontology × Graph：实践与探索"
       },
       "designer": {
-        "time": "15:40–16:10",
+        "time": "15:10–15:40",
         "kind": "talk",
         "title_zh": "Ontology × Graph：实践与探索",
         "title_en": "Ontology × Graph: practice and exploration",
@@ -192,13 +172,39 @@
       }
     },
     {
-      "time": "16:10–16:40",
+      "time": "15:40–16:00",
+      "title": {
+        "zh": "AI 加速迭代，谁来保证业务、数据与实现一致？",
+        "en": "As AI accelerates iteration, who keeps business, data, and implementation aligned?"
+      },
+      "speaker": {
+        "zh": "Limin",
+        "en": "Limin"
+      },
+      "designer": {
+        "kind": "talk",
+        "speaker_zh": "Limin",
+        "speaker_en": "Limin",
+        "role_zh": "Bonjour! 技术负责人",
+        "role_en": "Technical Lead, Bonjour!",
+        "points_zh": [
+          "分享借鉴 Ontology 与关系建模方法，以探索语义世界图的小团队经验；",
+          "以真实产品变更为例，分享小团队减少理解偏差与返工的探索，以及模型持续维护的挑战。"
+        ],
+        "time": "15:40–16:00",
+        "title_zh": "AI 加速迭代，谁来保证业务、数据与实现一致？",
+        "title_en": "As AI accelerates iteration, who keeps business, data, and implementation aligned?",
+        "photo": "limin"
+      }
+    },
+    {
+      "time": "16:00–16:30",
       "title": {
         "en": "Building agent memory with Milvus in practice",
         "zh": "Milvus 构建 Agent 记忆的落地实践"
       },
       "designer": {
-        "time": "16:10–16:40",
+        "time": "16:00–16:30",
         "kind": "talk",
         "title_zh": "Milvus 构建 Agent 记忆的落地实践",
         "title_en": "Building agent memory with Milvus in practice",
@@ -209,7 +215,7 @@
         "role_en": "Senior Algorithm Engineer, Zilliz",
         "points_zh": [
           "用 Milvus 构建 AI Agent 的长期记忆；",
-          "从对话历史、用户偏好到任务经验，探讨记忆的存储、检索与更新，分享落地方案，让智能体记得住、找得准、用得上；",
+          "从对话历史、用户偏好到任务经验，探讨记忆的存储、检索与更新，分享落地方案，让智能体记得住、找得准、用得上。",
           "MemSearch 项目落地方案介绍。"
         ]
       },
@@ -219,7 +225,7 @@
       }
     },
     {
-      "time": "16:40–17:30",
+      "time": "16:30–17:30",
       "title": {
         "en": "Open networking",
         "zh": "自由交流"
@@ -231,7 +237,10 @@
       "designer": {
         "kind": "networking",
         "note_zh": "与讲者和同行自由交流，活动于 17:30 结束。",
-        "note_en": "Connect with speakers and fellow attendees. The event ends at 17:30."
+        "note_en": "Connect with speakers and fellow attendees. The event ends at 17:30.",
+        "time": "16:30–17:30",
+        "title_zh": "自由交流",
+        "title_en": "Open networking"
       }
     }
   ],

@@ -780,3 +780,11 @@ ul.guidelines li::before{content:"";top:29px;width:10px;height:2px;background:va
   .hero-notice>span:nth-child(2){white-space:normal}
 }
 @media print{.site-header,.community-footer,.sticky-cta,.luma-frame{display:none}}
+
+.subscribe-email-label { display:block; min-width:0; }
+.subscribe-email-label .subscribe-input { width:100%; }
+.subscribe-credit { grid-column:1 / -1; margin:4px 0 0; font-size:11px; line-height:1.6; color:var(--muted); }
+.subscribe-credit a { text-decoration:none; }
+.subscribe-credit a:hover { text-decoration:underline; }
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

@@ -12,6 +12,8 @@ from event_data import EVENT, AGENDA, TALKS
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, '..', '..', '.designer-source')
 OUT = os.path.join(HERE, '..', '..', 'out')
+NEWSLETTER = json.load(open(os.path.join(HERE, '..', '..', 'content', 'newsletter-settings.json'), encoding='utf-8'))
+BUTTONDOWN_USERNAME = NEWSLETTER['buttondownUsername']
 E = lambda s: html.escape(str(s), quote=True)
 ARROW = {'→': 'arrow', '↗': 'external'}
 
@@ -126,15 +128,17 @@ def footer(loc):
 def forms(node, loc):
     t = T[loc]
     for fm in node.find_all('form'):
-        fm.attrs.update({'data-subscribe': '', 'novalidate': None}); fm.attrs.pop('action', None)
+        fm.attrs.update({'data-subscribe': '', 'method': 'post', 'action': 'https://buttondown.com/api/emails/embed-subscribe/' + BUTTONDOWN_USERNAME}); fm.attrs.pop('novalidate', None)
         dom.add_class(fm, 'compact-subscribe')
         inp = fm.find('input')
         if inp: inp.attrs.update({'name': 'email', 'autocomplete': 'email', 'required': None, 'aria-label': t['email']}); inp.attrs['class'] = 'subscribe-input'
         btn = fm.find('button')
         if btn: btn.attrs['class'] = 'button'; btn.attrs['data-busy'] = t['sub_busy']
-        fm.children.append(Raw('<p class="subscribe-message" role="status" aria-live="polite"></p>'))
+        if not fm.find('p', 'subscribe-credit'):
+            fm.children.append(Raw(f'<p class="subscribe-credit"><a href="https://buttondown.com/refer/{E(BUTTONDOWN_USERNAME)}" target="_blank" rel="noopener noreferrer">Powered by Buttondown.</a></p>'))
 def page(rel, title, meta, body, body_cls=''):
     loc = loc_of(rel); t = T[loc]
+    form_tree = dom._P(); form_tree.feed(body); forms(form_tree.root, loc); body = form_tree.root.inner_html()
     i18n = E(json.dumps({k: t[k] for k in ('sub_off', 'sub_ok', 'sub_err', 'sub_unk', 'copy', 'copied', 'menu', 'close')}, ensure_ascii=False))
     body = re.sub(r'<span class="arr"(?: aria-hidden="true")?>([→↗↓←])</span>', lambda m: G.arrow(m.group(1)), body)
     head_html = re.sub(r'<span class="arr"(?: aria-hidden="true")?>([→↗↓←])</span>', lambda m: G.arrow(m.group(1)), header(loc, rel))
@@ -160,8 +164,8 @@ def page(rel, title, meta, body, body_cls=''):
 <link rel="stylesheet" href="/assets/site.css"/>
 <link rel="stylesheet" href="/assets/local-overrides.css"/>
 <script>document.documentElement.className='js'</script>
-<!-- Newsletter: set the Buttondown username to enable the subscribe forms (same service as the current site). -->
-<meta name="buttondown-username" content=""/>
+<!-- Native Buttondown embed: account configured in content/newsletter-settings.json. -->
+<meta name="buttondown-username" content="{E(BUTTONDOWN_USERNAME)}"/>
 </head>
 <body class="page-{kind_of(rel)} {body_cls}" data-i18n="{i18n}">
 {head_html}
